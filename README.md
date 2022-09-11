@@ -4,7 +4,7 @@
 ## __📘&nbsp;About me__
 Hi, I'm Hector, a student at UPA in Computer Systems Engineering (ISC). In this repository you will find all my work done in the subject of programming in the C++ language. 
 
-## __🚀&nbsp; Table of contents__ (#table-of-contents)
+## __🚀&nbsp; Table of contents__
 1. [Unit 1 Programming introduction](#U1)
 2. [Unit 2 Control structures and cycles](#U2)
 3. [Unit 3 Functions](#U3)
