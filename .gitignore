@@ -1,6 +1,11 @@
 # Prerequisites
 *.d
 
+#Archivos sin extension
+*
+!/**/
+!*.*
+
 # Compiled Object files
 *.slo
 *.lo

@@ -11,7 +11,7 @@ Description: My first program in C++
 
 //-------- PREPROCESSOR DIRECTIVES --------
 int main(){
-    std::cout <<"Hello world! This is my first program ";
+    std::cout <<"Hello world! This is my first program "<< std::endl;
     //Return 0 means that the program ends succesfully
     return 0;   
 }
