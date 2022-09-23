@@ -52,7 +52,7 @@ int main(){
         }
         
         //Visualizar los datos.
-        cout << "The tax rate is" << (Tax*100) << "% \n";
+        cout << "The tax rate is " << (Tax*100) << "% \n";
         Tax= Rent * Tax;
         cout << "Which is the equivalent $" << Tax << endl;
     }
