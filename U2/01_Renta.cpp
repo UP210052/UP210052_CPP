@@ -6,7 +6,7 @@ Description: Rent y Tax
 */
 
 /*
-Los tramos impositivos para la declaración de la rebta en un determinado país son los siguientes:
+Los tramos impositivos para la declaración de la renta en un determinado país son los siguientes:
 Renta	Tipo impositivo
 Menos de $10,000	5%
 Entre $10,000 y $20,000	15%
