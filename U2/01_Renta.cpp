@@ -25,7 +25,7 @@ using namespace std;
 
 //Función principal de tipo entero
 int main(){
-    //Declaración de variables.
+    //Declarar las variables.
     float Rent;
     float Tax;
     
@@ -51,7 +51,7 @@ int main(){
             Tax = .45;
         }
         
-        //Visualización de datos.
+        //Visualizar los datos.
         cout << "The tax rate is" << (Tax*100) << "% \n";
         Tax= Rent * Tax;
         cout << "Which is the equivalent $" << Tax << endl;
