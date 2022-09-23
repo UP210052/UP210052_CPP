@@ -49,13 +49,13 @@
 
 ## Texts
 ### A) Rent < $10,000
-<img src="imagenes/Img_01.png" align="center" height="90"/>
+<img src="UP210052_CPP/../../imagenes/Img_01.png" align="center" height="150" width="700"/>
 
 ### B) Rent >= $10,000 and Rent < $20,000 
-<img src="imagenes/Img_02.png" align="center" height="90"/>
+<img src="UP210052_CPP/../../imagenes/Img_02.png" align="center" height="150" width="700"/>
 
 ### C) Rent >= $20,000 and Rent < $35,000 
-<img src="imagenes/Img_03.png" align="center" height="90"/>
+<img src="UP210052_CPP/../../imagenes/Img_03.png" align="center" height="150" width="700"/>
 
 ### D) Rent >= $60,000
-<img src="imagenes/Img_04.png" align="center" height="90"/>
+<img src="UP210052_CPP/../../imagenes/Img_03.png" align="center" height="150" width="700"/>
