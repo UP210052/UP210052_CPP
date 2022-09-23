@@ -6,15 +6,15 @@ Description: Rent y Tax
 */
 
 /*
-Los tramos Taxs para la declaración de la Rent en un determinado país son los siguientes:
-Rent	Tipo Tax
+Los tramos impositivos para la declaración de la rebta en un determinado país son los siguientes:
+Renta	Tipo impositivo
 Menos de $10,000	5%
 Entre $10,000 y $20,000	15%
 Entre $20,000 y $35,000	20%
 Entre $35,000 y $60,000	30%
 Más de $60,000	45%
-Escribir un programa que pregunte al usuario su Rent anual y muestre por 
-pantalla el tipo Tax que le corresponde.
+Escribir un programa que pregunte al usuario su renta anual y muestre por 
+pantalla el tipo impositivo que le corresponde.
 */
 
 //Libreria  para manejo de entradas y salidas.
