@@ -17,23 +17,23 @@ int main(){
     double dinero=0;
 
     //Solicitar la puntuación.
-    cout << "Cual es tu puntuación ";
+    cout << "What is your score: ";
     cin >> puntuacion;
 
     //Evaluar la puntuacion para asignar su tipo y dinero.
     if( (puntuacion <= 1 ) && ((puntuacion >= 0.6) || (puntuacion == 0.4 ))){
         dinero = puntuacion* 2400;
         if (puntuacion >= 0.6) {
-            cout << "Tu puntuacion es Meritorio \n";
+            cout << "Your score is Meritorious \n";
         }else{
-            cout << "Tu puntuacion es Aceptable \n";
+            cout << "Your score is Acceptable \n";
         }
 
     } else{
-        cout << "Tu puntuacion es Inaceptable \n";
+        cout << "Your score is unacceptable \n";
     }
 
     //Imprimir su cantidad de dinero.
-    cout << "Tu cantidad de dinero es $" << dinero << endl;
+    cout << "Your amount of money is $" << dinero << endl;
     return 0;
 } 

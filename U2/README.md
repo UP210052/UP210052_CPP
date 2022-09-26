@@ -60,7 +60,7 @@
 ### D) Rent >= $60,000
 <img src="UP210052_CPP/../../imagenes/Img_04.png" align="center" height="150" width="700"/>
 
-# Exercise 2: A program that asks the user for his punctuation and displays the corresponding typo of benefit and money
+# Exercise 2: A program that asks the user for his score and displays the corresponding typo of benefit and money
 ## Selection of type of benefit and money
     c++
     //Evaluar la puntuacion para asignar su tipo y dinero.
@@ -77,7 +77,23 @@
     }
 
 ## Explanation.
-1. Ask the user for his punctuation.
-2. 
+1. Ask the user for his score.
+2. Check that the user entered a score greater than or equal to 0.6 or equal to 0.4..   
+2.1 If the user does not enter a valid score print Your score is unacceptable message.
+2.2 If the user entered a valid score, continue with the program.
+3. Multiply your score by 2400 and store the cash value.
+4. Check what kind of score you obtained
+3.1 If your score is greater than or equal to 0.6 print your score is Meritorious.
+3.2 If your score is equal to 0.4 print your score is Acceptable.
+Print the amount of money.
+4. Print the amount of money.
 
 ## Texts
+### A) score >= 0.6
+<img src="UP210052_CPP/../../imagenes/Img_05.png" align="center" height="150" width="700"/>
+
+### B) score == 0.4
+<img src="UP210052_CPP/../../imagenes/Img_06.png" align="center" height="150" width="700"/>
+
+### C) score == 0
+<img src="UP210052_CPP/../../imagenes/Img_07.png" align="center" height="150" width="700"/>
