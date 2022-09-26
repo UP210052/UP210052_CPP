@@ -82,9 +82,9 @@
 2.1 If the user does not enter a valid score print Your score is unacceptable message.
 2.2 If the user entered a valid score, continue with the program.
 3. Multiply your score by 2400 and store the cash value.
-4. Check what kind of score you obtained
-3.1 If your score is greater than or equal to 0.6 print your score is Meritorious.
-3.2 If your score is equal to 0.4 print your score is Acceptable.
+4. Check what kind of score you obtained  
+4.1 If your score is greater than or equal to 0.6 print your score is Meritorious.  
+4.2 If your score is equal to 0.4 print your score is Acceptable.
 Print the amount of money.
 4. Print the amount of money.
 
