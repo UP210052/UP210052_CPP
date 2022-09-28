@@ -96,3 +96,6 @@
 
 ### C) score == 0
 <img src="UP210052_CPP/../../imagenes/Img_07.png" align="center" height="150" width="700"/>
+
+# Exercise 3: 
+# Exercise 4:
