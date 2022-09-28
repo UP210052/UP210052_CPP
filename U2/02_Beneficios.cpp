@@ -2,7 +2,7 @@
 Date: 26/09/2022
 Author: Héctor Iván Ramírez Jaime.
 Email: up210052@alumnos.upa.edu.mx
-Description: 
+Description: Benefit
 */
 
 //Library for input and output management.
