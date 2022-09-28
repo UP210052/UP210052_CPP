@@ -5,14 +5,15 @@ Email: up210052@alumnos.upa.edu.mx
 Description: 
 */
 
-//Libreria  para manejo de entradas y salidas.
+//Library for input and output management.
 #include <iostream>
 
-//Uso del namespace para evitar el std::
+//Use of namespace to avoid std::
 using namespace std;
 
+//Main function of integer type
 int main(){
-    //Declarar las variables.
+    //Declare the variables.
     double puntuacion;
     double dinero=0;
 
@@ -20,7 +21,7 @@ int main(){
     cout << "What is your score: ";
     cin >> puntuacion;
 
-    //Evaluar la puntuacion para asignar su tipo y dinero.
+    //Evaluate the score to assign your type and money.
     if( (puntuacion <= 1 ) && ((puntuacion >= 0.6) || (puntuacion == 0.4 ))){
         dinero = puntuacion* 2400;
         if (puntuacion >= 0.6) {
@@ -33,7 +34,7 @@ int main(){
         cout << "Your score is unacceptable \n";
     }
 
-    //Imprimir su cantidad de dinero.
+    //Print your amount of money.
     cout << "Your amount of money is $" << dinero << endl;
     return 0;
 } 

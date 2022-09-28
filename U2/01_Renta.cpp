@@ -17,41 +17,41 @@ Escribir un programa que pregunte al usuario su renta anual y muestre por
 pantalla el tipo impositivo que le corresponde.
 */
 
-//Libreria  para manejo de entradas y salidas.
+//Library for input and output management.
 #include <iostream>
 
-//Uso del namespace para evitar el std::
+//Use of namespace to avoid std::
 using namespace std;
 
-//Función principal de tipo entero
+//Main function of integer type
 int main(){
-    //Declarar las variables.
+    //Declare the variables.
     float Rent;
     float Tax;
     
-    //Solicitar la renta.
+    //Request for rent.
     cout << "Enter your annual rent: ";
     cin >> Rent;
     
-    //Evaluar la renta (rent) para obtener el porcentaje (tax)
+    //Evaluate rent to obtain the tax.
     if (Rent>=0){
         if (Rent<10000){
             Tax = .05;
         }
-        if (Rent>=10000 and Rent<20000){
+        else if (Rent>=10000 and Rent<20000){
             Tax = .15;
         } 
-        if (Rent>=20000 and Rent<35000){
+        else if (Rent>=20000 and Rent<35000){
             Tax = .20;
         }
-        if (Rent>=35000 and Rent<60000){
+        else if (Rent>=35000 and Rent<60000){
             Tax = .30;
         }
-        if (Rent>=60000){
+        else if (Rent>=60000){
             Tax = .45;
         }
         
-        //Visualizar los datos.
+        //Visualization of the improvisation and its equivalence in money.
         cout << "The tax rate is " << (Tax*100) << "% \n";
         Tax= Rent * Tax;
         cout << "Which is the equivalent $" << Tax << endl;

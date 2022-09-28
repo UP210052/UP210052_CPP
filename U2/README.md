@@ -23,7 +23,7 @@
             Tax = .45;
         }
         
-        //Visualize the data.
+        //Visualization of the improvisation and its equivalence in money.
         cout << "The tax rate is" << (Tax*100) << "% \n";
         Tax= Rent * Tax;
         cout << "Which is the equivalent $" << Tax << endl;
@@ -63,17 +63,17 @@
 # Exercise 2: A program that asks the user for his score and displays the corresponding typo of benefit and money
 ## Selection of type of benefit and money
 ```c++
-    //Evaluar la puntuacion para asignar su tipo y dinero.
-    if( (puntuacion >= 0.6) || (puntuacion == 0.4 )){
+    //Evaluate the score to assign your type and money.
+    if( (puntuacion <= 1 ) && ((puntuacion >= 0.6) || (puntuacion == 0.4 ))){
         dinero = puntuacion* 2400;
         if (puntuacion >= 0.6) {
-            cout << "Tu puntuacion es Meritorio \n";
+            cout << "Your score is Meritorious \n";
         }else{
-            cout << "Tu puntuacion es Aceptable \n";
+            cout << "Your score is Acceptable \n";
         }
 
     } else{
-        cout << "Tu puntuacion es Inaceptable \n";
+        cout << "Your score is unacceptable \n";
     }
 ```
 ## Explanation.
