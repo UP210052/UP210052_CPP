@@ -1,6 +1,6 @@
 # Exercise 1: A program that asks the user for his annual rent and displays the corresponding tax rate.
 ## Tax rate selection section (code).
-    c++
+```c++
     //Request for rent.
     cout << "Enter your annual rent: ";
     cin >> Rent;
@@ -31,7 +31,7 @@
     else {
         cout << "The rent you entered is ncorrect. \n";  
     }
-
+```
 ## Explanation.
 1. Ask the user for his annual rent.
 2. Check that the user entered a valid rent.   
@@ -62,7 +62,7 @@
 
 # Exercise 2: A program that asks the user for his score and displays the corresponding typo of benefit and money
 ## Selection of type of benefit and money
-    c++
+```c++
     //Evaluar la puntuacion para asignar su tipo y dinero.
     if( (puntuacion >= 0.6) || (puntuacion == 0.4 )){
         dinero = puntuacion* 2400;
@@ -75,7 +75,7 @@
     } else{
         cout << "Tu puntuacion es Inaceptable \n";
     }
-
+```
 ## Explanation.
 1. Ask the user for his score.
 2. Check that the user entered a score greater than or equal to 0.6 or equal to 0.4..   
