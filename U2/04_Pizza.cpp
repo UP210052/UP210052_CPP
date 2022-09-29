@@ -24,29 +24,83 @@ ingredientes que lleva
 // Use of namespace to avoid std::
 using namespace std;
 
-
 int main()
 {
-    char respuesta;
+    // Declare the variables.
+    int tipo;
     int ingrediente_vegetariano;
     int ingrediente_no_vegetariano;
-    cout << "Is your vegetarian pizza ?  ";
-    cin >> respuesta;
-    if (respuesta == 'Yes' || respuesta == 'Y' || respuesta == 'yes' || respuesta == 'y')
-    {
-        cout << "Vegetatian ingredients: \n";
-        cout << "1.- Bell papper \n";
-        cout << "2.- Tofu \n";
-        cout << "Enter the ingredient number";
-        cin >> ingrediente_vegetariano;
-    }
-    else if (respuesta == 'No' || respuesta == 'N' || respuesta == 'no')
-    {
-        cout << "";
-    }else {
-
-    }
-    cout << "Your pizza is vegetarian";
+    string tipo_1;
+    string ingre;
     
+    //Print and ask the type of pizzas.
+    cout << "Welcome to Bella Napoli. \n";
+    cout << "What type of pizza do you prefer ? \n";
+    cout << "1.-Vegetarian pizza. \n";
+    cout << "2.-No vegetarian pizza. \n";
+    cin >> tipo;
+
+    if (tipo == 1)
+    {
+        //Save your type in a string
+        tipo_1 = "vegetarian";
+        //Print the menu and ask for your vegetarian ingredient. 
+        cout << "The ingredients are: \n";
+        cout << "1.-Pepper. \n";
+        cout << "2.-Tofu. \n";
+        cout << "All include mozarella and tomato.";
+        cin >> ingrediente_vegetariano;
+
+        //Save your ingredient in a string
+        if (ingrediente_vegetariano == 1)
+        {
+            ingre = "Pepper";
+        }
+        else if (ingrediente_vegetariano == 2)
+        {
+            ingre = "Tofu";
+        }
+        else
+        {
+            cout << "Your ingredient does not exit";
+        }
+    }
+    else if (tipo == 2)
+    {
+        //Save your type in a string
+        tipo_1 = "no vegetarian";
+
+        //Print the menu and ask for your no vegetarian ingredient. 
+        cout << "The ingredients are: \n";
+        cout << "1.-Pepperoni. \n";
+        cout << "2.-Ham \n";
+        cout << "3.-Salmon \n";
+        cout << "All include mozarella and tomato \n";
+        cin >> ingrediente_no_vegetariano;
+
+        //Save your ingredient in a string
+        if (ingrediente_no_vegetariano == 1)
+        {
+            ingre = "Pepperoni";
+        }
+        else if (ingrediente_no_vegetariano == 2)
+        {
+            ingre = "Ham";
+        }
+        else if (ingrediente_no_vegetariano == 3)
+        {
+            ingre = "Salmon";
+        }
+    }
+    else
+    {
+        cout << "That type of pizza doesn't exit \n";
+    } 
+
+    //Print the type and ingredient.
+    if (tipo==1 || tipo==2){   
+        cout << "Your type of pizza is " << tipo_1 << endl;
+        cout << "Your ingredients of pizza are " << ingre << ", mozarella and tomato. \n";
+    }
     return 0;
 }

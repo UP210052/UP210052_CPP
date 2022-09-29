@@ -87,7 +87,7 @@
 4.2 If your score is equal to 0.4 print your score is Acceptable.
 1. Print the amount of money.
 
-## Texts
+## Texts.
 ### A) score >= 0.6
 <img src="UP210052_CPP/../../imagenes/Img_05.png" align="center" height="150" width="700"/>
 
@@ -97,5 +97,39 @@
 ### C) score == 0
 <img src="UP210052_CPP/../../imagenes/Img_07.png" align="center" height="150" width="700"/>
 
-# Exercise 3: 
+# Exercise 3: A program that asks for your age and print the cost of ticked.
+## Evaluate your age and asignate the cost of your ticked.
+```c++
+    // Evaluate your age and asignate the cost of your ticked .
+    if (edad > 18)
+    {
+        precio = 10;
+    }
+    else if (edad >= 4 && edad < 18)
+    {
+        precio = 5;
+    }
+    else if (edad >= 0)
+    {
+        precio = 0;
+    }
+    else
+    {
+        cout << "Your age is invalid \n";
+        precio = 0;
+    }
+
+    // Print your cost.
+    cout << "The cost of your ticked is $" << precio << endl;
+```
+## Explanation.
+1. Ask the user for your age.
+2. Check that the user enters an age within the following range.  
+2.1 If the user do  
+2.1 If the user does not enter a valid score print Your age is invalid.  
+2.1 If the user does not enter a valid score print Your age is invalid.  
+2.1 If the user does not enter a valid score print Your age is invalid.  
+1. Print your cost.   
+## Texts.
+
 # Exercise 4:
