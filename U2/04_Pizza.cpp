@@ -48,7 +48,7 @@ int main()
         cout << "The ingredients are: \n";
         cout << "1.-Pepper. \n";
         cout << "2.-Tofu. \n";
-        cout << "All include mozarella and tomato.";
+        cout << "All include mozarella and tomato. \n";
         cin >> ingrediente_vegetariano;
 
         //Save your ingredient in a string

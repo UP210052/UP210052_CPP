@@ -32,7 +32,7 @@ int main()
     {
         precio = 10;
     }
-    else if (edad >= 4 && edad < 18)
+    else if (edad >= 4 && edad <=18)
     {
         precio = 5;
     }

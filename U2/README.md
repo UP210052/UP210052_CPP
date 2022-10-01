@@ -125,11 +125,114 @@
 ## Explanation.
 1. Ask the user for your age.
 2. Check that the user enters an age within the following range.  
-2.1 If the user do  
-2.1 If the user does not enter a valid score print Your age is invalid.  
-2.1 If the user does not enter a valid score print Your age is invalid.  
-2.1 If the user does not enter a valid score print Your age is invalid.  
-1. Print your cost.   
+2.1 If the user enters an age lower than 0, a message "Your age is invalid" will be printed.  
+2.2 If the user enters a number between 4 and 0, the ticket price is 0.  
+2.3 If the user enters an age greater than 4 and less than 18, the ticket price is 5.  
+2.4 If the user enters an age greater than 18, the ticket price is 10.
+3. Print ticket cost.   
 ## Texts.
+### Age > 18
+<img src="UP210052_CPP/../../imagenes/Img_08.png" align="center" height="150" width="500"/>
 
-# Exercise 4:
+### Age >= 4 and Age <=18
+<img src="UP210052_CPP/../../imagenes/Img_09.png" align="center" height="150" width="500"/>
+
+### Age < 4 and Age > 0
+<img src="UP210052_CPP/../../imagenes/Img_10.png" align="center" height="150" width="500"/>
+ 
+ ### Age < 0
+ <img src="UP210052_CPP/../../imagenes/Img_11.png" align="center" height="150" width="500"/>
+
+# Exercise 4: Menu of a Bella Napoli pizzeria showing your type of pizza and ingredients
+## Select your type of pizza and ingredients
+```c++
+    if (tipo == 1)
+    {
+        //Save your type in a string
+        tipo_1 = "vegetarian";
+        //Print the menu and ask for your vegetarian ingredient. 
+        cout << "The ingredients are: \n";
+        cout << "1.-Pepper. \n";
+        cout << "2.-Tofu. \n";
+        cout << "All include mozarella and tomato.";
+        cin >> ingrediente_vegetariano;
+
+        //Save your ingredient in a string
+        if (ingrediente_vegetariano == 1)
+        {
+            ingre = "Pepper";
+        }
+        else if (ingrediente_vegetariano == 2)
+        {
+            ingre = "Tofu";
+        }
+        else
+        {
+            cout << "Your ingredient does not exit";
+        }
+    }
+    else if (tipo == 2)
+    {
+        //Save your type in a string
+        tipo_1 = "no vegetarian";
+
+        //Print the menu and ask for your no vegetarian ingredient. 
+        cout << "The ingredients are: \n";
+        cout << "1.-Pepperoni. \n";
+        cout << "2.-Ham \n";
+        cout << "3.-Salmon \n";
+        cout << "All include mozarella and tomato \n";
+        cin >> ingrediente_no_vegetariano;
+
+        //Save your ingredient in a string
+        if (ingrediente_no_vegetariano == 1)
+        {
+            ingre = "Pepperoni";
+        }
+        else if (ingrediente_no_vegetariano == 2)
+        {
+            ingre = "Ham";
+        }
+        else if (ingrediente_no_vegetariano == 3)
+        {
+            ingre = "Salmon";
+        }
+    }
+    else
+    {
+        cout << "That type of pizza doesn't exit \n";
+    } 
+
+    //Print the type and ingredient.
+    if (tipo==1 || tipo==2){   
+        cout << "Your type of pizza is " << tipo_1 << endl;
+        cout << "Your ingredients of pizza are " << ingre << ", mozarella and tomato. \n";
+    }
+```
+## Explanation.
+1. Ask the user what type of pizza he/she prefers:  
+1.1 If any number but 1 or 2 is selected it prints "That type of pizza doesn't exit".   
+1.2 If he selects 1 he enters the vegetarian ingredients menu.  
+1.3 If he selects 2 he enters the no vegetarian ingredients menu. 
+2. Display the menu depending on your type of pizza.
+3. Ask what ingredients you want on your pizza.
+4. Save the ingredients in a string.
+5. Show your type of pizza (vegetarian or non-vegetarian) and the ingredients.
+## Texts.
+### Type:Vegetarian Ingredient: Pepper
+ <img src="UP210052_CPP/../../imagenes/Img_12.png" align="center" height="300" width="500"/>
+
+### Type:Vegetarian Ingredient: Tofu
+ <img src="UP210052_CPP/../../imagenes/Img_13.png" align="center" height="300" width="500"/>
+
+### Type:Vegetarian Ingredient: Pepperoni
+ <img src="UP210052_CPP/../../imagenes/Img_14.png" align="center" height="300" width="500"/>
+
+### Type:No Vegetarian Ingredient: Ham
+ <img src="UP210052_CPP/../../imagenes/Img_15.png" align="center" height="300" width="500"/>
+
+### Type:No Vegetarian Ingredient: Salmon
+ <img src="UP210052_CPP/../../imagenes/Img_16.png" align="center" height="300" width="500"/>
+
+ ### Type:Any number
+ <img src="UP210052_CPP/../../imagenes/Img_17.png" align="center" height="200" width="600"/>
