@@ -1,10 +1,18 @@
-# Exercise 1: A program that asks the user for his annual rent and displays the corresponding tax rate.
-## Tax rate selection section (code).
+# Index
+[Exercise 1](#Ejercise1)
+[Exercise 2](#Ejercise2)
+[Exercise 3](#Ejercise3)
+[Exercise 4](#Ejercise4)
+[Exercise 5](#Ejercise5)
+# Exercise 1: A program that asks the user for his annual rent and displays the corresponding tax rate.[](#Exercise1)
+## Input 
 ```c++
     //Request for rent.
     cout << "Enter your annual rent: ";
     cin >> Rent;
-    
+```
+## Process.
+```c++
     //Evaluate rent to obtain the tax.
     if (Rent>=0){
         if (Rent<10000){
@@ -16,21 +24,19 @@
         if (Rent>=20000 and Rent<35000){
             Tax = .20;
         }
-        if (Rent>=35000 and Rent<60000){
-            Tax = .30;
-        }
-        if (Rent>=60000){
-            Tax = .45;
-        }
-        
-        //Visualization of the improvisation and its equivalence in money.
-        cout << "The tax rate is" << (Tax*100) << "% \n";
+     Output   cout << "The tax rate is" << (Tax*100) << "% \n";
         Tax= Rent * Tax;
         cout << "Which is the equivalent $" << Tax << endl;
     }
     else {
         cout << "The rent you entered is ncorrect. \n";  
     }
+```
+## Output
+```c++
+    cout << "The tax rate is" << (Tax*100) << "% \n";
+    Tax= Rent * Tax;
+    cout << "Which is the equivalent $" << Tax << endl;
 ```
 ## Explanation.
 1. Ask the user for his annual rent.
@@ -60,8 +66,14 @@
 ### D) Rent >= $60,000
 <img src="UP210052_CPP/../../imagenes/Img_04.png" align="center" height="150" width="700"/>
 
-# Exercise 2: A program that asks the user for his score and displays the corresponding typo of benefit and money
-## Selection of type of benefit and money
+# Exercise 2: A program that asks the user for his score and displays the corresponding typo of benefit and money[](#Exercise2)
+## Input
+```c++
+    //Solicitar la puntuación.
+    cout << "What is your score: ";
+    cin >> puntuacion;
+```
+## Process
 ```c++
     //Evaluate the score to assign your type and money.
     if( (puntuacion <= 1 ) && ((puntuacion >= 0.6) || (puntuacion == 0.4 ))){
@@ -75,6 +87,11 @@
     } else{
         cout << "Your score is unacceptable \n";
     }
+```
+## Output
+```c++
+    //Print your amount of money.
+    cout << "Your amount of money is $" << dinero << endl;
 ```
 ## Explanation.
 1. Ask the user for his score.
@@ -97,8 +114,14 @@
 ### C) score == 0
 <img src="UP210052_CPP/../../imagenes/Img_07.png" align="center" height="150" width="700"/>
 
-# Exercise 3: A program that asks for your age and print the cost of ticked.
-## Evaluate your age and asignate the cost of your ticked.
+# Exercise 3: A program that asks for your age and print the cost of ticked.[](#Exercise3)
+## Input
+```c++
+    // Ask for the age.
+    cout << "How old are you?  ";
+    cin >> edad;
+```
+## Process.
 ```c++
     // Evaluate your age and asignate the cost of your ticked .
     if (edad > 18)
@@ -119,6 +142,11 @@
         precio = 0;
     }
 
+    // Print your cost.
+    cout << "The cost of your ticked is $" << precio << endl;
+```
+## Output
+```c++
     // Print your cost.
     cout << "The cost of your ticked is $" << precio << endl;
 ```
@@ -143,7 +171,16 @@
  ### Age < 0
  <img src="UP210052_CPP/../../imagenes/Img_11.png" align="center" height="150" width="500"/>
 
-# Exercise 4: Menu of a Bella Napoli pizzeria showing your type of pizza and ingredients
+# Exercise 4: Menu of a Bella Napoli pizzeria showing your type of pizza and ingredients[](#Exercise4)
+## Input
+```c++
+    //Print and ask the type of pizzas.
+    cout << "Welcome to Bella Napoli. \n";
+    cout << "What type of pizza do you prefer ? \n";
+    cout << "1.-Vegetarian pizza. \n";
+    cout << "2.-No vegetarian pizza. \n";
+    cin >> tipo;
+```
 ## Select your type of pizza and ingredients
 ```c++
     if (tipo == 1)
@@ -209,6 +246,14 @@
         cout << "Your ingredients of pizza are " << ingre << ", mozarella and tomato. \n";
     }
 ```
+## Output
+```c++
+    //Print the type and ingredient.
+    if (tipo==1 || tipo==2){   
+        cout << "Your type of pizza is " << tipo_1 << endl;
+        cout << "Your ingredients of pizza are " << ingre << ", mozarella and tomato. \n";
+    }
+```
 ## Explanation.
 1. Ask the user what type of pizza he/she prefers:  
 1.1 If any number but 1 or 2 is selected it prints "That type of pizza doesn't exit".   
@@ -234,5 +279,46 @@
 ### Type:No Vegetarian Ingredient: Salmon
  <img src="UP210052_CPP/../../imagenes/Img_16.png" align="center" height="300" width="500"/>
 
- ### Type:Any number
- <img src="UP210052_CPP/../../imagenes/Img_17.png" align="center" height="200" width="600"/>
+## Exercise 5 Ask the user 6 temperature and print the mean, highest and lowest temperature.[](#Exercise5)
+ ## Input
+```c++
+    cout << "Give me the temperature: ";
+    cin >> temperatura;
+```
+ ## Process
+ ```c++
+ while (contador <= 5)
+    {
+        cout << "Give me the temperature: ";
+        cin >> temperatura;
+        //Save the sum of temperatures
+        tempAcum += temperatura;
+
+        //Find and save the highest temperature.
+        if (temperatura > tempmayor)
+        {
+            tempmayor = temperatura;
+        }
+
+        //Find and save the lowest temperature.
+        if (temperatura < tempmenor)
+        {
+            tempmenor = temperatura;
+        }
+        contador++;
+    }
+```
+ ## Output
+```c++
+    // Print the mean, highest and lower temperature.
+    cout << "The mean is: " << (tempAcum / 6) << endl;
+    cout << "The highest temperature is " << tempmayor << endl;
+    cout << "The lowest temperature is " << tempmenor << endl;
+```
+## Explanation.
+1. Ask the user 6 temperature.
+2. If temparures is higher than the previous one, it save it.
+3. If temparures is lower than the previous one, it save it.
+4. Print the mean, highest and lower temperature.
+## Texts.
+<img src="UP210052_CPP/../../imagenes/Img_18.png" align="center" height="300" width="500"/>
