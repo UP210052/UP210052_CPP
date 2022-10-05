@@ -55,16 +55,16 @@
 
 ## Texts
 ### A) Rent < $10,000
-<img src="UP210052_CPP/../../imagenes/Img_01.png" align="center" height="150" width="700"/>
+<img src="../imagenes/Img_01.png" align="center" height="150" width="700"/>
 
 ### B) Rent >= $10,000 and Rent < $20,000 
-<img src="UP210052_CPP/../../imagenes/Img_02.png" align="center" height="150" width="700"/>
+<img src="../imagenes/Img_02.png" align="center" height="150" width="700"/>
 
 ### C) Rent >= $20,000 and Rent < $35,000 
-<img src="UP210052_CPP/../../imagenes/Img_03.png" align="center" height="150" width="700"/>
+<img src="../imagenes/Img_03.png" align="center" height="150" width="700"/>
 
 ### D) Rent >= $60,000
-<img src="UP210052_CPP/../../imagenes/Img_04.png" align="center" height="150" width="700"/>
+<img src="../imagenes/Img_04.png" align="center" height="150" width="700"/>
 
 # Exercise 2: A program that asks the user for his score and displays the corresponding typo of benefit and money[](#Exercise2)
 ## Input
@@ -160,16 +160,16 @@
 3. Print ticket cost.   
 ## Texts.
 ### Age > 18
-<img src="UP210052_CPP/../../imagenes/Img_08.png" align="center" height="150" width="500"/>
+<img src="../imagenes/Img_08.png" align="center" height="150" width="500"/>
 
 ### Age >= 4 and Age <=18
-<img src="UP210052_CPP/../../imagenes/Img_09.png" align="center" height="150" width="500"/>
+<img src="../imagenes/Img_09.png" align="center" height="150" width="500"/>
 
 ### Age < 4 and Age > 0
-<img src="UP210052_CPP/../../imagenes/Img_10.png" align="center" height="150" width="500"/>
+<img src="../imagenes/Img_10.png" align="center" height="150" width="500"/>
  
  ### Age < 0
- <img src="UP210052_CPP/../../imagenes/Img_11.png" align="center" height="150" width="500"/>
+ <img src="../imagenes/Img_11.png" align="center" height="150" width="500"/>
 
 # Exercise 4: Menu of a Bella Napoli pizzeria showing your type of pizza and ingredients[](#Exercise4)
 ## Input
@@ -265,19 +265,19 @@
 5. Show your type of pizza (vegetarian or non-vegetarian) and the ingredients.
 ## Texts.
 ### Type:Vegetarian Ingredient: Pepper
- <img src="UP210052_CPP/../../imagenes/Img_12.png" align="center" height="300" width="500"/>
+ <img src="../imagenes/Img_12.png" align="center" height="300" width="500"/>
 
 ### Type:Vegetarian Ingredient: Tofu
- <img src="UP210052_CPP/../../imagenes/Img_13.png" align="center" height="300" width="500"/>
+ <img src="../imagenes/Img_13.png" align="center" height="300" width="500"/>
 
 ### Type:Vegetarian Ingredient: Pepperoni
- <img src="UP210052_CPP/../../imagenes/Img_14.png" align="center" height="300" width="500"/>
+ <img src="../imagenes/Img_14.png" align="center" height="300" width="500"/>
 
 ### Type:No Vegetarian Ingredient: Ham
- <img src="UP210052_CPP/../../imagenes/Img_15.png" align="center" height="300" width="500"/>
+ <img src="../imagenes/Img_15.png" align="center" height="300" width="500"/>
 
 ### Type:No Vegetarian Ingredient: Salmon
- <img src="UP210052_CPP/../../imagenes/Img_16.png" align="center" height="300" width="500"/>
+ <img src="../imagenes/Img_16.png" align="center" height="300" width="500"/>
 
 ## Exercise 5 Ask the user 6 temperature and print the mean, highest and lowest temperature.[](#Exercise5)
  ## Input
@@ -321,4 +321,41 @@
 3. If temparures is lower than the previous one, it save it.
 4. Print the mean, highest and lower temperature.
 ## Texts.
-<img src="UP210052_CPP/../../imagenes/Img_18.png" align="center" height="300" width="500"/>
+<img src="../imagenes/Img_18.png" align="center" height="300" width="500"/>
+
+## Exercise 6: Ask the user indefinitely the amount and price of the products, finally print the total price.
+ ## Input
+```c++
+    cout << "Enter the amount of products: ";
+    cin >> amount;
+```
+ ## Process
+```c++
+    // Cycle to ask and save the price and amount of the products
+    do
+    {
+        cout << "Enter the amount of products: ";
+        cin >> amount;
+        if (amount != 0 and amount > 0)
+        {
+            cout << "Enter the price of products: ";
+            cin >> price;
+            totalprice += (price * amount);
+        }
+    } while (amount != 0 and amount > 0);
+```
+ ## Input
+```c++
+    // Print the total price.
+    cout << "The total price is $" << totalprice << endl;
+```
+## Explanation.
+1. Ask the user the amount. 
+2. Ask the user the price.
+3. If the user enter 0 in amount, exit the cycle.
+4. Print the total price of all products.
+
+## Texts.
+<img src="../imagenes/Img_19.png" align="center" height="300" width="500"/>  
+
+<img src="../imagenes/Img_20.png" align="center" height="150" width="400"/>.
