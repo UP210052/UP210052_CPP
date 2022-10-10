@@ -5,7 +5,7 @@
 [Exercise 4](#exercise-4-menu-of-a-bella-napoli-pizzeria-showing-your-type-of-pizza-and-ingredients)  
 [Exercise 5](#exercise-5-ask-the-user-6-temperature-and-print-the-mean-highest-and-lowest-temperature)  
 [Exercise 6](#exercise-6-ask-the-user-indefinitely-the-amount-and-price-of-the-products-finally-print-the-total-price)  
-[Exercise 7](#exercise-7)     
+[Exercise 7](#exercise-7-decimal-to-binary)     
 # Exercise 1: A program that asks the user for his annual rent and displays the corresponding tax rate.
 ## Input 
 ```c++
@@ -68,6 +68,11 @@
 ### D) Rent >= $60,000
 <img src="../imagenes/Img_04.png" align="center" height="150" width="700"/>
 
+<div align="right">
+<h2>
+[Return to index](#index)
+</h2>
+</div>
 # Exercise 2: A program that asks the user for his score and displays the corresponding typo of benefit and money[](#Exercise2)
 ## Input
 ```c++
