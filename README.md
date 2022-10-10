@@ -5,10 +5,10 @@
 Hi, I'm Hector, a student at UPA in Computer Systems Engineering (ISC). In this repository you will find all my work done in the subject of programming in the C++ language. 
 
 ## __📫&nbsp; Table of contents__
-1. [Unit 1 Programming introduction](https://github.com/UP210052/UP210052_CPP/tree/main/U1)
-2. [Unit 2 Control structures and cycles](https://github.com/UP210052/UP210052_CPP/tree/main/U2)
-3. [Unit 3 Functions](https://github.com/UP210052/UP210052_CPP/tree/main/U3)
-4. [Unit 4 Files and arrays](https://github.com/UP210052/UP210052_CPP/tree/main/U4)
+1. [Unit 1 Programming introduction](/U1)
+2. [Unit 2 Control structures and cycles](/U2)
+3. [Unit 3 Functions](/U3)
+4. [Unit 4 Files and arrays](/U4)
 
 ## __🚀&nbsp; Important commands__
     ---------------Download repository---------------
