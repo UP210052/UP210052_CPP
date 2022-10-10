@@ -74,6 +74,7 @@
 [Return to index](#index)
 </h2>
 </div>
+
 # Exercise 2: A program that asks the user for his score and displays the corresponding typo of benefit and money[](#Exercise2)
 ## Input
 ```c++
