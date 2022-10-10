@@ -8,11 +8,11 @@
 [Exercise 4](#exercise-4-menu-of-a-bella-napoli-pizzeria-showing-your-type-of-pizza-and-ingredients)  
 [Exercise 5](#exercise-5-ask-the-user-6-temperature-and-print-the-mean-highest-and-lowest-temperature)  
 [Exercise 6](#exercise-6-ask-the-user-indefinitely-the-amount-and-price-of-the-products-finally-print-the-total-price)  
-[Exercise 7](#exercise-7-decimal-to-binary)
+[Exercise 7](#exercise-7-decimal-to-binary)     
 
 </h3>
 </div>
-    
+
 # Exercise 1: A program that asks the user for his annual rent and displays the corresponding tax rate.
 ## Input 
 ```c++
@@ -450,12 +450,10 @@
 ### Number >= 0
 <img src="../imagenes/Img_21.png" align="center" height="100" width="600"/>
 
-### Number < 0<div align="center">
-<h2>
+### Number < 0
+<img src="../imagenes/Img_22.png" align="center" height="100" width="600"/>
 
-[Return to index](#index)
-</h2>
-</div>
+<div align="center">
 <h2>
 
 [Return to index](#index)
