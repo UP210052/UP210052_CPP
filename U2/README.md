@@ -316,7 +316,7 @@
 </h2>
 </div>
 
-## Exercise 5 Ask the user 6 temperature and print the mean, highest and lowest temperature.[](#Exercise5)
+# Exercise 5 Ask the user 6 temperature and print the mean, highest and lowest temperature.[](#Exercise5)
  ## Input
 ```c++
     cout << "Give me the temperature: ";
@@ -367,7 +367,7 @@
 </h2>
 </div>
 
-## Exercise 6: Ask the user indefinitely the amount and price of the products, finally print the total price.
+# Exercise 6: Ask the user indefinitely the amount and price of the products, finally print the total price.
  ## Input
 ```c++
     cout << "Enter the amount of products: ";
@@ -414,7 +414,7 @@
 </h2>
 </div>
 
-## Exercise 7: Decimal to Binary
+# Exercise 7: Decimal to Binary
  ## Input
  ```c++
     // Ask the number
