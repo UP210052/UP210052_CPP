@@ -399,7 +399,7 @@
    3.1. Print the error message.
 ## Texts.
 ### Number >= 0
-<img src="../imagenes/Img_21.png" align="center" height="150" width="400"/>
+<img src="../imagenes/Img_21.png" align="center" height="100" width="600"/>
 
 ### Number < 0
-<img src="../imagenes/Img_22.png" align="center" height="150" width="400"/>
+<img src="../imagenes/Img_22.png" align="center" height="100" width="600"/>
