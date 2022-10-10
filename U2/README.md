@@ -1,11 +1,18 @@
 # Index
+<div align="center">
+<h3>
+
 [Exercise 1](#exercise-1-a-program-that-asks-the-user-for-his-annual-rent-and-displays-the-corresponding-tax-rate)  
 [Exercise 2](#exercise-2-a-program-that-asks-the-user-for-his-score-and-displays-the-corresponding-typo-of-benefit-and-money)  
 [Exercise 3](#exercise-3-a-program-that-asks-for-your-age-and-print-the-cost-of-ticked)  
 [Exercise 4](#exercise-4-menu-of-a-bella-napoli-pizzeria-showing-your-type-of-pizza-and-ingredients)  
 [Exercise 5](#exercise-5-ask-the-user-6-temperature-and-print-the-mean-highest-and-lowest-temperature)  
 [Exercise 6](#exercise-6-ask-the-user-indefinitely-the-amount-and-price-of-the-products-finally-print-the-total-price)  
-[Exercise 7](#exercise-7-decimal-to-binary)     
+[Exercise 7](#exercise-7-decimal-to-binary)
+
+</h3>
+</div>
+    
 # Exercise 1: A program that asks the user for his annual rent and displays the corresponding tax rate.
 ## Input 
 ```c++
@@ -123,6 +130,13 @@
 ### C) score == 0
 <img src="UP210052_CPP/../../imagenes/Img_07.png" align="center" height="150" width="700"/>
 
+<div align="center">
+<h2>
+
+[Return to index](#index)
+</h2>
+</div>
+
 # Exercise 3: A program that asks for your age and print the cost of ticked.[](#Exercise3)
 ## Input
 ```c++
@@ -179,6 +193,13 @@
  
  ### Age < 0
  <img src="../imagenes/Img_11.png" align="center" height="150" width="500"/>
+
+<div align="center">
+<h2>
+
+[Return to index](#index)
+</h2>
+</div>
 
 # Exercise 4: Menu of a Bella Napoli pizzeria showing your type of pizza and ingredients[](#Exercise4)
 ## Input
@@ -288,6 +309,13 @@
 ### Type:No Vegetarian Ingredient: Salmon
  <img src="../imagenes/Img_16.png" align="center" height="300" width="500"/>
 
+<div align="center">
+<h2>
+
+[Return to index](#index)
+</h2>
+</div>
+
 ## Exercise 5 Ask the user 6 temperature and print the mean, highest and lowest temperature.[](#Exercise5)
  ## Input
 ```c++
@@ -332,6 +360,13 @@
 ## Texts.
 <img src="../imagenes/Img_18.png" align="center" height="300" width="500"/>
 
+<div align="center">
+<h2>
+
+[Return to index](#index)
+</h2>
+</div>
+
 ## Exercise 6: Ask the user indefinitely the amount and price of the products, finally print the total price.
  ## Input
 ```c++
@@ -372,6 +407,13 @@
 
 <img src="../imagenes/Img_20.png" align="center" height="150" width="400"/>
 
+<div align="center">
+<h2>
+
+[Return to index](#index)
+</h2>
+</div>
+
 ## Exercise 7: Decimal to Binary
  ## Input
  ```c++
@@ -408,5 +450,14 @@
 ### Number >= 0
 <img src="../imagenes/Img_21.png" align="center" height="100" width="600"/>
 
-### Number < 0
-<img src="../imagenes/Img_22.png" align="center" height="100" width="600"/>
+### Number < 0<div align="center">
+<h2>
+
+[Return to index](#index)
+</h2>
+</div>
+<h2>
+
+[Return to index](#index)
+</h2>
+</div>
