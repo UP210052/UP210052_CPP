@@ -68,7 +68,7 @@
 ### D) Rent >= $60,000
 <img src="../imagenes/Img_04.png" align="center" height="150" width="700"/>
 
-<div align="right">
+<div align="center">
 <h2>
 
 [Return to index](#index)
