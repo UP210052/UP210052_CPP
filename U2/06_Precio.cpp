@@ -30,6 +30,9 @@ int main()
         {
             cout << "Enter the price of products: ";
             cin >> price;
+            if (price < 0){
+                break;
+            }
             totalprice += (price * amount);
         }
     } while (amount != 0 and amount > 0);

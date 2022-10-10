@@ -4,6 +4,8 @@
 [Exercise 3](#exercise-3-a-program-that-asks-for-your-age-and-print-the-cost-of-ticked)  
 [Exercise 4](#exercise-4-menu-of-a-bella-napoli-pizzeria-showing-your-type-of-pizza-and-ingredients)  
 [Exercise 5](#exercise-5-ask-the-user-6-temperature-and-print-the-mean-highest-and-lowest-temperature)  
+[Exercise 6](#exercise-6-ask-the-user-indefinitely-the-amount-and-price-of-the-products-finally-print-the-total-price)  
+[Exercise 7](#exercise-7)     
 # Exercise 1: A program that asks the user for his annual rent and displays the corresponding tax rate.
 ## Input 
 ```c++
@@ -332,7 +334,7 @@
  ## Process
 ```c++
     // Cycle to ask and save the price and amount of the products
-    do
+     do
     {
         cout << "Enter the amount of products: ";
         cin >> amount;
@@ -340,11 +342,14 @@
         {
             cout << "Enter the price of products: ";
             cin >> price;
+            if (price < 0){
+                break;
+            }
             totalprice += (price * amount);
         }
     } while (amount != 0 and amount > 0);
 ```
- ## Input
+ ## Output
 ```c++
     // Print the total price.
     cout << "The total price is $" << totalprice << endl;
@@ -358,4 +363,43 @@
 ## Texts.
 <img src="../imagenes/Img_19.png" align="center" height="300" width="500"/>  
 
-<img src="../imagenes/Img_20.png" align="center" height="150" width="400"/>.
+<img src="../imagenes/Img_20.png" align="center" height="150" width="400"/>
+
+## Exercise 7: Decimal to Binary
+ ## Input
+ ```c++
+    // Ask the number
+    cout << "Enter the number: ";
+    cin >> numero;    
+```
+## Process
+ ```c++
+    // Cycle to divide the number by 2 and print the ramainder.
+    while (numero != 0)
+    {
+        // resultado=to_string(numero%2)+resultado;
+        resultado = (numero % 2 == 0) ? "0" + resultado : "1" + resultado;
+        numero /= 2;
+    }
+    // Print the binary number
+    cout << "The number in binary is " << resultado << endl;  
+```
+## Output
+```c++
+    // if (numero >= 0) Print the binary number
+    cout << "The number in binary is " << resultado << endl;
+    // if (numero < 0 ) Print the error message.
+    cout << "Only accept numbers greater then or equal to 0. \n";
+```
+## Explanation.
+1. Ask the number
+2. If the number greater than or equal 0.  
+   2.1. Enter a cycle to divide the number by 2 and print the ramainer.
+3. If the number less than 0.  
+   3.1. Print the error message.
+## Texts.
+### Number >= 0
+<img src="../imagenes/Img_21.png" align="center" height="150" width="400"/>
+
+### Number < 0
+<img src="../imagenes/Img_22.png" align="center" height="150" width="400"/>
