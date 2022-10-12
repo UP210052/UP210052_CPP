@@ -26,8 +26,6 @@ int main()
     // Ask the user for the limit
     cout << "Enter the limit: ";
     cin >> limite;
-
-    if (limite>=0 || limite <=0){
     for (int i = 0; i <= limite; i++)
     {
         // If and for to print the firts line of -
@@ -50,7 +48,6 @@ int main()
         }
         cout << "\n";
     }
-    }
-
+    
     return 0;
 }
