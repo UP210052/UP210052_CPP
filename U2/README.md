@@ -8,7 +8,8 @@
 [Exercise 4](#exercise-4-menu-of-a-bella-napoli-pizzeria-showing-your-type-of-pizza-and-ingredients)  
 [Exercise 5](#exercise-5-ask-the-user-6-temperature-and-print-the-mean-highest-and-lowest-temperature)  
 [Exercise 6](#exercise-6-ask-the-user-indefinitely-the-amount-and-price-of-the-products-finally-print-the-total-price)  
-[Exercise 7](#exercise-7-decimal-to-binary)     
+[Exercise 7](#exercise-7-decimal-to-binary)    
+[Exercise 8](#exercise-8-multiplication-tables)    
 
 </h3>
 </div>
@@ -441,7 +442,7 @@
     cout << "Only accept numbers greater then or equal to 0. \n";
 ```
 ## Explanation.
-1. Ask the number
+1. Ask the number.
 2. If the number greater than or equal 0.  
    2.1. Enter a cycle to divide the number by 2 and print the ramainer.
 3. If the number less than 0.  
@@ -452,6 +453,108 @@
 
 ### Number < 0
 <img src="../imagenes/Img_22.png" align="center" height="100" width="600"/>
+
+<div align="center">
+<h2>
+
+[Return to index](#index)
+</h2>
+</div>
+
+# Exercise 8: Multiplication tables
+ ## Input
+ ```c++
+    // Ask the user for the number
+    cout << "Enter the number: ";
+    cin >> numero;
+
+    // Ask the user for the limit
+    cout << "Enter the limit: ";
+    cin >> limite;   
+```
+## Process
+ ```c++
+    if (numero < 0)
+    {
+        for (int i = 0; i >= limite; i--)
+        {
+            // If and for to print the firts line of -
+            if (i == 0)
+            {
+                for (int f = 0; f <= 41; f++)
+                {
+                    cout << "-";
+                }
+                cout << "\n";
+            }
+
+            // Print the formatted table.
+            cout << "|  " << i << "\t x \t" << numero << "\t = \t" << (i * numero) << "\t |\n";
+
+            // For to print line of -
+            for (int f = 0; f <= 41; f++)
+            {
+                cout << "-";
+            }
+            cout << "\n";
+        }
+    }
+    else
+    {
+        for (int i = 0; i <= limite; i++)
+        {
+            // If and for to print the firts line of -
+            if (i == 0)
+            {
+                for (int f = 0; f <= 41; f++)
+                {
+                    cout << "-";
+                }
+                cout << "\n";
+            }
+
+            // Print the formatted table.
+            cout << "|  " << i << "\t x \t" << numero << "\t = \t" << (i * numero) << "\t |\n";
+
+            // For to print line of -
+            for (int f = 0; f <= 41; f++)
+            {
+                cout << "-";
+            }
+            cout << "\n";
+        }
+    } 
+```
+## Output
+```c++
+    if (i == 0)
+    {
+        for (int f = 0; f <= 41; f++)
+        {
+            cout << "-";
+        }
+        cout << "\n";
+    }
+    // Print the formatted table.
+    cout << "|  " << i << "\t x \t" << numero << "\t = \t" << (i * numero) << "\t |\n";
+        
+    // For to print line of -
+    for (int f = 0; f <= 41; f++)
+    {
+    cout << "-";
+    }
+    cout << "\n";
+```
+## Explanation.
+1. Ask the user for the number. 
+2. Ask the user for the limit
+3. Print the  multiplication table up to the limit number entered.
+## Texts.
+### Positive number and positive limit
+<img src="../imagenes/Img_23.png" align="center" height="500" width="600"/>
+  
+### Negative number and negative number
+<img src="../imagenes/Img_24.png" align="center" height="500" width="600"/>
 
 <div align="center">
 <h2>
