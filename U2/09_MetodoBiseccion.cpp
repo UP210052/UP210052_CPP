@@ -12,7 +12,7 @@ Hacer el metodo de la bisección de y=x^2 + 3x + 8 en un margen de 0.01 al -0.01
 #include <iostream>
 #include <cmath>
 
-//Library to be able to print only selected digits
+// Library to be able to print only selected digits
 #include <iomanip>
 
 // Use of namespace to avoid std::
@@ -39,7 +39,7 @@ int main()
     // Declare the variables.
     int interador = 1;
     int solucion = 1;
-    float a, b, c, ya, yb, yc;
+    float a, b, c, ya, yb, yc = 1;
 
     // Ask the user for the range
     cout << "Enter the value A: ";
@@ -47,20 +47,22 @@ int main()
     cout << "Enter the value B: ";
     cin >> b;
 
-    // Obtain point c and Y(a), Y(b), Y(c)
-    c = ((a + b) / 2);
-    ya = resolverEcuacion(a);
-    yb = resolverEcuacion(b);
-    yc = resolverEcuacion(c);
-    imprimirlinea();
     // Print table header
-    cout << "| Interdor \t| a \t\t\t| b \t\t\t| c \t\t\t| y(a)\t\t\t| y(b)\t\t\t| y(c)\t\t\t| \n";
     imprimirlinea();
-    cout << "| " << interador << "\t\t| " << fixed << setprecision(8) << a << "\t\t| " << b << "\t\t| " << c << "\t\t| " << ya << "\t\t| " << yb << "\t\t| " << yc << "\t\t| \n";
+    cout << "| Interdor \t| a \t\t\t| b \t\t\t| c \t\t\t| y(a)\t\t\t| y(b)\t\t\t| y(c)\t\t\t| \n";
     imprimirlinea();
 
     while (yc >= 0.01 || yc <= -0.01)
     {
+        // Obtain point c and Y(a), Y(b), Y(c)
+        c = (a + b) / 2;
+        ya = resolverEcuacion(a);
+        yb = resolverEcuacion(b);
+        yc = resolverEcuacion(c);
+        interador++;
+        // Print the results in a table
+        cout << "| " << interador << "\t\t| " << fixed << setprecision(8) << a << "\t\t| " << b << "\t\t| " << c << "\t\t| " << ya << "\t\t| " << yb << "\t\t| " << yc << "\t\t| \n";
+        imprimirlinea();
         // If you select which half to grab to return to get the point c and Y(a), Y(b), Y(c)
         if ((ya * yc) < 0)
         {
@@ -76,15 +78,6 @@ int main()
             solucion = 0;
             break;
         }
-        // Obtain point c and Y(a), Y(b), Y(c)
-        c = (a + b) / 2;
-        ya = resolverEcuacion(a);
-        yb = resolverEcuacion(b);
-        yc = resolverEcuacion(c);
-        interador++;
-        // Print the results in a table
-        cout << "| " << interador << "\t\t| " << a << "\t\t| " << b << "\t\t| " << c << "\t\t| " << ya << "\t\t| " << yb << "\t\t| " << yc << "\t\t| \n";
-        imprimirlinea();
     }
 
     // Print the root if there is

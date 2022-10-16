@@ -576,7 +576,16 @@
 ## Process
 ```c++
     while (yc >= 0.01 || yc <= -0.01)
-    {
+    {   
+        // Obtain point c and Y(a), Y(b), Y(c)
+        c = (a + b) / 2;
+        ya = resolverEcuacion(a);
+        yb = resolverEcuacion(b);
+        yc = resolverEcuacion(c);
+        interador++;
+        // Print the results in a table
+        cout << "| " << interador << "\t\t| " << fixed << setprecision(8) <<  a << "\t\t| " << b << "\t\t| " << c << "\t\t| " << ya << "\t\t| " << yb << "\t\t| " << yc << "\t\t| \n";
+        imprimirlinea();
         // If you select which half to grab to return to get the point c and Y(a), Y(b), Y(c)
         if ((ya * yc) < 0)
         {
@@ -592,15 +601,6 @@
             solucion = 0;
             break;
         }
-        // Obtain point c and Y(a), Y(b), Y(c)
-        c = (a + b) / 2;
-        ya = resolverEcuacion(a);
-        yb = resolverEcuacion(b);
-        yc = resolverEcuacion(c);
-        interador++;
-        // Print the results in a table
-        cout << "| " << interador << "\t\t| " << a << "\t\t| " << b << "\t\t| " << c << "\t\t| " << ya << "\t\t| " << yb << "\t\t| " << yc << "\t\t| \n";
-        imprimirlinea();
     }
 ```
 ## Output
