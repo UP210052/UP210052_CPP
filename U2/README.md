@@ -10,6 +10,7 @@
 [Exercise 6](#exercise-6-ask-the-user-indefinitely-the-amount-and-price-of-the-products-finally-print-the-total-price)  
 [Exercise 7](#exercise-7-decimal-to-binary)    
 [Exercise 8](#exercise-8-multiplication-tables)    
+[Exercise 9](#exercise-9-bisection-method)    
 
 </h3>
 </div>
