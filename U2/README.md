@@ -562,3 +562,80 @@
 [Return to index](#index)
 </h2>
 </div>
+
+# Exercise 9: Bisection method
+## Input
+```c++
+    // Ask the user for the range
+    cout << "Enter the value A: ";
+    cin >> a;
+    cout << "Enter the value B: ";
+    cin >> b;
+```
+## Process
+```c++
+    while (yc >= 0.01 || yc <= -0.01)
+    {
+        // If you select which half to grab to return to get the point c and Y(a), Y(b), Y(c)
+        if ((ya * yc) < 0)
+        {
+            b = c;
+        }
+        else
+        {
+            a = c;
+        }
+        // If to prevent infinite cycling
+        if (a == b)
+        {
+            solucion = 0;
+            break;
+        }
+        // Obtain point c and Y(a), Y(b), Y(c)
+        c = (a + b) / 2;
+        ya = resolverEcuacion(a);
+        yb = resolverEcuacion(b);
+        yc = resolverEcuacion(c);
+        interador++;
+        // Print the results in a table
+        cout << "| " << interador << "\t\t| " << a << "\t\t| " << b << "\t\t| " << c << "\t\t| " << ya << "\t\t| " << yb << "\t\t| " << yc << "\t\t| \n";
+        imprimirlinea();
+    }
+```
+## Output
+```c++
+    // Print the root if there is
+    if (solucion != 0)
+    {
+        cout << "The root is :" << c;
+        cout << "\n";
+    }
+    else
+    {
+        cout << "There is no root in that range. \n";
+    }
+
+```
+## Explanation.
+1. Ask the user for the range (a and b).
+2. Obtain the point c.
+3. Get the y-values when its value is a, b and c.
+4. If the Y(c) value is greater than or equal to 0.01 or less than or equal to -0.01 enter a while loop.  
+4.1 Enter an If to select half.  
+4.2 if ((ya * yc) < 0) then b=c, otherwise a=c.  
+4.3 Get the y values with the new values.  
+4.4 When Y(c) is between 0.01 and -0.01 exit the while.  
+5. Print the root if there is
+## Texts.
+### When the root is within the established range.
+<img src="../imagenes/Img_25.png" align="center" height="500" width="1100"/>
+
+### When the root is not within the established range.
+<img src="../imagenes/Img_26.png" align="center" height="900" width="1100"/>
+
+<div align="center">
+<h2>
+
+[Return to index](#index)
+</h2>
+</div>
