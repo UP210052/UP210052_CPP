@@ -5,7 +5,7 @@ Email: up210052@alumnos.upa.edu.mx
 Description: Metodo de bisección.
 
 Problem (Spanish)
-Hacer el metodo de la bisección de y=x^2 + 3x + 8 en un margen de 0.01 al -0.01
+Hacer el metodo de la bisección de y=x^2 - x - 12 en un margen de 0.01 al -0.01
 */
 
 // Library for input and output management.
@@ -39,6 +39,7 @@ int main()
     // Declare the variables.
     int interador = 1;
     int solucion = 1;
+    float margen_error = 0.00001;
     float a, b, c, ya, yb, yc;
 
     // Ask the user for the range
@@ -68,6 +69,14 @@ int main()
         {
             b = c;
         }
+        else {
+            a=c;
+        }
+        if (a==b){
+            solucion = 0;
+            break;
+        }
+        /*  Metodo de clase
         else if ((yc * yb) < 0)
         {
             a = c;
@@ -77,8 +86,9 @@ int main()
             solucion = 0;
             break;
         }
+        */
         interador++;
-    } while (yc >= 0.01 || yc <= -0.01);
+    } while ( abs(yc)>= margen_error);
 
     // Print the root if there is
     if (solucion != 0)

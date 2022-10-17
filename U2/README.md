@@ -575,33 +575,42 @@
 ```
 ## Process
 ```c++
-    while (yc >= 0.01 || yc <= -0.01)
-    {   
+    do
+    {
         // Obtain point c and Y(a), Y(b), Y(c)
         c = (a + b) / 2;
         ya = resolverEcuacion(a);
         yb = resolverEcuacion(b);
         yc = resolverEcuacion(c);
-        interador++;
         // Print the results in a table
-        cout << "| " << interador << "\t\t| " << fixed << setprecision(8) <<  a << "\t\t| " << b << "\t\t| " << c << "\t\t| " << ya << "\t\t| " << yb << "\t\t| " << yc << "\t\t| \n";
+        cout << "| " << interador << "\t\t| " << fixed << setprecision(8) << a << "\t\t| " << b << "\t\t| " << c << "\t\t| " << ya << "\t\t| " << yb << "\t\t| " << yc << "\t\t| \n";
         imprimirlinea();
+
         // If you select which half to grab to return to get the point c and Y(a), Y(b), Y(c)
         if ((ya * yc) < 0)
         {
             b = c;
         }
-        else
+        else {
+            a=c;
+        }
+        if (a==b){
+            solucion = 0;
+            break;
+        }
+        /*  Metodo de clase
+        else if ((yc * yb) < 0)
         {
             a = c;
         }
-        // If to prevent infinite cycling
-        if (a == b)
+        else // If to prevent infinite cycling
         {
             solucion = 0;
             break;
         }
-    }
+        */
+        interador++;
+    } while ( abs(yc)>= margen_error);
 ```
 ## Output
 ```c++
