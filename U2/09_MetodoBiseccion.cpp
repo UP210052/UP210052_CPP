@@ -39,7 +39,7 @@ int main()
     // Declare the variables.
     int interador = 1;
     int solucion = 1;
-    float a, b, c, ya, yb, yc = 1;
+    float a, b, c, ya, yb, yc;
 
     // Ask the user for the range
     cout << "Enter the value A: ";
@@ -52,33 +52,33 @@ int main()
     cout << "| Interdor \t| a \t\t\t| b \t\t\t| c \t\t\t| y(a)\t\t\t| y(b)\t\t\t| y(c)\t\t\t| \n";
     imprimirlinea();
 
-    while (yc >= 0.01 || yc <= -0.01)
+    do
     {
         // Obtain point c and Y(a), Y(b), Y(c)
         c = (a + b) / 2;
         ya = resolverEcuacion(a);
         yb = resolverEcuacion(b);
         yc = resolverEcuacion(c);
-        interador++;
         // Print the results in a table
         cout << "| " << interador << "\t\t| " << fixed << setprecision(8) << a << "\t\t| " << b << "\t\t| " << c << "\t\t| " << ya << "\t\t| " << yb << "\t\t| " << yc << "\t\t| \n";
         imprimirlinea();
+
         // If you select which half to grab to return to get the point c and Y(a), Y(b), Y(c)
         if ((ya * yc) < 0)
         {
             b = c;
         }
-        else
+        else if ((yc * yb) < 0)
         {
             a = c;
         }
-        // If to prevent infinite cycling
-        if (a == b)
+        else // If to prevent infinite cycling
         {
             solucion = 0;
             break;
         }
-    }
+        interador++;
+    } while (yc >= 0.01 || yc <= -0.01);
 
     // Print the root if there is
     if (solucion != 0)
