@@ -72,7 +72,7 @@ void obtenerCambio(int dinero, string tipo)
 //Function to print the change
 void imprimirCambio(string tipo)
 {
-    cout << "The change is : \n";
+    cout << "The exchange is : \n";
     if (tipo == "total" || tipo == "TOTAL" || tipo == "Total")
     {
         cout << "Bill of $500: " << quinientos << endl;
