@@ -18,14 +18,19 @@ int main()
     {
         for (int  col = 0; col < 11; col++)
         {
-            if (col%3==0 && col>0){
+            /*
+            if (col == 3 || col == 7){
                 estructuragato[row][col]='|';
-            }
-            else if (row%2==0){
-                estructuragato[row][col]=' ';
-            }else{
+            }else if (row==1 || row == 3){
                 estructuragato[row][col]='_';
             }
+            else {
+               estructuragato[row][col]=' '; 
+            }
+            */
+            (col == 3 || col == 7) ? estructuragato[row][col]='|'
+                :(row==1 || row == 3) ? estructuragato[row][col]='_'
+                    : estructuragato[row][col]=' ';
         }
     }
     for (int row = 0; row < 6; row++)
