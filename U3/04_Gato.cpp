@@ -14,6 +14,7 @@ void hacertablero();
 int seleccionarJugada();
 bool comprobarjugada(int);
 void colocarjugada(int);
+bool ganar();
 
 char estructuragato[6][11];
 char areaJuego[3][3] = {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
@@ -22,11 +23,13 @@ int row, col;
 
 int main()
 {
+    
     bool gameover = false;
     int jugada;
     bool casillaOcupada = true;
     do
     {
+        system ("clear");
         hacertablero();
         do
         {
@@ -34,11 +37,29 @@ int main()
             casillaOcupada = comprobarjugada(jugada);
             if (casillaOcupada == true)
             {
-                cout << "Otra vez \n";
+                cout << "Trye again \n";
             }
         } while (casillaOcupada == true);
         colocarjugada(jugada);
-    } while (gameover == false);
+        gameover = ganar();
+    } while (gameover == false and turnojugador < 10);
+    system ("clear");
+    hacertablero();
+    if (gameover == true)
+    {
+        if ((turnojugador - 1) % 2 == 0)
+        {
+            cout << "Player 2 won" << endl;
+        }
+        else
+        {
+            cout << "Player 1 won" << endl;
+        }
+    }
+    else
+    {
+        cout << "Tie" << endl;
+    }
     return 0;
 }
 
@@ -80,11 +101,11 @@ void hacertablero()
         {
             if (estructuragato[row1][col1] == 'X')
             {
-                cout << estructuragato[row1][col1];
+                cout << "\033[0;31m" << estructuragato[row1][col1] << "\033[0m";
             }
             else if (estructuragato[row1][col1] == 'O')
             {
-                cout << estructuragato[row1][col1];
+                cout << "\033[0;32m" << estructuragato[row1][col1] << "\033[0m";
             }
             else
             {
@@ -100,7 +121,7 @@ int seleccionarJugada()
     int jugada1;
     do
     {
-        cout << "Dame tu jugada: ";
+        cout << "Give  me your move: ";
         cin >> jugada1;
     } while (jugada1 > 9 && jugada1 < 0);
     return jugada1;
@@ -108,50 +129,24 @@ int seleccionarJugada()
 
 bool comprobarjugada(int jugada)
 {
-    if (jugada == 1)
+    int fila = 0, columna = 0;
+    for (int numjuada = 1; numjuada < 10; numjuada++)
     {
-        row = 0;
-        col = 0;
-    }
-    else if (jugada == 2)
-    {
-        row = 0;
-        col = 1;
-    }
-    else if (jugada == 3)
-    {
-        row = 0;
-        col = 2;
-    }
-    else if (jugada == 4)
-    {
-        row = 1;
-        col = 0;
-    }
-    else if (jugada == 5)
-    {
-        row = 1;
-        col = 1;
-    }
-    else if (jugada == 6)
-    {
-        row = 1;
-        col = 2;
-    }
-    else if (jugada == 7)
-    {
-        row = 2;
-        col = 0;
-    }
-    else if (jugada == 8)
-    {
-        row = 2;
-        col = 1;
-    }
-    else if (jugada == 9)
-    {
-        row = 2;
-        col = 2;
+        if (jugada == numjuada)
+        {
+            row = fila;
+            col = columna;
+            break;
+        }
+        else
+        {
+            columna++;
+            if (columna == 3)
+            {
+                columna = 0;
+                fila++;
+            }
+        }
     }
     if (areaJuego[row][col] == 'O' || areaJuego[row][col] == 'X')
     {
@@ -174,42 +169,50 @@ void colocarjugada(int jugada)
     {
         valorJugada = 'O';
     }
-
-    if (jugada == 1)
+   int fila=0, columna=0;
+   for (int numjuada = 1; numjuada < 10; numjuada++)
     {
-        areaJuego[0][0] = valorJugada;
-    }
-    else if (jugada == 2)
-    {
-        areaJuego[0][1] = valorJugada;
-    }
-    else if (jugada == 3)
-    {
-        areaJuego[0][2] = valorJugada;
-    }
-    else if (jugada == 4)
-    {
-        areaJuego[1][0] = valorJugada;
-    }
-    else if (jugada == 5)
-    {
-        areaJuego[1][1] = valorJugada;
-    }
-    else if (jugada == 6)
-    {
-        areaJuego[1][2] = valorJugada;
-    }
-    else if (jugada == 7)
-    {
-        areaJuego[2][0] = valorJugada;
-    }
-    else if (jugada == 8)
-    {
-        areaJuego[2][1] = valorJugada;
-    }
-    else if (jugada == 9)
-    {
-        areaJuego[2][2] = valorJugada;
+        if (jugada == numjuada)
+        {
+            areaJuego[fila][columna]=valorJugada;
+            break;
+        }
+        else
+        {
+            columna++;
+            if (columna == 3)
+            {
+                columna = 0;
+                fila++;
+            }
+        }
     }
     turnojugador++;
+}
+
+bool ganar()
+{
+    bool ganar = false;
+    for (int posicion = 0; posicion < 3; posicion++)
+    {
+        if (areaJuego[posicion][0] == areaJuego[posicion][1] && areaJuego[posicion][posicion] == areaJuego[posicion][2])
+        {
+            ganar = true;
+            break;
+        }
+        if (areaJuego[0][posicion] == areaJuego[1][posicion] && areaJuego[0][posicion] == areaJuego[2][posicion])
+        {
+            ganar = true;
+            break;
+        }
+    }
+    if (areaJuego[0][0] == areaJuego[1][1] && areaJuego[0][0] == areaJuego[2][2])
+    {
+        ganar = true;
+    }
+    else if (areaJuego[2][0] == areaJuego[1][1] && areaJuego[2][0] == areaJuego[0][2])
+    {
+        ganar = true;
+    }
+    return ganar;
 }
