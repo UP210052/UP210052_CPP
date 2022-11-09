@@ -23,28 +23,64 @@ int row, col;
 
 int main()
 {
-    
+
     bool gameover = false;
     int jugada;
     bool casillaOcupada = true;
-    do
-    {
-        system ("clear");
-        hacertablero();
+    int modo;
+    cout << "Tic tac toe \n";
+    cout << "1 Singleplayer \n";
+    cout << "2 Multiplayer \n";
+    cout << "Which mode are you going to play (number)? \n";
+    cin >> modo;
+    if (modo == 1){
         do
         {
-            jugada = seleccionarJugada();
-            casillaOcupada = comprobarjugada(jugada);
-            if (casillaOcupada == true)
-            {
-                cout << "Trye again \n";
+            system("clear");
+            if (turnojugador % 2 == !0){
+                do
+                {
+                    hacertablero();
+                    jugada = seleccionarJugada();
+                    casillaOcupada = comprobarjugada(jugada);
+                    if (casillaOcupada == true)
+                    {
+                        system("clear");
+                        cout << "Trye again \n";
+                    }
+                } while (casillaOcupada == true);
+                colocarjugada(jugada);
+                gameover = ganar();
+            }else {
+                hacertablero();
             }
-        } while (casillaOcupada == true);
-        colocarjugada(jugada);
-        gameover = ganar();
-    } while (gameover == false and turnojugador < 10);
-    system ("clear");
-    hacertablero();
+        } while (gameover == false and turnojugador < 10);
+        system("clear");
+        hacertablero();
+    }
+    else if (modo == 2)
+    {
+        do
+        {
+            system("clear");
+            do
+            {
+                hacertablero();
+                jugada = seleccionarJugada();
+                casillaOcupada = comprobarjugada(jugada);
+                if (casillaOcupada == true)
+                {
+                    system("clear");
+                    cout << "Trye again \n";
+                }
+            } while (casillaOcupada == true);
+            colocarjugada(jugada);
+            gameover = ganar();
+        } while (gameover == false and turnojugador < 10);
+        system("clear");
+        hacertablero();
+    }
+
     if (gameover == true)
     {
         if ((turnojugador - 1) % 2 == 0)
@@ -169,12 +205,12 @@ void colocarjugada(int jugada)
     {
         valorJugada = 'O';
     }
-   int fila=0, columna=0;
-   for (int numjuada = 1; numjuada < 10; numjuada++)
+    int fila = 0, columna = 0;
+    for (int numjuada = 1; numjuada < 10; numjuada++)
     {
         if (jugada == numjuada)
         {
-            areaJuego[fila][columna]=valorJugada;
+            areaJuego[fila][columna] = valorJugada;
             break;
         }
         else
