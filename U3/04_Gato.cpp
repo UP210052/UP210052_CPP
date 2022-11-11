@@ -391,7 +391,7 @@ int obtenerMejorJugadade(string jugador)
                 gameover = ganar(TABLEROIMAG);
             }
             clonarMatriz();
-        } while (jugada < 9 && gameover == false);
+        } while (jugada <= 9 && gameover == false);
     } 
     else if (jugador == HUMANO)
     {
@@ -404,7 +404,7 @@ int obtenerMejorJugadade(string jugador)
                 gameover = ganar(TABLEROIMAG);
             }
             clonarMatriz();
-        } while (jugada < 9 && gameover == false);
+        } while (jugada <= 9 && gameover == false);
     }
     if (jugada >= 10){
         jugada= -1;
