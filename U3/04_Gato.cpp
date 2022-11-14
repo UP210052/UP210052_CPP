@@ -2,10 +2,10 @@
 Date: 28/10/2022
 Author: Héctor Iván Ramírez Jaime.
 Email: up210052@alumnos.upa.edu.mx
-Description: Realizar un programa para juagar al gato
+Description: Make a program to play cat
 */
 
-// Librerias usadas en el programa.
+// Libraries used in the program.
 #include <iostream>
 #include <stdalign.h>
 #include <time.h>
@@ -16,19 +16,44 @@ using namespace std;
 void hacertablero();
 int seleccionarJugada();
 bool comprobarJugada(int, string);
+/*
+Function to check the move on the indicated board
+Params: jugada numerical value from 1 - 9.
+        tablero is the type of board to play on 
+Return: True if the slot is occupied.
+        False if the slot is not occupied.
+*/
 void colocarJugada(int, string, string);
 /*
-Función para colocar jugada en el tablero indicado
-Params: jugada valor numérico del 1 -9
-        Tablero es el tipo de tablero a jugar 
-        jugador es el tipo de jugador 
+Function to place the move on the indicated board
+Params: jugada valor numérico del 1 - 9
+        tablero is the type of board to play on
+        jugador is the type of player
 */
 bool ganar(string);
+/*
+Function to check if that move wins the game on the indicated board.
+Params: tablero is the type of board to play on
+Return: true si ya gano.
+        false si todavia no gana.
+*/
 int obtenerJugadaPC();
+/*
+Function to obtain the play of the PC 
+Return: jugada numerical value from 1 - 9.
+*/
 void clonarMatriz();
+/*
+Function to clone the areaJuego array in areaJuegoPC
+*/
 int obtenerMejorJugadade(string);
+/*
+Function to get the best play of the indicated player
+Params: jugador is the type of player
+Return: jugada numerical value from 1 - 9.
+*/
 
-
+// Declaration of global variables.
 char estructuraGato[6][11];
 char areaJuego[3][3] = {{'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'}};
 char areaJuegoPC[3][3];
@@ -41,16 +66,18 @@ const string TABLEROIMAG = "Imaginario";
 
 int main()
 {
-
+    //Declaration of variables
     bool gameover = false;
     int jugada;
     bool casillaOcupada = true;
     int modo;
+    //Ask the user which game mode he is going to play
     cout << "Tic tac toe \n";
     cout << "1 Singleplayer \n";
     cout << "2 Multiplayer \n";
     cout << "Which mode are you going to play (number)? \n";
     cin >> modo;
+    // If 1 is set, enter 1 player mode
     if (modo == 1)
     {
         do
@@ -83,6 +110,7 @@ int main()
         system("clear");
         hacertablero();
     }
+    // If you enter 2, you enter 2 player mode.
     else if (modo == 2)
     {
         do
@@ -105,6 +133,10 @@ int main()
         system("clear");
         hacertablero();
     }
+    else
+    {
+        cout << "Gamer over";
+    }
 
     if (gameover == true)
     {
@@ -124,7 +156,7 @@ int main()
             }
         }
     }
-    else
+    else if (gameover == false and turnoJugador >= 9)
     {
         cout << "Tie" << endl;
     }
@@ -195,7 +227,7 @@ int seleccionarJugada()
     return jugada1;
 }
 
-bool comprobarJugada(int jugada, string Tablero)
+bool comprobarJugada(int jugada, string tablero)
 {
     bool casillaOcupada = false;
     int fila = 0, columna = 0;
@@ -217,14 +249,14 @@ bool comprobarJugada(int jugada, string Tablero)
             }
         }
     }
-    if (Tablero == TABLERO)
+    if (tablero == TABLERO)
     {
         if (areaJuego[row][col] == 'O' || areaJuego[row][col] == 'X')
         {
             casillaOcupada = true;
         }
     }
-    else if (Tablero == TABLEROIMAG)
+    else if (tablero == TABLEROIMAG)
     {
         if (areaJuegoPC[row][col] == 'O' || areaJuegoPC[row][col] == 'X')
         {
@@ -234,7 +266,7 @@ bool comprobarJugada(int jugada, string Tablero)
     return casillaOcupada;
 }
 
-void colocarJugada(int jugada, string Tablero, string Jugador)
+void colocarJugada(int jugada, string tablero, string Jugador)
 {
     char valorJugada;
     if (turnoJugador % 2 == 0)
@@ -250,12 +282,12 @@ void colocarJugada(int jugada, string Tablero, string Jugador)
     {
         if (jugada == numjuada)
         {
-            if (Tablero == TABLERO)
+            if (tablero == TABLERO)
             {
                 areaJuego[fila][columna] = valorJugada;
                 break;
             }
-            else if (Tablero == TABLEROIMAG)
+            else if (tablero == TABLEROIMAG)
             {
                 if (Jugador == HUMANO)
                 {
@@ -279,7 +311,7 @@ void colocarJugada(int jugada, string Tablero, string Jugador)
             }
         }
     }
-    if (Tablero == TABLERO){
+    if (tablero == TABLERO){
         turnoJugador++;
     }
 }
@@ -343,7 +375,7 @@ bool ganar(string tablero)
 
 int obtenerJugadaPC()
 {
-    bool casillaOcupada = true;
+    bool casillaOcupada = false;
     int jugada;
     srand(time(NULL));
     jugada = obtenerMejorJugadade(PC);
@@ -356,11 +388,11 @@ int obtenerJugadaPC()
     {
         return jugada;
     }
-    while (casillaOcupada == true)
+    do
     {
         jugada= 1 + rand() % 9;
         casillaOcupada= comprobarJugada (jugada,TABLERO);
-    }
+    }while (casillaOcupada == true);
     return jugada;
 }
 
