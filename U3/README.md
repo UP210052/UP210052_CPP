@@ -1,6 +1,13 @@
-# Tic tac toe
+<div align="center">
 
-## Index
+# Tic tac toe 
+
+<img src="../imagenes/gato.gif" height="200" width="200">
+
+## __📫&nbsp;Index__
+
+</div align="center">
+
 <h3>
 
 [Instructions for execution and use](#instructions-for-execution-and-use)   
@@ -9,8 +16,12 @@
 [Conclusion](#conclusion)  
 
 </h3>
+<div align="center">
 
-## Instructions for execution and use
+## __📘&nbsp;Instructions for execution and use__
+
+</div align="center">
+
 In order to enjoy the single player and multiplayer game modes, you first need to follow the steps below depending on the operating system.
 <h2> Windox </h2>
 
@@ -61,16 +72,25 @@ gcc 04_Gato.c -o 04_Gato
 ~~~
 
 4. To run this program, type:
+src
 
-~~~
-./04_Gato
-~~~
+[Return to index](#index)
 
-## Flowchart
+<div align="center">
+
+## __Flowchart__
+
+</div align="center">
 
 <img src="../imagenes/gato.drawio.png" align="center">
 
-## Tests
+[Return to index](#index)
+
+<div align="center">
+
+## __🚀&nbsp; Tests__
+
+</div align="center">
 
 <h2>Things to consider</h2>
 
@@ -78,6 +98,7 @@ gcc 04_Gato.c -o 04_Gato
 - In single player mode the player is "O" and the PC is "X".  
 - In multiplayer mode player 1 is "O" and player two is "X".  
 
+<div align="center">
 <h2>Player vs PC</h2>
 
 The first thing that appears on the screen is a menu to choose the game mode.  
@@ -95,7 +116,16 @@ My fourth move is in cell 8. The CP counters by putting their move in cell 8 to 
 As the cells ran out, the game ended in a draw.  
 <img src="../imagenes/gato7.png" align="center">  
 
+[Return to index](#index)
+</div align="center">
 
+<div align="center">
 
+## __Conclusion__
 
-## Conclusion
+</div align="center">
+
+This was a complex project, especially the development of the artificial intelligence for the PC, I was thinking for a long time about how to make it decide which move to play until I asked the teacher, hat's when we started to play in the notebook and he asked me why did you decide to put your move there, so I explained that it was so he wouldn't win, based on that he explained that before making a move we make an imaginary board where we put the moves in different places until we find a move that makes us win. From there I developed the artificial intelligence by first creating an imaginary board which is a copy of the real board and then checking if placing the move there wins, and if it doesn't win with any move it places it on a random number.  
+Another problem I had was that my code is too wide and I repeat several structures in the main and some functions. But other than that it was fun to do the game because it allowed us to understand how to use the arrays and functions correctly, I also understood the importance of debug because it allows you to run the code in pauses and shows you the variables along with their value this allows you to easily find what is the error in our code.  
+
+[Return to index](#index)
