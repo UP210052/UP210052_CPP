@@ -12,7 +12,7 @@
 
 [Instructions for execution and use](#instructions-for-execution-and-use)   
 [Flowchart](#flowchart)   
-[Tests](#tests)   
+[Tests](#-tests)   
 [Conclusion](#conclusion)  
 
 </h3>
