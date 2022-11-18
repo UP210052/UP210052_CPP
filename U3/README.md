@@ -4,10 +4,10 @@
 <div align="center">
 <h3>
 
-[Instructions for execution and use](#instructions-for-execution-and-use)
-[Flowchart](#flowchart)
-[Tests](#tests)
-[Conclusion](#conclusion)
+[Instructions for execution and use](#instructions-for-execution-and-use)   
+[Flowchart](#flowchart)   
+[Tests](#tests)   
+[Conclusion](#conclusion)  
 
 </h3>
 </div>
@@ -70,6 +70,9 @@ gcc 04_Gato.c -o 04_Gato
 
 ## Flowchart
 
+<img src="../imagenes/gato.drawio.png" align="center">
+
 ## Tests
+
 
 ## Conclusion
