@@ -1,7 +1,6 @@
 # Tic tac toe
 
 ## Index
-<div align="center">
 <h3>
 
 [Instructions for execution and use](#instructions-for-execution-and-use)   
@@ -10,7 +9,6 @@
 [Conclusion](#conclusion)  
 
 </h3>
-</div>
 
 ## Instructions for execution and use
 In order to enjoy the single player and multiplayer game modes, you first need to follow the steps below depending on the operating system.
@@ -73,6 +71,31 @@ gcc 04_Gato.c -o 04_Gato
 <img src="../imagenes/gato.drawio.png" align="center">
 
 ## Tests
+
+<h2>Things to consider</h2>
+
+- Do not write numbers with decimal point or letters when asking for the move.  
+- In single player mode the player is "O" and the PC is "X".  
+- In multiplayer mode player 1 is "O" and player two is "X".  
+
+<h2>Player vs PC</h2>
+
+The first thing that appears on the screen is a menu to choose the game mode.  
+<img src="../imagenes/gato1.png" align="center">  
+Select 1 since we are going to play vs. the PC. The game board will appear with numbers from 1 to 9 to select the move.   
+<img src="../imagenes/gato2.png" align="center">  
+Now we will start playing against the PC, my first move is on cell 5. On the other hand, the PC's first move is always random.  
+<img src="../imagenes/gato3.png" align="center">  
+My second move is on cell 9. The computer now counters by placing its move on cell 1.   
+<img src="../imagenes/gato4.png" align="center">  
+My third move is on cell 7 to prevent the computer from winning. The PC counters by putting his move in cell 3 to prevent me from winning.
+<img src="../imagenes/gato5.png" align="center">  
+My fourth move is in cell 8. The CP counters by putting their move in cell 8 to prevent me from winning.  
+<img src="../imagenes/gato6.png" align="center">  
+As the cells ran out, the game ended in a draw.  
+<img src="../imagenes/gato7.png" align="center">  
+
+
 
 
 ## Conclusion
