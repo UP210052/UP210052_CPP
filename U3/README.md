@@ -72,7 +72,10 @@ gcc 04_Gato.c -o 04_Gato
 ~~~
 
 4. To run this program, type:
-src
+   
+~~~
+./04_Gato
+~~~
 
 [Return to index](#index)
 
