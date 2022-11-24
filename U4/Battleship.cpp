@@ -107,34 +107,50 @@ bool checkplay (int player, int move, int move2){
 void buildships(int row, int col, int barco,string direccion){
     if (direccion=="Arriba")
     {
-        for (int row1 = 0; row1 < barco; row1++)
+        int contador=0;
+        int row1=col;
+        while (contador<barco)
         {
             AreaJuegoP1[row1][col]={'O'};
+            row1--;
+            contador++;
         }
         
     }
     if (direccion=="Abajo")
     {
-        for (int row1 = 0; row1 < barco; row1--)
+        int contador=0;
+        int row1=col;
+        while (contador<barco)
         {
             AreaJuegoP1[row1][col]={'O'};
+            row1++;
+            contador++;
         }
         
     }
     if (direccion=="Izquierda")
     {
-        for (int col1 = 0; col1 < barco; col1--)
+        int contador=0;
+        int col1=row;
+        while (contador < barco)
         {
             AreaJuegoP1[row][col1]={'O'};
+            col1--;
+            contador++;   
         }
         
     }
     if (direccion=="Derecha")
     {
-    for (int col1 = 0; col1 < barco; col1++)
-    {
-        AreaJuegoP1[row][col1]={'O'};
-    }
+        int contador=0;
+        int col1=row;
+        while (contador < barco)
+        {
+            AreaJuegoP1[row][col1]={'O'};
+            col1++;
+            contador++;   
+        }
        
     }
 }
