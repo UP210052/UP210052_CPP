@@ -6,10 +6,13 @@ char AreaJuegoP1[10][10]={{'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'
 char AreaJuegoP2[10][10]={{'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}};
 const string P1 = "Player 1";
 const string P2 = "Player 2";
+int player = 1;
 int col, row;
 string TipoBarco[5]={"Submarine","Destroyer","Cruiser","Battleship","Carrier"};
 
 /*Carrier5,Battleship4,Cruiser3,Destroyer2-2,Submarine1-3*/
+
+void gotoxy(int x, int y);
 
 void makeboard();
 
@@ -18,14 +21,14 @@ void imprimirtablerodeprueba();
 void pruebalogica();
 void logicbattleship();
 
-void buildships(int, int, int, string);
+void buildships(int, int, int, string,string);
 
 
 void putships(int, int, int);
 int selectplay(int, int);
 bool checkplay(int, int, int);
 void shootcannons(string, int);
-void fuckship(string, int);
+void destroyship(string, int);
 bool Winner();
 
 
@@ -54,30 +57,47 @@ void tableronaval()
 void pruebalogica()
 {
     int barco, tipodebarco;
-    string direccion;
+    string direccion,currentturn;
     bool valida;
-    cout << "Tipo de barco";
+    do
+    {
+    if (player%2==1)
+    {
+        currentturn = P1;
+    } else {
+        currentturn = P2;
+    }
+    cout << "Its " << currentturn << " turn, select your move\n";
+    cout << "Shipsize:";
     cin >> tipodebarco;
-    cout << "Direccion";
+    cout << "Direccion (Arriba,Abajo,Izquierda,Derecha):";
     cin >> direccion;
-    cout << "En que fila vas a poner tu jugada";
+    cout << "Row(FILA):";
     cin >> row;
-    cout << "En que columna vas a poner tu jugada";
+    cout << "Col(COLUMNA):";
     cin >> col;
-    cout << "";
-    buildships(row, col, tipodebarco, direccion);
+    player++;
+    buildships(row, col, tipodebarco, direccion, currentturn);
     imprimirtablerodeprueba();
+    }while (player>0);
+    
 }
 
 void imprimirtablerodeprueba(){
     for (int i = 0; i < 10; i++)
     {
-        cout << "\n";
+        gotoxy(20,20);
         for (int j = 0; j < 10; j++)
         {
             cout << AreaJuegoP1[i][j];
         }
+        gotoxy(40,20);
+        for (int j = 0; j < 10; j++)
+        {
+            cout << AreaJuegoP2[i][j];
+        }
         
+        cout << "\n";
     }
     
 }
@@ -104,7 +124,8 @@ bool checkplay (int player, int move, int move2){
     return false;
 }
 
-void buildships(int row, int col, int barco,string direccion){
+void buildships(int row, int col, int barco,string direccion, string player){
+    if (player == P1){
     if (direccion=="Arriba")
     {
         int contador=0;
@@ -153,6 +174,63 @@ void buildships(int row, int col, int barco,string direccion){
         }
        
     }
+    }
+    //Player 2
+    if (player == P2){
+    if (direccion=="Arriba")
+    {
+        int contador=0;
+        int row1=col;
+        while (contador<barco)
+        {
+            AreaJuegoP2[row1][col]={'O'};
+            row1--;
+            contador++;
+        }
+        
+    }
+    if (direccion=="Abajo")
+    {
+        int contador=0;
+        int row1=col;
+        while (contador<barco)
+        {
+            AreaJuegoP2[row1][col]={'O'};
+            row1++;
+            contador++;
+        }
+        
+    }
+    if (direccion=="Izquierda")
+    {
+        int contador=0;
+        int col1=row;
+        while (contador < barco)
+        {
+            AreaJuegoP2[row][col1]={'O'};
+            col1--;
+            contador++;   
+        }
+        
+    }
+    if (direccion=="Derecha")
+    {
+        int contador=0;
+        int col1=row;
+        while (contador < barco)
+        {
+            AreaJuegoP2[row][col1]={'O'};
+            col1++;
+            contador++;   
+        }
+       
+    }
+    }
+}
+
+
+void gotoxy(int x, int y){
+    cout << "\033[" << y << ";" << x << "f";
 }
 
 /*int menuBarcos(){
