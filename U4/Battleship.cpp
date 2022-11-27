@@ -9,6 +9,8 @@ const string P2 = "Player 2";
 int player = 1;
 int col, row;
 string TipoBarco[5]={"Submarine","Destroyer","Cruiser","Battleship","Carrier"};
+int TiposBarcosP1[5]={3,2,1,1,1};
+int TiposBarcosP2[5]={3,2,1,1,1};
 
 /*Carrier5,Battleship4,Cruiser3,Destroyer2-2,Submarine1-3*/
 
@@ -20,7 +22,7 @@ void tableronaval();
 void imprimirtablerodeprueba();
 void pruebalogica();
 void logicbattleship();
-
+void actualizarInventarioBarcos(int, string);
 void buildships(int, int, int, string,string);
 
 
@@ -40,12 +42,7 @@ int main()
     bool placeOccupied = true;
     //makeboard();
     //preguntartipodebarco();
-    //preguntarcordenada();
-    //selectplay();
-    // placeOccupied = checkplay (1, 2, 2);
-    // cout << placeOccupied;
-    //putships();
-    //repetir las hasta poner todos los barcos por cada jugador
+    //preguntarcordenada();Cruiser--;s por cada jugador
     pruebalogica();
     return 0;
 }
@@ -82,12 +79,13 @@ void pruebalogica()
     invalidmove = invalidplay(row, col, tipodebarco, direccion, currentturn);
     if (invalidmove == true)
     {
-        cout << "Invalidmove";
+        cout << "Invalidmove\n";
     } 
     else if (invalidmove == false)
     {
         player++;
         buildships(row, col, tipodebarco, direccion, currentturn);
+        actualizarInventarioBarcos(barco, currentturn);
         imprimirtablerodeprueba();
     }
     
@@ -117,15 +115,34 @@ void imprimirtablerodeprueba(){
 
 bool invalidplay (int row, int col, int barco,string direccion, string player){
     if (player == P1){
+        if (TiposBarcosP1[barco-1]==0){
+        return true;
+        }
+    } else if (player == P2){
+        if (TiposBarcosP2[barco-1]==0){
+        return true;
+        }
+    }
+    
+    
     if (direccion=="Arriba")
     {
         int contador=0;
-        int row1=col;
+        int row1=row;
+        if (row<(barco-1)){
+            return true;
+        }
         while (contador<barco)
         {
-            if (AreaJuegoP1[row1][col]=='O'){
+            if (player == P1){
+                if (AreaJuegoP1[row1][col]=='O'){
                 return true;
-            };
+                }
+            } else if  (player == P2){
+                if (AreaJuegoP2[row1][col]=='O'){
+                return true;
+                }
+            } 
             row1--;
             contador++;
         }
@@ -134,12 +151,21 @@ bool invalidplay (int row, int col, int barco,string direccion, string player){
     if (direccion=="Abajo")
     {
         int contador=0;
-        int row1=col;
+        int row1=row;
+        if ((row+barco)>10){
+            return true;
+        }
         while (contador<barco)
         {
-            if (AreaJuegoP1[row1][col]=='O'){
+            if (player == P1){
+                if (AreaJuegoP1[row1][col]=='O'){
                 return true;
-            };
+                }
+            } else if  (player == P2){
+                if (AreaJuegoP2[row1][col]=='O'){
+                return true;
+                }
+            }  
             row1++;
             contador++;
         }
@@ -148,12 +174,22 @@ bool invalidplay (int row, int col, int barco,string direccion, string player){
     if (direccion=="Izquierda")
     {
         int contador=0;
-        int col1=row;
+        int col1=col;
+        if ((col-barco) < -1)
+        {
+            return true;
+        }
         while (contador < barco)
         {
-            if (AreaJuegoP1[row][col1]=='O'){
+            if (player == P1){
+                if (AreaJuegoP1[row][col1]=='O'){
                 return true;
-            };
+                }
+            } else if (player == P2){
+                if (AreaJuegoP2[row][col1]=='O'){
+                return true;
+                }
+            }
             col1--;
             contador++;   
         }
@@ -162,89 +198,44 @@ bool invalidplay (int row, int col, int barco,string direccion, string player){
     if (direccion=="Derecha")
     {
         int contador=0;
-        int col1=row;
+        int col1=col;
+        if ((col+barco)>10)
+        {
+            return true;
+        }
+        
         while (contador < barco)
         {
-            if (AreaJuegoP1[row][col1]=='O'){
+            if (player == P1){
+                if (AreaJuegoP1[row][col1]=='O'){
                 return true;
-            };
+                }
+            } else if (player == P2){
+                if (AreaJuegoP2[row][col1]=='O'){
+                return true;
+                }
+            }
             col1++;
             contador++;   
         }
        
-    }
-    }
-    //Player 2
-    if (player == P2){
-    if (direccion=="Arriba")
-    {
-        int contador=0;
-        int row1=col;
-        while (contador<barco)
-        {
-            if (AreaJuegoP2[row1][col]=='O'){
-                return true;
-            };
-            row1--;
-            contador++;
-        }
-        
-    }
-    if (direccion=="Abajo")
-    {
-        int contador=0;
-        int row1=col;
-        while (contador<barco)
-        {
-            if (AreaJuegoP2[row1][col]=='O'){
-                return true;
-            };
-            row1++;
-            contador++;
-        }
-        
-    }
-    if (direccion=="Izquierda")
-    {
-        int contador=0;
-        int col1=row;
-        while (contador < barco)
-        {
-            if (AreaJuegoP2[row][col1]=='O'){
-                return true;
-            };
-            col1--;
-            contador++;   
-        }
-        
-    }
-    if (direccion=="Derecha")
-    {
-        int contador=0;
-        int col1=row;
-        while (contador < barco)
-        {
-            if (AreaJuegoP2[row][col1]=='O'){
-                return true;
-            };
-            col1++;
-            contador++;   
-        }
-       
-    }
     }
     return false;
 }
 
 void buildships(int row, int col, int barco,string direccion, string player){
-    if (player == P1){
     if (direccion=="Arriba")
     {
         int contador=0;
-        int row1=col;
+        int row1=row;
         while (contador<barco)
         {
-            AreaJuegoP1[row1][col]={'O'};
+            if (player== P1){
+                AreaJuegoP1[row1][col]={'O'};
+            }
+            else if (player == P2){
+                AreaJuegoP2[row1][col]={'O'};
+            }
             row1--;
             contador++;
         }
@@ -253,10 +244,15 @@ void buildships(int row, int col, int barco,string direccion, string player){
     if (direccion=="Abajo")
     {
         int contador=0;
-        int row1=col;
+        int row1=row;
         while (contador<barco)
         {
-            AreaJuegoP1[row1][col]={'O'};
+            if (player== P1){
+                AreaJuegoP1[row1][col]={'O'};
+            }
+            else if (player == P2){
+                AreaJuegoP2[row1][col]={'O'};
+            }
             row1++;
             contador++;
         }
@@ -265,10 +261,15 @@ void buildships(int row, int col, int barco,string direccion, string player){
     if (direccion=="Izquierda")
     {
         int contador=0;
-        int col1=row;
+        int col1=col;
         while (contador < barco)
         {
-            AreaJuegoP1[row][col1]={'O'};
+            if (player== P1){
+                AreaJuegoP1[row][col1]={'O'};
+            }
+            else if (player == P2){
+                AreaJuegoP2[row][col1]={'O'};
+            }
             col1--;
             contador++;   
         }
@@ -277,72 +278,64 @@ void buildships(int row, int col, int barco,string direccion, string player){
     if (direccion=="Derecha")
     {
         int contador=0;
-        int col1=row;
+        int col1=col;
         while (contador < barco)
         {
-            AreaJuegoP1[row][col1]={'O'};
+            if (player== P1){
+                AreaJuegoP1[row][col1]={'O'};
+            }
+            else if (player == P2){
+                AreaJuegoP2[row][col1]={'O'};
+            }
             col1++;
             contador++;   
         }
        
-    }
-    }
-    //Player 2
-    if (player == P2){
-    if (direccion=="Arriba")
-    {
-        int contador=0;
-        int row1=col;
-        while (contador<barco)
-        {
-            AreaJuegoP2[row1][col]={'O'};
-            row1--;
-            contador++;
-        }
-        
-    }
-    if (direccion=="Abajo")
-    {
-        int contador=0;
-        int row1=col;
-        while (contador<barco)
-        {
-            AreaJuegoP2[row1][col]={'O'};
-            row1++;
-            contador++;
-        }
-        
-    }
-    if (direccion=="Izquierda")
-    {
-        int contador=0;
-        int col1=row;
-        while (contador < barco)
-        {
-            AreaJuegoP2[row][col1]={'O'};
-            col1--;
-            contador++;   
-        }
-        
-    }
-    if (direccion=="Derecha")
-    {
-        int contador=0;
-        int col1=row;
-        while (contador < barco)
-        {
-            AreaJuegoP2[row][col1]={'O'};
-            col1++;
-            contador++;   
-        }
-       
-    }
     }
 }
 
 
 void gotoxy(int x, int y){
     cout << "\033[" << y << ";" << x << "f";
+}
+
+void actualizarInventarioBarcos(int barco, string player){
+    if (barco==1)
+    {
+        if (player== P1){
+            TiposBarcosP1[0]--;
+        } else if (player == P2){
+            TiposBarcosP2[0]--;
+        }
+        
+    }else if (barco == 2)
+    {
+        if (player== P1){
+            TiposBarcosP1[1]--;
+        } else if (player == P2){
+            TiposBarcosP2[1]--;
+        }
+    }else if (barco == 3)
+    {
+        if (player== P1){
+            TiposBarcosP1[2]--;
+        } else if (player == P2){
+            TiposBarcosP2[2]--;
+        }
+    }else if (barco == 4)
+    {
+        if (player== P1){
+            TiposBarcosP1[3]--;
+        } else if (player == P2){
+            TiposBarcosP2[3]--;
+        }
+    }else if (barco == 5){
+        if (player== P1){
+            TiposBarcosP1[4]--;
+        } else if (player == P2){
+            TiposBarcosP2[4]--;
+        }
+    }
 }
 
 /*int menuBarcos(){
