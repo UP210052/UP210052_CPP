@@ -26,7 +26,8 @@ void buildships(int, int, int, string,string);
 
 void putships(int, int, int);
 int selectplay(int, int);
-bool checkplay(int, int, int);
+/*Playertype, shipsize, row,col*/
+bool invalidplay(string, int, int, int);
 void shootcannons(string, int);
 void destroyship(string, int);
 bool Winner();
@@ -57,6 +58,8 @@ void tableronaval()
 void pruebalogica()
 {
     int barco, tipodebarco;
+    bool invalidmove;
+    
     string direccion,currentturn;
     bool valida;
     do
@@ -76,9 +79,19 @@ void pruebalogica()
     cin >> row;
     cout << "Col(COLUMNA):";
     cin >> col;
-    player++;
-    buildships(row, col, tipodebarco, direccion, currentturn);
-    imprimirtablerodeprueba();
+    invalidmove = invalidplay(currentturn, tipodebarco, row, col);
+    if (invalidmove == true)
+    {
+        cout << "Invalidmove";
+    } 
+    else if (invalidmove == false)
+    {
+        player++;
+        buildships(row, col, tipodebarco, direccion, currentturn);
+        imprimirtablerodeprueba();
+    }
+    
+    
     }while (player>0);
     
 }
@@ -102,17 +115,17 @@ void imprimirtablerodeprueba(){
     
 }
 
-bool checkplay (int player, int move, int move2){
+bool invalidplay (string player, int shipsize, int move, int move2){
     for (int row = 0; row < 10; row++)
     {
         for (int col = 0; col < 10; col++)
         {
-            if (player == 1){
+            if (player == P1){
                 if (AreaJuegoP1[row][col] == 'O')
                 {
                     return true;
                 }
-            }else if (player == 2){
+            }else if (player == P2){
                 if (AreaJuegoP2[row][col] =='O')
                 {
                     return true;
