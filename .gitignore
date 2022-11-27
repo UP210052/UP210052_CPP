@@ -1,3 +1,5 @@
+.vscode/
+
 # Prerequisites
 *.d
 
@@ -32,8 +34,8 @@
 *.lib
 
 # Executables
-*.exe
-*.out
-*.app
-
-*/.vscode
+#Archivos sin extensión
+*
+!/**/
+!*.*
+*.exe*
