@@ -52,13 +52,6 @@ string Jugador1A[23][23] =   {{" - "," - "," - "," - "," - "," - "," - "," - ","
                               {"| 9"," | ","   "," | ","   "," | ","   "," | ","   "," | ","   "," | ","   "," | ","   "," | ","   "," | ","   "," | ","   "," | "},
                               {" - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "},};                         
 
-
-
-
-
-    
-
-
 void putships(int, int, int);
 int selectplay(int, int);
 /*Playertype, shipsize, row,col*/
@@ -73,6 +66,7 @@ int main()
 {
     int col, row, player;
     bool placeOccupied = true;
+    //tableronaval();
     //makeboard();
     //preguntartipodebarco();
     //preguntarcordenada();Cruiser--;s por cada jugador
@@ -87,7 +81,7 @@ void tableronaval(){
         cout << endl;
         for (int col = 0; col < 23; col++)
         {
-            cout << Jugador1A[row][col];
+           cout << Jugador1A[row][col];
         }  
     }
 }
@@ -129,10 +123,7 @@ void pruebalogica()
         actualizarInventarioBarcos(tipodebarco, currentturn);
         imprimirtablerodeprueba();
     }
-    
-    
-    }while (player>0);
-    
+    }while (player<=16);
 }
 
 void imprimirtablerodeprueba(){
