@@ -26,11 +26,9 @@ void actualizarInventarioBarcos(int, string);
 void buildships(int, int, int, string,string);
 
 
-void putships(int, int, int);
-int selectplay(int, int);
-/*Playertype, shipsize, row,col*/
+/*row, col, shipsize, direction, player*/
 bool invalidplay(int, int, int, string,string);
-void shootcannons(string, int);
+void shootcannons(int, int, string);
 void destroyship(string, int);
 bool Winner();
 
@@ -55,10 +53,10 @@ void tableronaval()
 void pruebalogica()
 {
     int tipodebarco;
-    bool invalidmove;
-    
+    bool invalidmove, Roundwinner = false;
     string direccion,currentturn;
     bool valida;
+    //Ponerbarcos
     do
     {
     if (player<=8)
@@ -88,9 +86,20 @@ void pruebalogica()
         actualizarInventarioBarcos(tipodebarco, currentturn);
         imprimirtablerodeprueba();
     }
-    
-    
-    }while (player>0);
+    }while (player<=16);
+    //Matarbarcos
+    do{
+    if (player%2==1){
+        currentturn = P1;
+    } else{
+        currentturn = P2;
+    }
+    cout << "Row(fila)";
+    cin >> row;
+    cout << "Columna";
+    cin >> col;
+    shootcannons(row,col, currentturn);
+    } while (Roundwinner==false);
     
 }
 
@@ -221,7 +230,8 @@ bool invalidplay (int row, int col, int barco,string direccion, string player){
        
     }
     return false;
-}
+}void putships(int, int, int);
+int selectplay(int, int);
 
 void buildships(int row, int col, int barco,string direccion, string player){
     if (direccion=="Arriba")
@@ -323,7 +333,7 @@ void actualizarInventarioBarcos(int barco, string player){
             TiposBarcosP2[2]--;
         }
     }else if (barco == 4)
-    {
+    {/* condition */
         if (player== P1){
             TiposBarcosP1[3]--;
         } else if (player == P2){
@@ -337,6 +347,40 @@ void actualizarInventarioBarcos(int barco, string player){
         }
     }
 }
+
+void shootcannons(int row, int col, string player){
+    if (player == P1)
+    {
+        if (AreaJuegoP2[row][col]=='O')
+        {
+            AreaJuegoP2[row][col]={'X'};
+        }
+    }
+    if (player == P2)
+    {
+        if (AreaJuegoP1[row][col]=='O')
+        {
+            AreaJuegoP1[row][col]={'X'};
+        }
+    }
+}
+
+bool Winner(){
+    for (int row = 0; row < 10; row++)
+    {
+        for (int col = 0; col < 10; col++)
+        {
+            if (AreaJuegoP1[row][col]=='-')
+            {
+                /* code */
+            }
+            
+        }
+        
+    }
+    
+}
+
 
 /*int menuBarcos(){
     1 Submarine [1] (3)
