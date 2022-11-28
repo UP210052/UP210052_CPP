@@ -6,13 +6,12 @@ char AreaJuegoP1[10][10]={{'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'
 char AreaJuegoP2[10][10]={{'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}, {'-', '-', '-', '-', '-', '-', '-', '-', '-', '-'}};
 const string P1 = "Player 1";
 const string P2 = "Player 2";
-
 int player = 1;
 int col, row;
 string TipoBarco[5]={"Submarine","Destroyer","Cruiser","Battleship","Carrier"};
 int TiposBarcosP1[5]={3,2,1,1,1};
 int TiposBarcosP2[5]={3,2,1,1,1};
-string currentturn;
+
 /*Carrier5,Battleship4,Cruiser3,Destroyer2-2,Submarine1-3*/
 
 void gotoxy(int x, int y);
@@ -30,10 +29,8 @@ void buildships(int, int, int, string,string);
 void putships(int, int, int);
 int selectplay(int, int);
 /*Playertype, shipsize, row,col*/
-bool invalidplay(int, int, int, string, string);
-void ponerBarcos();
-bool invalidshoot (int,int,string);
-void shootcannons(int, int);
+bool invalidplay(int, int, int, string,string);
+void shootcannons(string, int);
 void destroyship(string, int);
 bool Winner();
 
@@ -57,53 +54,10 @@ void tableronaval()
 
 void pruebalogica()
 {
-    ponerBarcos();
-    //Matarbarcos
-    bool win=false;
-    do
-    {
-        if(player%2==1)
-        {
-            currentturn=P1;
-        } else{
-            currentturn=P2;
-        }
-        cout << "Its " << currentturn << " turn, select youintr move\n";
-        cout << "Row(FILA):";
-        cin >> row;
-        cout << "Col(COLUMNA):";
-        cin >> col;
-
-    }while (win==true);
-    
-    
-}
-
-void imprimirtablerodeprueba(){
-    for (int i = 0; i < 10; i++)
-    {
-        gotoxy(20,20);
-        for (int j = 0; j < 10; j++)
-        {
-            cout << AreaJuegoP1[i][j];
-        }
-        gotoxy(40,20);
-        for (int j = 0; j < 10; j++)
-        {
-            cout << AreaJuegoP2[i][j];
-        }
-        
-        cout << "\n";
-    }
-    
-}
-
-void ponerBarcos(){
     int tipodebarco;
     bool invalidmove;
-    bool win = false;
     
-    string direccion;
+    string direccion,currentturn;
     bool valida;
     do
     {
@@ -133,8 +87,30 @@ void ponerBarcos(){
         buildships(row, col, tipodebarco, direccion, currentturn);
         actualizarInventarioBarcos(tipodebarco, currentturn);
         imprimirtablerodeprueba();
-    } 
-    }while (player<=16);
+    }
+    
+    
+    }while (player>0);
+    
+}
+
+void imprimirtablerodeprueba(){
+    for (int i = 0; i < 10; i++)
+    {
+        gotoxy(20,20);
+        for (int j = 0; j < 10; j++)
+        {
+            cout << AreaJuegoP1[i][j];
+        }
+        gotoxy(40,20);
+        for (int j = 0; j < 10; j++)
+        {
+            cout << AreaJuegoP2[i][j];
+        }
+        
+        cout << "\n";
+    }
+    
 }
 
 bool invalidplay (int row, int col, int barco,string direccion, string player){
