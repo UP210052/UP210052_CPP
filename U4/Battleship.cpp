@@ -12,15 +12,13 @@ string TipoBarco[5]={"Submarine","Destroyer","Cruiser","Battleship","Carrier"};
 int TiposBarcosP1[5]={3,2,1,1,1};
 int TiposBarcosP2[5]={3,2,1,1,1};
 
-<<<<<<< HEAD
-=======
+
 /*Carrier5,Battleship4,Cruiser3,Destroyer2-2,Submarine1-3*/
 
 void gotoxy(int x, int y);
 
 void makeboard();
 
->>>>>>> b63809cdc26b224cafff3d7133d83870f5b80598
 void tableronaval();
 void imprimirtablerodeprueba();
 void pruebalogica();
@@ -29,7 +27,6 @@ void actualizarInventarioBarcos(int, string);
 void buildships(int, int, int, string,string);
 
 
-<<<<<<< HEAD
 
 string Jugador1A[23][23] =   {{" - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "},
                               {"|BN"," | "," A "," | "," B "," | "," C "," | "," D "," | "," E "," | "," F "," | "," G "," | "," H "," | "," I "," | "," J "," | "},
@@ -55,14 +52,13 @@ string Jugador1A[23][23] =   {{" - "," - "," - "," - "," - "," - "," - "," - ","
                               {"| 9"," | ","   "," | ","   "," | ","   "," | ","   "," | ","   "," | ","   "," | ","   "," | ","   "," | ","   "," | ","   "," | "},
                               {" - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "," - "},};                         
 
-void mostrarmatriz(char);
 
 
-int main(){
+
+
     
-    tableronaval();
 
-=======
+
 void putships(int, int, int);
 int selectplay(int, int);
 /*Playertype, shipsize, row,col*/
@@ -70,7 +66,6 @@ bool invalidplay(int, int, int, string,string);
 void shootcannons(string, int);
 void destroyship(string, int);
 bool Winner();
->>>>>>> b63809cdc26b224cafff3d7133d83870f5b80598
 
 
 
@@ -85,7 +80,6 @@ int main()
     return 0;
 }
 
-<<<<<<< HEAD
 
 void tableronaval(){
     for (int row = 0; row < 23; row++)
@@ -97,11 +91,7 @@ void tableronaval(){
         }  
     }
 }
-=======
-void tableronaval()
-{
 
-}
 
 void pruebalogica()
 {
@@ -399,4 +389,3 @@ void actualizarInventarioBarcos(int barco, string player){
 
 
 */
->>>>>>> b63809cdc26b224cafff3d7133d83870f5b80598
