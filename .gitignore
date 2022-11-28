@@ -1,10 +1,12 @@
+**/.vscode/
+
 # Prerequisites
 *.d
 
 #Archivos sin extension
 *
-!/**/
-!*.*
+/**/
+*.*
 
 # Compiled Object files
 *.slo
@@ -32,6 +34,8 @@
 *.lib
 
 # Executables
-*.exe
-*.out
-*.app
+#Archivos sin extensión
+*
+/**/
+*.*
+*.exe*
