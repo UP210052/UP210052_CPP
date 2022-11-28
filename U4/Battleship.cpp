@@ -54,14 +54,14 @@ void tableronaval()
 
 void pruebalogica()
 {
-    int barco, tipodebarco;
+    int tipodebarco;
     bool invalidmove;
     
     string direccion,currentturn;
     bool valida;
     do
     {
-    if (player%2==1)
+    if (player<=8)
     {
         currentturn = P1;
     } else {
@@ -85,7 +85,7 @@ void pruebalogica()
     {
         player++;
         buildships(row, col, tipodebarco, direccion, currentturn);
-        actualizarInventarioBarcos(barco, currentturn);
+        actualizarInventarioBarcos(tipodebarco, currentturn);
         imprimirtablerodeprueba();
     }
     
@@ -345,4 +345,6 @@ void actualizarInventarioBarcos(int barco, string player){
     4 Battleship 
     5 Carrier
 }
+
+
 */
