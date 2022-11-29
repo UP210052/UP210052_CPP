@@ -56,8 +56,7 @@ void putships(int, int, int);
 int selectplay(int, int);
 /*Playertype, shipsize, row,col*/
 bool invalidplay(int, int, int, string,string);
-void shootcannons(string, int);
-void destroyship(string, int);
+void shootcannons(int, int, string);
 bool Winner();
 
 
@@ -124,7 +123,26 @@ void pruebalogica()
         imprimirtablerodeprueba();
     }
     }while (player<=16);
+    player = 1;
+    do
+    {
+    if (player%2==1)
+    {
+        currentturn = P1;
+    } else {
+        currentturn = P2;
+    }
+    cout << currentturn << endl;
+    cout << "Row";
+    cin >> row;
+    cout << "Column";
+    cin >> col;
+    shootcannons(row, col, currentturn);
+    imprimirtablerodeprueba();
+    player++;
+    } while (player>0);
 }
+    
 
 void imprimirtablerodeprueba(){
     for (int i = 0; i < 10; i++)
@@ -369,6 +387,24 @@ void actualizarInventarioBarcos(int barco, string player){
         }
     }
 }
+
+void shootcannons(int row, int col, string player){
+    if (player==P1)
+    {
+        if (AreaJuegoP2[row][col]=='O')
+        {
+            AreaJuegoP2[row][col]={'X'};
+        }
+        
+    } else if(player==P2){
+        if (AreaJuegoP1[row][col]=='O')
+        {
+            AreaJuegoP1[row][col]={'X'};
+        }
+    }
+    
+}
+
 
 /*int menuBarcos(){
     1 Submarine [1] (3)
