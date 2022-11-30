@@ -458,7 +458,7 @@ void pruebalogica()
 
     do
     {
-    if (player <= 8)
+    if (player <= 2)
     {
         currentturn = P1;
     } else {
@@ -501,7 +501,7 @@ void pruebalogica()
         tableronaval();*/
         
     }
-    }while (player<=16);
+    }while (player<=4);
 
     player = 1;
     do
