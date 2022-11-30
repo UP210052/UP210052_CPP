@@ -67,10 +67,12 @@ bool invalidplay(int, int, int, int, string);
 void shootcannons(int, int, string);
 bool Winner();
 void dibujo();
+void menuBarcos(string);
 
 
 int main()
 {
+    string turnplayer=P1;
     int col, row, player, entrada;
     bool placeOccupied = true;
     
@@ -93,18 +95,7 @@ int main()
     gotoxy(58, 17);
     cout << "BIENVENIDO A BATALLA NAVAL";
 
-    gotoxy(10, 19);
-    cout << "1 Submarine [1 Posición] (1 Submariene)" << endl;
-    gotoxy(10, 20);
-    cout << "2 Destroyer [2 Posiciones] (2 Destroyers)" << endl;
-    gotoxy(10, 21);
-    cout << "3 Cruiser  [3 Posiciones] (1 Crusier)" << endl;
-    gotoxy(10, 22);
-    cout << "4 Battleship [4 Posiciones] (1 Battleship)" << endl;
-    gotoxy(10, 23); 
-    cout << "5 Carrier [5 Posiciones] (1 Carrier)" << endl;
-
-     cout << "\n";
+    menuBarcos(turnplayer);
 
     //tableronaval();
     //makeboard();
@@ -160,7 +151,7 @@ void dibujo(){
     cout << "\n";
 }
 
-void tableronaval(){
+void tableronaval(string player){
     int x = 0, y = 0;
  
 
@@ -412,7 +403,7 @@ void tableronaval(){
     { 
         
         cout << endl;
-        if(player < 8){
+        if(player == P1){
             gotoxy(43, 24 + row);
             for (int col = 0; col < 23; col++)
         {
@@ -434,7 +425,7 @@ void pruebalogica()
 {
     int tipodebarco;
     bool invalidmove;
-    
+    string turnplayer = P1;
     int direccion;
     string currentturn;
     bool valida;
@@ -450,10 +441,12 @@ void pruebalogica()
         currentturn = P2;
     }
     
-    
+    gotoxy(0, 27);
     cout << "Its " << currentturn << " turn, select your move\n";
     cout << "Shipsize:";
     cin >> tipodebarco;
+
+
     cout << "\n";
     cout << "Arriba - 1" << endl;
     cout << "Abajo - 2" << endl;
@@ -468,12 +461,19 @@ void pruebalogica()
     cin >> row;
     cout << "Col(COLUMNA):";
     cin >> col;
+
     invalidmove = invalidplay(row, col, tipodebarco, direccion, currentturn);
 
-
+    system("cls");
+    dibujo();
+    gotoxy(58, 17);
+    cout << "BIENVENIDO A BATALLA NAVAL";
+    
     if (invalidmove == true)
     {
-        cout << "Invalidmove";
+        gotoxy(0, 26);
+        menuBarcos(turnplayer);
+        cout << "Invalidmove" << endl;
         cout << "\n";
     } 
     else if (invalidmove == false)
@@ -481,10 +481,15 @@ void pruebalogica()
         player++;
         buildships(row, col, tipodebarco, direccion, currentturn);
         actualizarInventarioBarcos(tipodebarco, currentturn);
+        menuBarcos(turnplayer);
+        cout << "\n";
         tableronaval();
+        
     }
     }while (player<=16);
-    
+
+
+
     player = 1;
     do
     {
@@ -499,6 +504,7 @@ void pruebalogica()
     cin >> row;
     cout << "Column";
     cin >> col;
+
     shootcannons(row, col, currentturn);
     tableronaval();
     player++;
@@ -751,13 +757,58 @@ void shootcannons(int row, int col, string player){
 }
 
 
-/*int menuBarcos(){
-    1 Submarine [1] (3)
-    2 Destroyer [2] (2)
-    3 Cruiser  [3]
-    4 Battleship 
-    5 Carrier
+void menuBarcos(string turnplayer){
+
+    gotoxy(10, 19);
+    cout << "Submarine [1 Posicion] (";
+    if(turnplayer == P1){
+        cout << TiposBarcosP1[0];
+    }else if(turnplayer == P2){
+        cout << TiposBarcosP2[0];
+    }
+    cout << " Submariene)" << endl;
+    gotoxy(10, 20);
+
+
+    cout << "Destroyer [2 Posiciones] (";
+    if(turnplayer == P1){
+        cout << TiposBarcosP1[1];
+    }else if(turnplayer == P2){
+        cout << TiposBarcosP2[1];
+    }
+    cout << " Destroyers)" << endl;
+    gotoxy(10, 21);
+
+
+    cout << "Cruiser  [3 Posiciones] (";
+    if(turnplayer == P1){
+        cout << TiposBarcosP1[2];
+    }else if(turnplayer == P2){
+        cout << TiposBarcosP2[2];
+    }
+    cout << " Crusier)" << endl;
+    gotoxy(10, 22);
+
+
+    cout << "Battleship [4 Posiciones] (";
+    if(turnplayer == P1){
+        cout << TiposBarcosP1[3];
+    }else if(turnplayer == P2){
+        cout << TiposBarcosP2[3];
+    }
+    cout << " Battleship)" << endl;
+    gotoxy(10, 23); 
+
+
+    cout << "Carrier [5 Posiciones] (";
+    if(turnplayer == P1){
+        cout << TiposBarcosP1[4];
+    }else if(turnplayer == P2){
+        cout << TiposBarcosP2[4];
+    }
+    cout << " Carrier)" << endl;
+
+     cout << "\n";
 }
 
 
-*/
