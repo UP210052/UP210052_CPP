@@ -9,6 +9,7 @@ const string P1 = "Player 1";
 const string P2 = "Player 2";
 int player = 1;
 int col, row;
+char columna;
 string TipoBarco[5]={"Submarine","Destroyer","Cruiser","Battleship","Carrier"};
 int TiposBarcosP1[5]={3,2,1,1,1};
 int TiposBarcosP2[5]={3,2,1,1,1};
@@ -16,11 +17,14 @@ int TiposBarcosP2[5]={3,2,1,1,1};
 
 /*Carrier5,Battleship4,Cruiser3,Destroyer2-2,Submarine1-3*/
 void makeboard();
+
+void imprimirtablerodeprueba();
 void tableronaval();
 void pruebalogica();
 void logicbattleship();
 void actualizarInventarioBarcos(int, string);
 void buildships(int, int, int, int ,string);
+int LettertoNumber(char);
 
 
 
@@ -61,8 +65,9 @@ void putships(int, int, int);
 int selectplay(int, int);
 /*Playertype, shipsize, row,col*/
 bool invalidplay(int, int, int, int, string);
+bool novalidshoot(int, int, string);
 void shootcannons(int, int, string);
-bool Winner();
+bool NoWinner(string);
 void dibujo();
 void menuBarcos(string);
 
@@ -70,6 +75,7 @@ void menuBarcos(string);
 void gotoxy(int x, int y){
     cout << "\033[" << y << ";" << x << "f";
 }
+
 
 void dibujo(){
     system("cls");
@@ -172,7 +178,7 @@ void tableronaval(){
     { 
         
         cout << endl;
-        if(player <= 8){
+        if(player < 3){
             gotoxy(43, 24 + row);
             for (int col = 0; col < 23; col++)
         {
@@ -188,13 +194,29 @@ void tableronaval(){
         cout << "\n";
     }
 }
+void imprimirtablerodeprueba(){
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            cout << AreaJuegoP1[i][j];
+        }
+        for (int j = 0; j < 10; j++)
+        {
+            cout << AreaJuegoP2[i][j];
+        }
 
+        cout << "\n";
+    }
+
+}
 
 void pruebalogica()
 {
     int tipodebarco;
     bool invalidmove;
-    string turnplayer = P1;
+    bool invalidshoot;
+    bool Nohayganadoraun;
     int direccion;
     string currentturn;
     bool valida;
@@ -203,14 +225,12 @@ void pruebalogica()
 
     do
     {
-    if (player <= 8)
+    if (player <= 2)
     {
         currentturn = P1;
     } else {
         currentturn = P2;
     }
-    
-    gotoxy(0, 27);
     cout << "Its " << currentturn << " turn, select your move\n";
     cout << "Shipsize:";
     cin >> tipodebarco;
@@ -229,19 +249,11 @@ void pruebalogica()
     cout << "Row(FILA):";
     cin >> row;
     cout << "Col(COLUMNA):";
-    cin >> col;
-
+    cin >> columna;
+    col = LettertoNumber(columna);
     invalidmove = invalidplay(row, col, tipodebarco, direccion, currentturn);
-
-    system("cls");
-    dibujo();
-    gotoxy(58, 17);
-    cout << "BIENVENIDO A BATALLA NAVAL";
-    
     if (invalidmove == true)
     {
-        gotoxy(0, 26);
-        menuBarcos(turnplayer);
         cout << "Invalidmove" << endl;
         cout << "\n";
     } 
@@ -250,14 +262,13 @@ void pruebalogica()
         player++;
         buildships(row, col, tipodebarco, direccion, currentturn);
         actualizarInventarioBarcos(tipodebarco, currentturn);
-        menuBarcos(turnplayer);
+        imprimirtablerodeprueba();
+        /*menuBarcos(turnplayer);
         cout << "\n";
-        tableronaval();
+        tableronaval();*/
         
     }
-    }while (player<=16);
-
-
+    }while (player<=4);
 
     player = 1;
     do
@@ -272,12 +283,15 @@ void pruebalogica()
     cout << "Row";
     cin >> row;
     cout << "Column";
-    cin >> col;
-
+    cin >> columna;
+    col = LettertoNumber(columna);
     shootcannons(row, col, currentturn);
-    tableronaval();
+
+    imprimirtablerodeprueba();
+    Nohayganadoraun = NoWinner(currentturn);
     player++;
-    } while (player>0);
+    } while (Nohayganadoraun==true);
+    cout << "El ganador es " << currentturn << "\nFELICIDADES";
 }
     
 
@@ -293,8 +307,17 @@ bool invalidplay (int row, int col, int barco, int direccion, string player){
         return true;
         }
     }
+    if (row>=10 || col >=10 || col < 0 || row < 0)
+    {
+        return true;
+    }
     
+    else if (direccion <1 || direccion >4)
+    {
+        return true;
+    }
     
+
     if (direccion== 1) //Arriba
     {
         int contador=0;
@@ -519,10 +542,84 @@ void shootcannons(int row, int col, string player){
             AreaJuegoP1[row][col]={"X"};
         }
     }
+}
+
+bool Novalidshoot(int row, int col, string turn){
     
 }
 
+bool NoWinner(string player){
+    if (player == P1)
+    {
+    for (int row = 0; row < 9; row++)
+    {
+        for (int col = 0; col < 9; col++)
+        {
+            if (AreaJuegoP2[row][col]=="O")
+            {
+                return true;
+            }
+        }
+    }
+    }
+    else if (player==P2){
+    for (int row = 0; row < 9; row++)
+    {
+        for (int col = 0; col < 9; col++)
+        {
+            if (AreaJuegoP1[row][col]=="O")
+            {
+                return true;
+            }
+        }
+    }
+    }
+    return false;
+}
 
+int LettertoNumber(char Letter){//Transform letter
+    if(Letter== 'A' || Letter == 'a'){
+        return 0;
+    }
+    if(Letter== 'B' || Letter == 'b'){
+        return 1;
+    }
+    if(Letter== 'C' || Letter == 'c'){
+        return 2;
+    }
+    if(Letter== 'D' || Letter == 'd'){
+        return 3;
+    }
+    if(Letter== 'E' || Letter == 'e'){
+        return 4;
+    }
+    if(Letter== 'F' || Letter == 'f'){
+        return 5;
+    }
+    if(Letter== 'G' || Letter == 'g'){
+        return 6;
+    }
+    if(Letter== 'H' || Letter == 'h'){
+        return 7;
+    }
+    if(Letter== 'I' || Letter == 'i'){
+        return 8;
+    }
+    if(Letter== 'J' || Letter == 'j'){
+        return 9;
+}
+else{
+    return -1;
+}
+}
+
+
+/*int menuBarcos(){
+    1 Submarine [1] (3)
+    2 Destroyer [2] (2)
+    3 Cruiser  [3]
+    4 Battleship 
+    5 Carrier
 void menuBarcos(string turnplayer){
 
     gotoxy(10, 19);
@@ -576,5 +673,5 @@ void menuBarcos(string turnplayer){
 
      cout << "\n";
 }
-
+*/
 
