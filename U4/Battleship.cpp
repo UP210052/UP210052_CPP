@@ -160,7 +160,7 @@ void dibujo(){
     cout << "\n";
 }
 
-void tableronaval(string player){
+void tableronaval(){
     int x = 0, y = 0;
  
 
@@ -294,7 +294,7 @@ void tableronaval(string player){
     Jugador2A[3][10] = ' ' + AreaJuegoP2[0][4] + ' ';
     Jugador2A[3][12] = ' ' + AreaJuegoP2[0][5] + ' ';
     Jugador2A[3][14] = ' ' + AreaJuegoP2[0][6] + ' ';
-    Jugador2A[3][16] = ' ' + Are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aJuegoP2[0][7] + ' ';
+    Jugador2A[3][16] = ' ' + AreaJuegoP2[0][7] + ' ';
     Jugador2A[3][18] = ' ' + AreaJuegoP2[0][8] + ' ';
     Jugador2A[3][20] = ' ' + AreaJuegoP2[0][9] + ' ';
     
@@ -406,14 +406,13 @@ void tableronaval(string player){
     Jugador2A[12][18] = ' ' + AreaJuegoP2[9][8] + ' ';
     Jugador2A[12][20] = ' ' + AreaJuegoP2[9][9] + ' ';
     
-    
+
     
     for (int row = 0; row < 14; row++)
     { 
         
         cout << endl;
         if(player < 3){
-        if(player == P1){
             gotoxy(43, 24 + row);
             for (int col = 0; col < 23; col++)
         {
@@ -429,7 +428,6 @@ void tableronaval(string player){
         cout << "\n";
     }
 }
-
 void imprimirtablerodeprueba(){
     for (int i = 0; i < 10; i++)
     {
@@ -466,8 +464,6 @@ void pruebalogica()
     } else {
         currentturn = P2;
     }
-    
-    gotoxy(0, 27);
     cout << "Its " << currentturn << " turn, select your move\n";
     cout << "Shipsize:";
     cin >> tipodebarco;
@@ -489,18 +485,8 @@ void pruebalogica()
     cin >> columna;
     col = LettertoNumber(columna);
     invalidmove = invalidplay(row, col, tipodebarco, direccion, currentturn);
-
-    invalidmove = invalidplay(row, col, tipodebarco, direccion, currentturn);
-
-    system("cls");
-    dibujo();
-    gotoxy(58, 17);
-    cout << "BIENVENIDO A BATALLA NAVAL";
-    
     if (invalidmove == true)
     {
-        gotoxy(0, 26);
-        menuBarcos(turnplayer);
         cout << "Invalidmove" << endl;
         cout << "\n";
     } 
@@ -516,8 +502,6 @@ void pruebalogica()
         
     }
     }while (player<=16);
-
-
 
     player = 1;
     do
@@ -859,6 +843,7 @@ else{
     return -1;
 }
 }
+
 /*int menuBarcos(){
     1 Submarine [1] (3)
     2 Destroyer [2] (2)
@@ -918,5 +903,5 @@ void menuBarcos(string turnplayer){
 
      cout << "\n";
 }
-
+*/
 
