@@ -1,4 +1,5 @@
 #include <iostream>
+//#include <vistas.h>
 
 using namespace std;
 
@@ -14,11 +15,7 @@ int TiposBarcosP2[5]={3,2,1,1,1};
 
 
 /*Carrier5,Battleship4,Cruiser3,Destroyer2-2,Submarine1-3*/
-
-void gotoxy(int x, int y);
-
 void makeboard();
-
 void tableronaval();
 void pruebalogica();
 void logicbattleship();
@@ -70,52 +67,8 @@ void dibujo();
 void menuBarcos(string);
 
 
-int main()
-{
-    string turnplayer=P1;
-    int col, row, player, entrada;
-    bool placeOccupied = true;
-    
-    dibujo();
-    gotoxy(58, 20);
-    cout << "BIENVENIDO A BATALLA NAVAL";
-
-    gotoxy(66, 24);
-    cout << "Presione: " << endl;
-    gotoxy(66, 25);
-    cout << "1. Jugar" << endl;
-    gotoxy(66, 26);
-    cout << "2. Salir" << endl;
-    gotoxy(66, 27);
-    cin >> entrada;
-
-    if(entrada == 1){
-    system("cls");
-    dibujo();
-    gotoxy(58, 17);
-    cout << "BIENVENIDO A BATALLA NAVAL";
-
-    menuBarcos(turnplayer);
-
-    //tableronaval();
-    //makeboard();
-    //preguntartipodebarco();
-    //preguntarcordenada();Cruiser--;s por cada jugador
-    pruebalogica();
-    //tableronaval();
-
-    }else if(entrada == 2){
-        system("cls");
-        gotoxy(58, 5);
-        cout << "GRACIAS POR JUGAR";
-        return 0;
-    }else{
-        gotoxy(64, 29);
-        cout << "INCORRECTO!!!";
-    }
-
-   
-    return 0;
+void gotoxy(int x, int y){
+    cout << "\033[" << y << ";" << x << "f";
 }
 
 void dibujo(){
@@ -151,259 +104,75 @@ void dibujo(){
     cout << "\n";
 }
 
-void tableronaval(string player){
+int main()
+{
+    string turnplayer=P1;
+    int col, row, player, entrada;
+    bool placeOccupied = true;
+    
+    dibujo();
+    gotoxy(58, 20);
+    cout << "BIENVENIDO A BATALLA NAVAL";
+
+    gotoxy(66, 24);
+    cout << "Presione: " << endl;
+    gotoxy(66, 25);
+    cout << "1. Jugar" << endl;
+    gotoxy(66, 26);
+    cout << "2. Salir" << endl;
+    gotoxy(66, 27);
+    cin >> entrada;
+
+    if(entrada == 1){
+    system("cls");
+    dibujo();
+    gotoxy(58, 17);
+    cout << "BIENVENIDO A BATALLA NAVAL";
+
+    //menuBarcos(turnplayer);
+
+    tableronaval();
+    //makeboard();
+    //preguntartipodebarco();
+    //preguntarcordenada();Cruiser--;s por cada jugador
+    //pruebalogica();
+    //tableronaval();
+
+    }else if(entrada == 2){
+        system("cls");
+        gotoxy(58, 5);
+        cout << "GRACIAS POR JUGAR";
+        return 0;
+    }else{
+        gotoxy(64, 29);
+        cout << "INCORRECTO!!!";
+    }
+
+   
+    return 0;
+}
+
+
+
+void tableronaval(){
     int x = 0, y = 0;
  
-
-    
-    //Fila 0
-    Jugador1A[3][2] = ' ' + AreaJuegoP1[0][0] + ' ';
-    Jugador1A[3][4] = ' ' + AreaJuegoP1[0][1] + ' ';
-    Jugador1A[3][6] = ' ' + AreaJuegoP1[0][2] + ' ';
-    Jugador1A[3][8] = ' ' + AreaJuegoP1[0][3] + ' ';
-    Jugador1A[3][10] = ' ' + AreaJuegoP1[0][4] + ' ';
-    Jugador1A[3][12] = ' ' + AreaJuegoP1[0][5] + ' ';
-    Jugador1A[3][14] = ' ' + AreaJuegoP1[0][6] + ' ';
-    Jugador1A[3][16] = ' ' + AreaJuegoP1[0][7] + ' ';
-    Jugador1A[3][18] = ' ' + AreaJuegoP1[0][8] + ' ';
-    Jugador1A[3][20] = ' ' + AreaJuegoP1[0][9] + ' ';
-    
-    //Fila 1
-    Jugador1A[4][2] = ' ' + AreaJuegoP1[1][0] + ' ';
-    Jugador1A[4][4] = ' ' + AreaJuegoP1[1][1] + ' ';
-    Jugador1A[4][6] = ' ' + AreaJuegoP1[1][2] + ' ';
-    Jugador1A[4][8] = ' ' + AreaJuegoP1[1][3] + ' ';
-    Jugador1A[4][10] = ' ' + AreaJuegoP1[1][4] + ' ';
-    Jugador1A[4][12] = ' ' + AreaJuegoP1[1][5] + ' ';
-    Jugador1A[4][14] = ' ' + AreaJuegoP1[1][6] + ' ';
-    Jugador1A[4][16] = ' ' + AreaJuegoP1[1][7] + ' ';
-    Jugador1A[4][18] = ' ' + AreaJuegoP1[1][8] + ' ';
-    Jugador1A[4][20] = ' ' + AreaJuegoP1[1][9] + ' ';
-    
-    //Fila 2
-    Jugador1A[5][2] = ' ' + AreaJuegoP1[2][0] + ' ';
-    Jugador1A[5][4] = ' ' + AreaJuegoP1[2][1] + ' ';
-    Jugador1A[5][6] = ' ' + AreaJuegoP1[2][2] + ' ';
-    Jugador1A[5][8] = ' ' + AreaJuegoP1[2][3] + ' ';
-    Jugador1A[5][10] = ' ' + AreaJuegoP1[2][4] + ' ';
-    Jugador1A[5][12] = ' ' + AreaJuegoP1[2][5] + ' ';
-    Jugador1A[5][14] = ' ' + AreaJuegoP1[2][6] + ' ';
-    Jugador1A[5][16] = ' ' + AreaJuegoP1[2][7] + ' ';
-    Jugador1A[5][18] = ' ' + AreaJuegoP1[2][8] + ' ';
-    Jugador1A[5][20] = ' ' + AreaJuegoP1[2][9] + ' ';
-
-    //Fila 3
-    Jugador1A[6][2] = ' ' + AreaJuegoP1[3][0] + ' ';
-    Jugador1A[6][4] = ' ' + AreaJuegoP1[3][1] + ' ';
-    Jugador1A[6][6] = ' ' + AreaJuegoP1[3][2] + ' ';
-    Jugador1A[6][8] = ' ' + AreaJuegoP1[3][3] + ' ';
-    Jugador1A[6][10] = ' ' + AreaJuegoP1[3][4] + ' ';
-    Jugador1A[6][12] = ' ' + AreaJuegoP1[3][5] + ' ';
-    Jugador1A[6][14] = ' ' + AreaJuegoP1[3][6] + ' ';
-    Jugador1A[6][16] = ' ' + AreaJuegoP1[3][7] + ' ';
-    Jugador1A[6][18] = ' ' + AreaJuegoP1[3][8] + ' ';
-    Jugador1A[6][20] = ' ' + AreaJuegoP1[3][9] + ' ';
-
-    //Fila 4
-    Jugador1A[7][2] = ' ' + AreaJuegoP1[4][0] + ' ';
-    Jugador1A[7][4] = ' ' + AreaJuegoP1[4][1] + ' ';
-    Jugador1A[7][6] = ' ' + AreaJuegoP1[4][2] + ' ';
-    Jugador1A[7][8] = ' ' + AreaJuegoP1[4][3] + ' ';
-    Jugador1A[7][10] = ' ' + AreaJuegoP1[4][4] + ' ';
-    Jugador1A[7][12] = ' ' + AreaJuegoP1[4][5] + ' ';
-    Jugador1A[7][14] = ' ' + AreaJuegoP1[4][6] + ' ';
-    Jugador1A[7][16] = ' ' + AreaJuegoP1[4][7] + ' ';
-    Jugador1A[7][18] = ' ' + AreaJuegoP1[4][8] + ' ';
-    Jugador1A[7][20] = ' ' + AreaJuegoP1[4][9] + ' ';
-
-    //Fila 5
-    Jugador1A[8][2] = ' ' + AreaJuegoP1[5][0] + ' ';
-    Jugador1A[8][4] = ' ' + AreaJuegoP1[5][1] + ' ';
-    Jugador1A[8][6] = ' ' + AreaJuegoP1[5][2] + ' ';
-    Jugador1A[8][8] = ' ' + AreaJuegoP1[5][3] + ' ';
-    Jugador1A[8][10] = ' ' + AreaJuegoP1[5][4] + ' ';
-    Jugador1A[8][12] = ' ' + AreaJuegoP1[5][5] + ' ';
-    Jugador1A[8][14] = ' ' + AreaJuegoP1[5][6] + ' ';
-    Jugador1A[8][16] = ' ' + AreaJuegoP1[5][7] + ' ';
-    Jugador1A[8][18] = ' ' + AreaJuegoP1[5][8] + ' ';
-    Jugador1A[8][20] = ' ' + AreaJuegoP1[5][9] + ' ';
-
-    //Fila 6
-    Jugador1A[9][2] = ' ' + AreaJuegoP1[6][0] + ' ';
-    Jugador1A[9][4] = ' ' + AreaJuegoP1[6][1] + ' ';
-    Jugador1A[9][6] = ' ' + AreaJuegoP1[6][2] + ' ';
-    Jugador1A[9][8] = ' ' + AreaJuegoP1[6][3] + ' ';
-    Jugador1A[9][10] = ' ' + AreaJuegoP1[6][4] + ' ';
-    Jugador1A[9][12] = ' ' + AreaJuegoP1[6][5] + ' ';
-    Jugador1A[9][14] = ' ' + AreaJuegoP1[6][6] + ' ';
-    Jugador1A[9][16] = ' ' + AreaJuegoP1[6][7] + ' ';
-    Jugador1A[9][18] = ' ' + AreaJuegoP1[6][8] + ' ';
-    Jugador1A[9][20] = ' ' + AreaJuegoP1[6][9] + ' ';
-
-    //Fila 7
-    Jugador1A[10][2] = ' ' + AreaJuegoP1[7][0] + ' ';
-    Jugador1A[10][4] = ' ' + AreaJuegoP1[7][1] + ' ';
-    Jugador1A[10][6] = ' ' + AreaJuegoP1[7][2] + ' ';
-    Jugador1A[10][8] = ' ' + AreaJuegoP1[7][3] + ' ';
-    Jugador1A[10][10] = ' ' + AreaJuegoP1[7][4] + ' ';
-    Jugador1A[10][12] = ' ' + AreaJuegoP1[7][5] + ' ';
-    Jugador1A[10][14] = ' ' + AreaJuegoP1[7][6] + ' ';
-    Jugador1A[10][16] = ' ' + AreaJuegoP1[7][7] + ' ';
-    Jugador1A[10][18] = ' ' + AreaJuegoP1[7][8] + ' ';
-    Jugador1A[10][20] = ' ' + AreaJuegoP1[7][9] + ' ';
-
-    //Fila 8
-    Jugador1A[11][2] = ' ' + AreaJuegoP1[8][0] + ' ';
-    Jugador1A[11][4] = ' ' + AreaJuegoP1[8][1] + ' ';
-    Jugador1A[11][6] = ' ' + AreaJuegoP1[8][2] + ' ';
-    Jugador1A[11][8] = ' ' + AreaJuegoP1[8][3] + ' ';
-    Jugador1A[11][10] = ' ' + AreaJuegoP1[8][4] + ' ';
-    Jugador1A[11][12] = ' ' + AreaJuegoP1[8][5] + ' ';
-    Jugador1A[11][14] = ' ' + AreaJuegoP1[8][6] + ' ';
-    Jugador1A[11][16] = ' ' + AreaJuegoP1[8][7] + ' ';
-    Jugador1A[11][18] = ' ' + AreaJuegoP1[8][8] + ' ';
-    Jugador1A[11][20] = ' ' + AreaJuegoP1[8][9] + ' ';
-
-    //Fila 9
-    Jugador1A[12][2] = ' ' + AreaJuegoP1[9][0] + ' ';
-    Jugador1A[12][4] = ' ' + AreaJuegoP1[9][1] + ' ';
-    Jugador1A[12][6] = ' ' + AreaJuegoP1[9][2] + ' ';
-    Jugador1A[12][8] = ' ' + AreaJuegoP1[9][3] + ' ';
-    Jugador1A[12][10] = ' ' + AreaJuegoP1[9][4] + ' ';
-    Jugador1A[12][12] = ' ' + AreaJuegoP1[9][5] + ' ';
-    Jugador1A[12][14] = ' ' + AreaJuegoP1[9][6] + ' ';
-    Jugador1A[12][16] = ' ' + AreaJuegoP1[9][7] + ' ';
-    Jugador1A[12][18] = ' ' + AreaJuegoP1[9][8] + ' ';
-    Jugador1A[12][20] = ' ' + AreaJuegoP1[9][9] + ' ';
-
-
-    //Fila 0
-    Jugador2A[3][2] = ' ' + AreaJuegoP2[0][0] + ' ';
-    Jugador2A[3][4] = ' ' + AreaJuegoP2[0][1] + ' ';
-    Jugador2A[3][6] = ' ' + AreaJuegoP2[0][2] + ' ';
-    Jugador2A[3][8] = ' ' + AreaJuegoP2[0][3] + ' ';
-    Jugador2A[3][10] = ' ' + AreaJuegoP2[0][4] + ' ';
-    Jugador2A[3][12] = ' ' + AreaJuegoP2[0][5] + ' ';
-    Jugador2A[3][14] = ' ' + AreaJuegoP2[0][6] + ' ';
-    Jugador2A[3][16] = ' ' + AreaJuegoP2[0][7] + ' ';
-    Jugador2A[3][18] = ' ' + AreaJuegoP2[0][8] + ' ';
-    Jugador2A[3][20] = ' ' + AreaJuegoP2[0][9] + ' ';
-    
-    //Fila 1
-    Jugador2A[4][2] = ' ' + AreaJuegoP2[1][0] + ' ';
-    Jugador2A[4][4] = ' ' + AreaJuegoP2[1][1] + ' ';
-    Jugador2A[4][6] = ' ' + AreaJuegoP2[1][2] + ' ';
-    Jugador2A[4][8] = ' ' + AreaJuegoP2[1][3] + ' ';
-    Jugador2A[4][10] = ' ' + AreaJuegoP2[1][4] + ' ';
-    Jugador2A[4][12] = ' ' + AreaJuegoP2[1][5] + ' ';
-    Jugador2A[4][14] = ' ' + AreaJuegoP2[1][6] + ' ';
-    Jugador2A[4][16] = ' ' + AreaJuegoP2[1][7] + ' ';
-    Jugador2A[4][18] = ' ' + AreaJuegoP2[1][8] + ' ';
-    Jugador2A[4][20] = ' ' + AreaJuegoP2[1][9] + ' ';
-    
-    //Fila 2
-    Jugador2A[5][2] = ' ' + AreaJuegoP2[2][0] + ' ';
-    Jugador2A[5][4] = ' ' + AreaJuegoP2[2][1] + ' ';
-    Jugador2A[5][6] = ' ' + AreaJuegoP2[2][2] + ' ';
-    Jugador2A[5][8] = ' ' + AreaJuegoP2[2][3] + ' ';
-    Jugador2A[5][10] = ' ' + AreaJuegoP2[2][4] + ' ';
-    Jugador2A[5][12] = ' ' + AreaJuegoP2[2][5] + ' ';
-    Jugador2A[5][14] = ' ' + AreaJuegoP2[2][6] + ' ';
-    Jugador2A[5][16] = ' ' + AreaJuegoP2[2][7] + ' ';
-    Jugador2A[5][18] = ' ' + AreaJuegoP2[2][8] + ' ';
-    Jugador2A[5][20] = ' ' + AreaJuegoP2[2][9] + ' ';
-
-    //Fila 3
-    Jugador2A[6][2] = ' ' + AreaJuegoP2[3][0] + ' ';
-    Jugador2A[6][4] = ' ' + AreaJuegoP2[3][1] + ' ';
-    Jugador2A[6][6] = ' ' + AreaJuegoP2[3][2] + ' ';
-    Jugador2A[6][8] = ' ' + AreaJuegoP2[3][3] + ' ';
-    Jugador2A[6][10] = ' ' + AreaJuegoP2[3][4] + ' ';
-    Jugador2A[6][12] = ' ' + AreaJuegoP2[3][5] + ' ';
-    Jugador2A[6][14] = ' ' + AreaJuegoP2[3][6] + ' ';
-    Jugador2A[6][16] = ' ' + AreaJuegoP2[3][7] + ' ';
-    Jugador2A[6][18] = ' ' + AreaJuegoP2[3][8] + ' ';
-    Jugador2A[6][20] = ' ' + AreaJuegoP2[3][9] + ' ';
-
-    //Fila 4
-    Jugador2A[7][2] = ' ' + AreaJuegoP2[4][0] + ' ';
-    Jugador2A[7][4] = ' ' + AreaJuegoP2[4][1] + ' ';
-    Jugador2A[7][6] = ' ' + AreaJuegoP2[4][2] + ' ';
-    Jugador2A[7][8] = ' ' + AreaJuegoP2[4][3] + ' ';
-    Jugador2A[7][10] = ' ' + AreaJuegoP2[4][4] + ' ';
-    Jugador2A[7][12] = ' ' + AreaJuegoP2[4][5] + ' ';
-    Jugador2A[7][14] = ' ' + AreaJuegoP2[4][6] + ' ';
-    Jugador2A[7][16] = ' ' + AreaJuegoP2[4][7] + ' ';
-    Jugador2A[7][18] = ' ' + AreaJuegoP2[4][8] + ' ';
-    Jugador2A[7][20] = ' ' + AreaJuegoP2[4][9] + ' ';
-
-    //Fila 5
-    Jugador2A[8][2] = ' ' + AreaJuegoP2[5][0] + ' ';
-    Jugador2A[8][4] = ' ' + AreaJuegoP2[5][1] + ' ';
-    Jugador2A[8][6] = ' ' + AreaJuegoP2[5][2] + ' ';
-    Jugador2A[8][8] = ' ' + AreaJuegoP2[5][3] + ' ';
-    Jugador2A[8][10] = ' ' + AreaJuegoP2[5][4] + ' ';
-    Jugador2A[8][12] = ' ' + AreaJuegoP2[5][5] + ' ';
-    Jugador2A[8][14] = ' ' + AreaJuegoP2[5][6] + ' ';
-    Jugador2A[8][16] = ' ' + AreaJuegoP2[5][7] + ' ';
-    Jugador2A[8][18] = ' ' + AreaJuegoP2[5][8] + ' ';
-    Jugador2A[8][20] = ' ' + AreaJuegoP2[5][9] + ' ';
-
-    //Fila 6
-    Jugador2A[9][2] = ' ' + AreaJuegoP2[6][0] + ' ';
-    Jugador2A[9][4] = ' ' + AreaJuegoP2[6][1] + ' ';
-    Jugador2A[9][6] = ' ' + AreaJuegoP2[6][2] + ' ';
-    Jugador2A[9][8] = ' ' + AreaJuegoP2[6][3] + ' ';
-    Jugador2A[9][10] = ' ' + AreaJuegoP2[6][4] + ' ';
-    Jugador2A[9][12] = ' ' + AreaJuegoP2[6][5] + ' ';
-    Jugador2A[9][14] = ' ' + AreaJuegoP2[6][6] + ' ';
-    Jugador2A[9][16] = ' ' + AreaJuegoP2[6][7] + ' ';
-    Jugador2A[9][18] = ' ' + AreaJuegoP2[6][8] + ' ';
-    Jugador2A[9][20] = ' ' + AreaJuegoP2[6][9] + ' ';
-
-    //Fila 7
-    Jugador2A[10][2] = ' ' + AreaJuegoP2[7][0] + ' ';
-    Jugador2A[10][4] = ' ' + AreaJuegoP2[7][1] + ' ';
-    Jugador2A[10][6] = ' ' + AreaJuegoP2[7][2] + ' ';
-    Jugador2A[10][8] = ' ' + AreaJuegoP2[7][3] + ' ';
-    Jugador2A[10][10] = ' ' + AreaJuegoP2[7][4] + ' ';
-    Jugador2A[10][12] = ' ' + AreaJuegoP2[7][5] + ' ';
-    Jugador2A[10][14] = ' ' + AreaJuegoP2[7][6] + ' ';
-    Jugador2A[10][16] = ' ' + AreaJuegoP2[7][7] + ' ';
-    Jugador2A[10][18] = ' ' + AreaJuegoP2[7][8] + ' ';
-    Jugador2A[10][20] = ' ' + AreaJuegoP2[7][9] + ' ';
-
-    //Fila 8
-    Jugador2A[11][2] = ' ' + AreaJuegoP2[8][0] + ' ';
-    Jugador2A[11][4] = ' ' + AreaJuegoP2[8][1] + ' ';
-    Jugador2A[11][6] = ' ' + AreaJuegoP2[8][2] + ' ';
-    Jugador2A[11][8] = ' ' + AreaJuegoP2[8][3] + ' ';
-    Jugador2A[11][10] = ' ' + AreaJuegoP2[8][4] + ' ';
-    Jugador2A[11][12] = ' ' + AreaJuegoP2[8][5] + ' ';
-    Jugador2A[11][14] = ' ' + AreaJuegoP2[8][6] + ' ';
-    Jugador2A[11][16] = ' ' + AreaJuegoP2[8][7] + ' ';
-    Jugador2A[11][18] = ' ' + AreaJuegoP2[8][8] + ' ';
-    Jugador2A[11][20] = ' ' + AreaJuegoP2[8][9] + ' ';
-
-    //Fila 9
-    Jugador2A[12][2] = ' ' + AreaJuegoP2[9][0] + ' ';
-    Jugador2A[12][4] = ' ' + AreaJuegoP2[9][1] + ' ';
-    Jugador2A[12][6] = ' ' + AreaJuegoP2[9][2] + ' ';
-    Jugador2A[12][8] = ' ' + AreaJuegoP2[9][3] + ' ';
-    Jugador2A[12][10] = ' ' + AreaJuegoP2[9][4] + ' ';
-    Jugador2A[12][12] = ' ' + AreaJuegoP2[9][5] + ' ';
-    Jugador2A[12][14] = ' ' + AreaJuegoP2[9][6] + ' ';
-    Jugador2A[12][16] = ' ' + AreaJuegoP2[9][7] + ' ';
-    Jugador2A[12][18] = ' ' + AreaJuegoP2[9][8] + ' ';
-    Jugador2A[12][20] = ' ' + AreaJuegoP2[9][9] + ' ';
-    
+    for (int rowJ = 0; rowJ <= 9; rowJ++)
+    {
+        for (int colJ = 0; colJ <= 9; colJ++)
+        {
+            Jugador1A[rowJ+3][2*colJ + 2] = ' ' + AreaJuegoP1[rowJ][colJ] + ' ';
+        }
+        
+        
+    }
     
     
     for (int row = 0; row < 14; row++)
     { 
         
         cout << endl;
-        if(player == P1){
+        if(player <= 8){
             gotoxy(43, 24 + row);
             for (int col = 0; col < 23; col++)
         {
@@ -696,9 +465,6 @@ void buildships(int row, int col, int barco, int direccion, string player){
 }
 
 
-void gotoxy(int x, int y){
-    cout << "\033[" << y << ";" << x << "f";
-}
 
 void actualizarInventarioBarcos(int barco, string player){
     if (barco==1)
