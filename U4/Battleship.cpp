@@ -67,6 +67,7 @@ void putships(int, int, int);
 int selectplay(int, int);
 /*Playertype, shipsize, row,col*/
 bool invalidplay(int, int, int, int, string);
+bool novalidshoot(int, int, string);
 void shootcannons(int, int, string);
 bool NoWinner(string);
 void dibujo();
@@ -449,6 +450,7 @@ void pruebalogica()
 {
     int tipodebarco;
     bool invalidmove;
+    bool invalidshoot;
     bool Nohayganadoraun;
     int direccion;
     string currentturn;
@@ -519,6 +521,7 @@ void pruebalogica()
     cin >> columna;
     col = LettertoNumber(columna);
     shootcannons(row, col, currentturn);
+
     imprimirtablerodeprueba();
     Nohayganadoraun = NoWinner(currentturn);
     player++;
@@ -779,6 +782,10 @@ void shootcannons(int row, int col, string player){
     }
 }
 
+bool Novalidshoot(int row, int col, string turn){
+    
+}
+
 bool NoWinner(string player){
     if (player == P1)
     {
@@ -843,6 +850,7 @@ else{
     return -1;
 }
 }
+
 
 /*int menuBarcos(){
     1 Submarine [1] (3)
