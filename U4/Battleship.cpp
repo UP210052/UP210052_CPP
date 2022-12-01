@@ -67,7 +67,7 @@ int LettertoNumber(char);
 int main()
 {
     //pruebafrontend();
-    //pruebalogica();
+    pruebalogica();
     return 0;
 }
 
@@ -337,10 +337,17 @@ void pruebalogica()
         cout << "Column";
         cin >> columna;
         col = LettertoNumber(columna);
-        shootcannons(row, col, currentturn);
-        imprimirtablerodeprueba();
-        Nohayganadoraun = NoWinner(currentturn);
-        player++;
+        invalidshoot=novalidshoot(row, col, currentturn);
+        if (invalidshoot==false)
+        {
+            shootcannons(row, col, currentturn);
+            imprimirtablerodeprueba();
+            Nohayganadoraun = NoWinner(currentturn);
+            player++;
+        }else
+        {
+            cout << "Invalid shoot\n";
+        }
     } while (Nohayganadoraun == true);
     cout << "El ganador es " << currentturn << "\nFELICIDADES";
 }
@@ -377,7 +384,7 @@ bool invalidplay(int row, int col, int barco, int direccion, string player)
         int row1 = row;
         if (row < (barco - 1))
         {
-            return true;
+            return true;imprimirtablerodeprueba();
         }
         while (contador < barco)
         {
@@ -640,7 +647,7 @@ void shootcannons(int row, int col, string player)
     }
 }
 
-bool Novalidshoot(int row, int col, string turn)
+bool novalidshoot(int row, int col, string turn)
 {
     if (turn==P1){
         if (AreaJuegoP2[row][col]=="X")
