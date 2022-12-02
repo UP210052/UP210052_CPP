@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unistd.h>
 //#include <vistas.h>
 
 using namespace std;
@@ -50,12 +51,12 @@ char columna;
 void gotoxy(int, int);
 void mostrarmensajeinicio();
 void dibujo();
-void tableronaval();
+void tableronaval(string);
 void imprimirtablerodeprueba();
 void pruebalogica();
 void pruebafrontend();
 void menuBarcos(string);
-
+void ponerbarcos();
 bool invalidplay(int, int, int, int, string);
 void buildships(int, int, int, int, string);
 void actualizarInventarioBarcos(int, string);
@@ -66,8 +67,8 @@ int LettertoNumber(char);
 
 int main()
 {
-    //pruebafrontend();
-    pruebalogica();
+    pruebafrontend();
+    //pruebalogica();
     return 0;
 }
 
@@ -126,7 +127,7 @@ void dibujo()
     cout << "\n";
 }
 
-void tableronaval()
+void tableronaval(string player)
 {
     int x = 0, y = 0;
 
@@ -137,12 +138,20 @@ void tableronaval()
             Jugador1A[rowJ + 3][2 * colJ + 2] = ' ' + AreaJuegoP1[rowJ][colJ] + ' ';
         }
     }
+    for (int rowJ = 0; rowJ <= 9; rowJ++)
+    {
+        for (int colJ = 0; colJ <= 9; colJ++)
+        {
+            Jugador2A[rowJ + 3][2 * colJ + 2] = ' ' + AreaJuegoP2[rowJ][colJ] + ' ';
+        }
+    }
+
 
     for (int row = 0; row < 14; row++)
     {
 
         cout << endl;
-        if (player < 3)
+        if (player == P1)
         {
             gotoxy(43, 24 + row);
             for (int col = 0; col < 23; col++)
@@ -152,13 +161,13 @@ void tableronaval()
         }
         else
         {
+            gotoxy(43, 24 + row);
             for (int col = 0; col < 23; col++)
             {
                 cout << Jugador2A[row][col];
             }
         }
 
-        cout << "\n";
     }
 }
 
@@ -181,7 +190,7 @@ void imprimirtablerodeprueba()
 
 void menuBarcos(string turnplayer){
 
-    gotoxy(10, 19);
+    gotoxy(5, 19);
     cout << "Submarine [1 Posicion] (";
     if(turnplayer == P1){
         cout << TiposBarcosP1[0];
@@ -189,9 +198,8 @@ void menuBarcos(string turnplayer){
         cout << TiposBarcosP2[0];
     }
     cout << " Submariene)" << endl;
-    gotoxy(10, 20);
 
-
+    gotoxy(5, 20);
     cout << "Destroyer [2 Posiciones] (";
     if(turnplayer == P1){
         cout << TiposBarcosP1[1];
@@ -199,9 +207,8 @@ void menuBarcos(string turnplayer){
         cout << TiposBarcosP2[1];
     }
     cout << " Destroyers)" << endl;
-    gotoxy(10, 21);
 
-
+    gotoxy(5, 21);
     cout << "Cruiser  [3 Posiciones] (";
     if(turnplayer == P1){
         cout << TiposBarcosP1[2];
@@ -209,18 +216,18 @@ void menuBarcos(string turnplayer){
         cout << TiposBarcosP2[2];
     }
     cout << " Crusier)" << endl;
-    gotoxy(10, 22);
 
 
+    gotoxy(5, 22);
     cout << "Battleship [4 Posiciones] (";
     if(turnplayer == P1){
         cout << TiposBarcosP1[3];
     }else if(turnplayer == P2){
         cout << TiposBarcosP2[3];
     }
-    cout << " Battleship)" << endl;bool NoWinner(string);
+    cout << " Battleship)" << endl;
 
-
+    gotoxy(5, 23);
     cout << "Carrier [5 Posiciones] (";
     if(turnplayer == P1){
         cout << TiposBarcosP1[4];
@@ -228,13 +235,12 @@ void menuBarcos(string turnplayer){
         cout << TiposBarcosP2[4];
     }
     cout << " Carrier)" << endl;
-
-     cout << "\n";
+    cout << "\n";
 }
 
 void pruebafrontend(){
     int entrada;
-    string currentturn;
+    string currentturn=P1;
 
     mostrarmensajeinicio();
     gotoxy(66, 27);
@@ -246,8 +252,8 @@ void pruebafrontend(){
         dibujo();
         gotoxy(58, 17);
         cout << "BIENVENIDO A BATALLA NAVAL";
-        menuBarcos(currentturn);
-        tableronaval();
+        ponerbarcos();
+        
     }
     else if (entrada == 2)
     {
@@ -287,12 +293,6 @@ void pruebalogica()
         cout << "Shipsize:";
         cin >> tipodebarco;
 
-        cout << "\n";
-        cout << "Arriba - 1" << endl;
-        cout << "Abajo - 2" << endl;
-        cout << "Izquierda - 3" << endl;
-        cout << "Derecha - 4" << endl;
-        cout << "Direccion: ";
         cin >> direccion;
 
         cout << "\n";
@@ -352,6 +352,64 @@ void pruebalogica()
     cout << "El ganador es " << currentturn << "\nFELICIDADES";
 }
 
+void ponerbarcos(){
+    int tipodebarco;
+    bool invalidmove;
+    int direccion;
+    string currentturn;
+    bool valida;
+
+    do
+    {
+        if (player <= 8)
+        {
+            currentturn = P1;
+        }
+        else
+        {
+            currentturn = P2;
+        }
+        system("clear");
+        dibujo();
+        menuBarcos(currentturn);
+        gotoxy(0,25);
+        cout << "Its " << currentturn << " turn, select your move\n"; 
+        tableronaval(currentturn);
+        gotoxy(0,26);
+        cout << "Shipsize:";
+        cin >> tipodebarco;
+        cout << "\n";
+        gotoxy(0, 28);
+        cout << "Arriba - 1" << endl;
+        cout << "Abajo - 2" << endl;
+        cout << "Izquierda - 3" << endl;
+        cout << "Derecha - 4" << endl;
+        cout << "Direccion: ";
+        cin >> direccion;
+        cout << "\n";
+        cout << "Row(FILA):";
+        cin >> row;
+        cout << "Col(COLUMNA):";
+        cin >> columna;
+        col = LettertoNumber(columna);
+        invalidmove = invalidplay(row, col, tipodebarco, direccion, currentturn);
+        if (invalidmove == true)
+        {
+            cout << "Invalidmove" << endl;
+            cout << "\n";
+            sleep(3);
+            system("clear");
+        }
+        else if (invalidmove == false)
+        {
+            player++;
+            buildships(row, col, tipodebarco, direccion, currentturn);
+            actualizarInventarioBarcos(tipodebarco, currentturn);
+            system("clear");
+        }
+    } while (player <= 16);     
+}
+
 bool invalidplay(int row, int col, int barco, int direccion, string player)
 {
     if (player == P1)
@@ -384,7 +442,8 @@ bool invalidplay(int row, int col, int barco, int direccion, string player)
         int row1 = row;
         if (row < (barco - 1))
         {
-            return true;imprimirtablerodeprueba();
+            return true;
+            imprimirtablerodeprueba();
         }
         while (contador < barco)
         {
