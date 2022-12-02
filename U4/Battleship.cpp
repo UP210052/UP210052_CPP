@@ -109,7 +109,7 @@ void dibujo(){
     cout << "********************************************************************\n";
     cout << "\n";
 }
-
+ 
 int main()
 {
     string turnplayer=P1;
@@ -137,11 +137,11 @@ int main()
 
     //menuBarcos(turnplayer);
 
-    tableronaval();
+    //tableronaval();
     //makeboard();
     //preguntartipodebarco();
     //preguntarcordenada();Cruiser--;s por cada jugador
-    //pruebalogica();
+    pruebalogica();
     //tableronaval();
 
     }else if(entrada == 2){
