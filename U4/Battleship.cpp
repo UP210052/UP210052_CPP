@@ -63,6 +63,7 @@ void shootcannons(int, int, string);
 bool novalidshoot(int, int, string);
 bool NoWinner(string);
 int LettertoNumber(char);
+void Printshipinventory(string);
 
 int main()
 {
@@ -218,7 +219,7 @@ void menuBarcos(string turnplayer){
     }else if(turnplayer == P2){
         cout << TiposBarcosP2[3];
     }
-    cout << " Battleship)" << endl;bool NoWinner(string);
+    cout << " Battleship)" << endl;
 
 
     cout << "Carrier [5 Posiciones] (";
@@ -275,7 +276,7 @@ void pruebalogica()
 
     do
     {
-        if (player <= 2)
+        if (player <= 8)
         {
             currentturn = P1;
         }
@@ -286,7 +287,7 @@ void pruebalogica()
         cout << "Its " << currentturn << " turn, select your move\n";
         cout << "Shipsize:";
         cin >> tipodebarco;
-
+        Printshipinventory(currentturn);
         cout << "\n";
         cout << "Arriba - 1" << endl;
         cout << "Abajo - 2" << endl;
@@ -297,9 +298,9 @@ void pruebalogica()
 
         cout << "\n";
 
-        cout << "Row(FILA):";
+        cout << "Row(NUMBER):";
         cin >> row;
-        cout << "Col(COLUMNA):";
+        cout << "Col(LETTER):";
         cin >> columna;
         col = LettertoNumber(columna);
         invalidmove = invalidplay(row, col, tipodebarco, direccion, currentturn);
@@ -318,7 +319,7 @@ void pruebalogica()
             cout << "\n";
             tableronaval();*/
         }
-    } while (player <= 4);
+    } while (player <= 16);
 
     player = 1;
     do
@@ -332,9 +333,9 @@ void pruebalogica()
             currentturn = P2;
         }
         cout << currentturn << endl;
-        cout << "Row";
+        cout << "Row(NUMBER)\n";
         cin >> row;
-        cout << "Column";
+        cout << "Column(LETTER)\n";
         cin >> columna;
         col = LettertoNumber(columna);
         invalidshoot=novalidshoot(row, col, currentturn);
@@ -347,6 +348,7 @@ void pruebalogica()
         }else
         {
             cout << "Invalid shoot\n";
+            Nohayganadoraun = NoWinner(currentturn);
         }
     } while (Nohayganadoraun == true);
     cout << "El ganador es " << currentturn << "\nFELICIDADES";
@@ -649,6 +651,10 @@ void shootcannons(int row, int col, string player)
 
 bool novalidshoot(int row, int col, string turn)
 {
+    if (row >= 10 || col >= 10 || col < 0 || row < 0)
+    {
+        return true;
+    }
     if (turn==P1){
         if (AreaJuegoP2[row][col]=="X")
         {
@@ -740,4 +746,24 @@ int LettertoNumber(char Letter)
     {
         return -1;
     }
+}
+
+void Printshipinventory(string player){
+    cout << "You have:\n";
+    if (player==P1)
+    {
+    for (int i = 0; i < 5; i++)
+    {
+        cout << TipoBarco[i] << " [" << TiposBarcosP1[i] << "]" << "\n";
+    }
+    }
+    if (player==P2)
+    {
+    for (int i = 0; i < 5; i++)
+    {
+        cout << TipoBarco[i] << " [" << TiposBarcosP2[i] << "]" << "\n";
+    }
+    }
+
+    cout << "Left";
 }
