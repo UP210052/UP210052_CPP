@@ -284,10 +284,10 @@ void pruebalogica()
         {
             currentturn = P2;
         }
+        Printshipinventory(currentturn);
         cout << "Its " << currentturn << " turn, select your move\n";
         cout << "Shipsize:";
         cin >> tipodebarco;
-        Printshipinventory(currentturn);
         cout << "\n";
         cout << "Arriba - 1" << endl;
         cout << "Abajo - 2" << endl;
