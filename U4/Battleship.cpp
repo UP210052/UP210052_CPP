@@ -454,7 +454,6 @@ void ponerbarcos(){
         dibujo();
 
         menuBarcos(currentturn);
-
         gotoxy(0,26);
         cout << "Its " << currentturn << " turn, select your move\n"; 
         tableronaval(currentturn, ADDBOATS);
