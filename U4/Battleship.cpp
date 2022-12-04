@@ -4,12 +4,12 @@
 
 using namespace std;
 
-string AreaJuegoP1[10][10] = {{"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}};
-string AreaJuegoP2[10][10] = {{"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}};
-int TiposBarcosP1[5] = {3, 2, 1, 1, 1};
-int TiposBarcosP2[5] = {3, 2, 1, 1, 1};
-string TipoBarco[5] = {"Submarine", "Destroyer", "Cruiser", "Battleship", "Carrier"};
-string Jugador1A[14][23] = {
+string AreaGameP1[10][10] = {{"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}};
+string AreaGameP2[10][10] = {{"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}, {"-", "-", "-", "-", "-", "-", "-", "-", "-", "-"}};
+int TypesBoatsP1[5] = {3, 2, 1, 1, 1};
+int TypesBoatsP2[5] = {3, 2, 1, 1, 1};
+string TypeBoat[5] = {"Submarine", "Destroyer", "Cruiser", "Battleship", "Carrier"};
+string Player1A[14][23] = {
     {" - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - "},
     {"|BN", " | ", " A ", " | ", " B ", " | ", " C ", " | ", " D ", " | ", " E ", " | ", " F ", " | ", " G ", " | ", " H ", " | ", " I ", " | ", " J ", " | "},
     {" _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ "},
@@ -26,7 +26,7 @@ string Jugador1A[14][23] = {
     {" - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - "},
 };
 
-string Jugador2A[14][23] = {
+string Player2A[14][23] = {
     {" - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - ", " - "},
     {"|BN", " | ", " A ", " | ", " B ", " | ", " C ", " | ", " D ", " | ", " E ", " | ", " F ", " | ", " G ", " | ", " H ", " | ", " I ", " | ", " J ", " | "},
     {" _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ ", " _ "},
@@ -48,20 +48,20 @@ const string ADDBOATS = "Board whit ships";
 const string NOBOATS = "Board without ships";
 int player = 1;
 int col, row;
-char columna;
+char column;
 
 void gotoxy(int, int);
-void mostrarmensajeinicio();
-void dibujo();
-void tableronaval(string, string);
-void menuBarcos(string);
-void dibujo2();
-void mensajeganador(string);
+void showMessageStart();
+void showDrawing();
+void makeBoardNaval(string, string);
+void printMenuBoats(string);
+void showDrawing2();
+void showMessageWinner(string);
 
-void ponerbarcos();
-void ponerbarcosPC();
-void dispararbarcos();
-void dispararbarcosPC();
+void putBoats();
+void putBoatsPC();
+void shootBoats();
+void shootBoatsPC();
 bool invalidplay(int, int, int, int, string);
 void buildships(int, int, int, int, string);
 void actualizarInventarioBarcos(int, string);
@@ -69,34 +69,33 @@ void shootcannons(int, int, string);
 bool novalidshoot(int, int, string);
 bool NoWinner(string);
 int LettertoNumber(char);
-void Printshipinventory(string);
 int AIShipPlacement(string);
 
 int main()
 {
     int gamemode;
 
-    mostrarmensajeinicio();
+    showMessageStart();
     gotoxy(66, 27);
     cin >> gamemode;
 
     if (gamemode == 1)
     {
         system("clear");
-        dibujo();
+        showDrawing();
         gotoxy(58, 17);
         cout << "WELCOME TO BATTLESHIP";
-        ponerbarcosPC();
-        dispararbarcosPC();
+        putBoatsPC();
+        shootBoatsPC();
     }
     else if (gamemode == 2)
     {
         system("clear");
-        dibujo();
+        showDrawing();
         gotoxy(58, 17);
         cout << "WELCOME TO BATTLESHIP";
-        ponerbarcos();
-        dispararbarcos();
+        putBoats();
+        shootBoats();
     }
     else if (gamemode == 3)
     {
@@ -118,9 +117,9 @@ void gotoxy(int x, int y)
     cout << "\033[" << y << ";" << x << "f";
 }
 
-void mostrarmensajeinicio()
+void showMessageStart()
 {
-    dibujo();
+    showDrawing();
     gotoxy(58, 20);
     cout << "WELCOME TO BATTLESHIP";
     gotoxy(66, 24);
@@ -133,7 +132,7 @@ void mostrarmensajeinicio()
     cout << "3. Exit" << endl;
 }
 
-void dibujo2()
+void showDrawing2()
 {
     system("clear");
     gotoxy(80, 2);
@@ -167,7 +166,7 @@ void dibujo2()
     cout << "\n";
 }
 
-void dibujo()
+void showDrawing()
 {
     system("clear");
     gotoxy(0, 2);
@@ -201,7 +200,7 @@ void dibujo()
     cout << "\n";
 }
 
-void tableronaval(string player, string mode)
+void makeBoardNaval(string player, string mode)
 {
     int x = 0, y = 0;
 
@@ -209,14 +208,14 @@ void tableronaval(string player, string mode)
     {
         for (int colJ = 0; colJ <= 9; colJ++)
         {
-            Jugador1A[rowJ + 3][2 * colJ + 2] = ' ' + AreaJuegoP1[rowJ][colJ] + ' ';
+            Player1A[rowJ + 3][2 * colJ + 2] = ' ' + AreaGameP1[rowJ][colJ] + ' ';
         }
     }
     for (int rowJ = 0; rowJ <= 9; rowJ++)
     {
         for (int colJ = 0; colJ <= 9; colJ++)
         {
-            Jugador2A[rowJ + 3][2 * colJ + 2] = ' ' + AreaJuegoP2[rowJ][colJ] + ' ';
+            Player2A[rowJ + 3][2 * colJ + 2] = ' ' + AreaGameP2[rowJ][colJ] + ' ';
         }
     }
 
@@ -238,17 +237,17 @@ void tableronaval(string player, string mode)
             {
                 if (mode == ADDBOATS)
                 {
-                    cout << Jugador1A[row][col];
+                    cout << Player1A[row][col];
                 }
                 else if (mode == NOBOATS)
                 {
-                    if (Jugador1A[row][col] == " O ")
+                    if (Player1A[row][col] == " O ")
                     {
                         cout<< " - ";
                     }
                     else
                     {
-                        cout << Jugador1A[row][col];
+                        cout << Player1A[row][col];
                     }
                 }
             }
@@ -267,18 +266,18 @@ void tableronaval(string player, string mode)
             {
                 if (mode == ADDBOATS)
                 {
-                    cout << Jugador2A[row][col];
+                    cout << Player2A[row][col];
                 }
                 else if (mode == NOBOATS)
                 {
 
-                    if (Jugador2A[row][col] == " O ")
+                    if (Player2A[row][col] == " O ")
                     {
                         cout << " - ";
                     }
                     else
                     {
-                        cout << Jugador2A[row][col];
+                        cout << Player2A[row][col];
                     }
                 }
             }
@@ -286,96 +285,96 @@ void tableronaval(string player, string mode)
     }
 }
 
-void menuBarcos(string turnplayer)
+void printMenuBoats(string turnplayer)
 {
 
     gotoxy(5, 19);
-    cout << "Submarine [1 Posicion] (";
+    cout << "Submarine [1 Position] (";
     if (turnplayer == P1)
     {
-        cout << TiposBarcosP1[0];
+        cout << TypesBoatsP1[0];
     }
     else if (turnplayer == P2)
     {
-        cout << TiposBarcosP2[0];
+        cout << TypesBoatsP2[0];
     }
     cout << " Submariene)" << endl;
 
     gotoxy(5, 20);
-    cout << "Destroyer [2 Posiciones] (";
+    cout << "Destroyer [2 Positions] (";
     if (turnplayer == P1)
     {
-        cout << TiposBarcosP1[1];
+        cout << TypesBoatsP1[1];
     }
     else if (turnplayer == P2)
     {
-        cout << TiposBarcosP2[1];
+        cout << TypesBoatsP2[1];
     }
     cout << " Destroyers)" << endl;
 
     gotoxy(5, 21);
-    cout << "Cruiser  [3 Posiciones] (";
+    cout << "Cruiser  [3 Positions] (";
     if (turnplayer == P1)
     {
-        cout << TiposBarcosP1[2];
+        cout << TypesBoatsP1[2];
     }
     else if (turnplayer == P2)
     {
-        cout << TiposBarcosP2[2];
+        cout << TypesBoatsP2[2];
     }
     cout << " Crusier)" << endl;
 
     gotoxy(5, 22);
-    cout << "Battleship [4 Posiciones] (";
+    cout << "Battleship [4 Positions] (";
     if (turnplayer == P1)
     {
-        cout << TiposBarcosP1[3];
+        cout << TypesBoatsP1[3];
     }
     else if (turnplayer == P2)
     {
-        cout << TiposBarcosP2[3];
+        cout << TypesBoatsP2[3];
     }
     cout << " Battleship)" << endl;
 
     gotoxy(5, 23);
-    cout << "Carrier [5 Posiciones] (";
+    cout << "Carrier [5 Positions] (";
     if (turnplayer == P1)
     {
-        cout << TiposBarcosP1[4];
+        cout << TypesBoatsP1[4];
     }
     else if (turnplayer == P2)
     {
-        cout << TiposBarcosP2[4];
+        cout << TypesBoatsP2[4];
     }
     cout << " Carrier)" << endl;
     cout << "\n";
 }
 
-void mensajeganador(string player)
+void showMessageWinner(string player)
 {
     system("clear");
-    dibujo2();
+    showDrawing2();
     gotoxy(30, 3);
     cout << "Player 1";
     cout << "\n";
-    tableronaval(P1, NOBOATS);
+    makeBoardNaval(P1, NOBOATS);
     cout << "\n";
     cout << "\n";
     gotoxy(30, 21);
     cout << "Player 2";
-    tableronaval(P2, NOBOATS);
+    makeBoardNaval(P2, NOBOATS);
     cout << "\n";
-    cout << "El Ganador es: " << player << endl;
+    cout << "The Winner is: " << player << endl;
 }
 
 // Backend
-void ponerbarcos()
+void putBoats()
 {
-    int tipodebarco;
+    int typeofBoat;
     bool invalidmove;
-    int direccion;
+    int address;
     string currentturn;
-    bool valida;
+    bool valid;
 
     do
     {
@@ -388,29 +387,29 @@ void ponerbarcos()
             currentturn = P2;
         }
         system("clear");
-        dibujo();
-        menuBarcos(currentturn);
+        showDrawing();
+        printMenuBoats(currentturn);
         gotoxy(0, 26);
         cout << "Its " << currentturn << " turn, select your move\n";
-        tableronaval(currentturn, ADDBOATS);
+        makeBoardNaval(currentturn, ADDBOATS);
         gotoxy(0, 28);
         cout << "Shipsize:";
-        cin >> tipodebarco;
+        cin >> typeofBoat;
         cout << "\n";
         gotoxy(0, 29);
-        cout << "Arriba - 1" << endl;
-        cout << "Abajo - 2" << endl;
-        cout << "Izquierda - 3" << endl;
-        cout << "Derecha - 4" << endl;
-        cout << "Direccion: ";
-        cin >> direccion;
+        cout << "Top - 1" << endl;
+        cout << "Down - 2" << endl;
+        cout << "Left - 3" << endl;
+        cout << "Right - 4" << endl;
+        cout << "Direction: ";
+        cin >> address;
         cout << "\n";
         cout << "Row(FILA):";
         cin >> row;
         cout << "Col(COLUMNA):";
-        cin >> columna;
-        col = LettertoNumber(columna);
-        invalidmove = invalidplay(row, col, tipodebarco, direccion, currentturn);
+        cin >> column;
+        col = LettertoNumber(column);
+        invalidmove = invalidplay(row, col, typeofBoat, address, currentturn);
         if (invalidmove == true)
         {
             cout << "Invalidmove" << endl;
@@ -421,20 +420,20 @@ void ponerbarcos()
         else if (invalidmove == false)
         {
             player++;
-            buildships(row, col, tipodebarco, direccion, currentturn);
-            actualizarInventarioBarcos(tipodebarco, currentturn);
+            buildships(row, col, typeofBoat, address, currentturn);
+            actualizarInventarioBarcos(typeofBoat, currentturn);
             system("clear");
         }
     } while (player <= 16);
 }
 
-void ponerbarcosPC()
+void putBoatsPC()
 {
-    int tipodebarco;
+    int typeofBoat;
     bool invalidmove;
-    int direccion;
+    int address;
     string currentturn;
-    bool valida;
+    bool valid;
     do
     {
         if (player <= 8)
@@ -448,29 +447,29 @@ void ponerbarcosPC()
         if (currentturn == P1)
         {
             system("clear");
-            dibujo();
-            menuBarcos(currentturn);
+            showDrawing();
+            printMenuBoats(currentturn);
             gotoxy(0, 26);
             cout << "Its " << currentturn << " turn, select your move\n";
-            tableronaval(currentturn, ADDBOATS);
+            makeBoardNaval(currentturn, ADDBOATS);
             gotoxy(0, 28);
             cout << "Shipsize:";
-            cin >> tipodebarco;
+            cin >> typeofBoat;
             cout << "\n";
             gotoxy(0, 29);
-            cout << "Arriba - 1" << endl;
-            cout << "Abajo - 2" << endl;
-            cout << "Izquierda - 3" << endl;
-            cout << "Derecha - 4" << endl;
-            cout << "Direccion: ";
-            cin >> direccion;
+            cout << "Top - 1" << endl;
+            cout << "Down - 2" << endl;
+            cout << "Left - 3" << endl;
+            cout << "Right - 4" << endl;
+            cout << "Direction: ";
+            cin >> address;
             cout << "\n";
             cout << "Row(FILA):";
             cin >> row;
             cout << "Col(COLUMNA):";
-            cin >> columna;
-            col = LettertoNumber(columna);
-            invalidmove = invalidplay(row, col, tipodebarco, direccion, currentturn);
+            cin >> column;
+            col = LettertoNumber(column);
+            invalidmove = invalidplay(row, col, typeofBoat, address, currentturn);
             if (invalidmove == true)
             {
                 cout << "Invalidmove" << endl;
@@ -481,32 +480,32 @@ void ponerbarcosPC()
             else if (invalidmove == false)
             {
                 player++;
-                buildships(row, col, tipodebarco, direccion, currentturn);
-                actualizarInventarioBarcos(tipodebarco, currentturn);
+                buildships(row, col, typeofBoat, address, currentturn);
+                actualizarInventarioBarcos(typeofBoat, currentturn);
                 system("clear");
             }
         }
         else if (currentturn == P2) // AI Actions
         {
-            tipodebarco = AIShipPlacement("Shipsize");
+            typeofBoat = AIShipPlacement("Shipsize");
             row = AIShipPlacement("Row");
             col = AIShipPlacement("Col");
-            direccion = AIShipPlacement("Direction");
-            invalidmove = invalidplay(row, col, tipodebarco, direccion, currentturn);
+            address = AIShipPlacement("Direction");
+            invalidmove = invalidplay(row, col, typeofBoat, address, currentturn);
             if (invalidmove == true)
             {
             }
             else if (invalidmove == false)
             {
                 player++;
-                buildships(row, col, tipodebarco, direccion, currentturn);
-                actualizarInventarioBarcos(tipodebarco, currentturn);
+                buildships(row, col, typeofBoat, address, currentturn);
+                actualizarInventarioBarcos(typeofBoat, currentturn);
                 system("clear");
-                dibujo();
-                menuBarcos(currentturn);
+                showDrawing();
+                printMenuBoats(currentturn);
                 gotoxy(0, 26);
                 cout << "Its " << currentturn << " turn, select your move\n";
-                tableronaval(currentturn, ADDBOATS);
+                makeBoardNaval(currentturn, ADDBOATS);
                 gotoxy(0, 28);
             }
         }
@@ -514,11 +513,11 @@ void ponerbarcosPC()
     } while (player <= 16);
 }
 
-void dispararbarcos()
+void shootBoats()
 {
     player = 1;
     bool invalidshoot;
-    bool Nohayganadoraun = false;
+    bool noWinnerYet = false;
     string currentturn;
     do
     {
@@ -531,16 +530,16 @@ void dispararbarcos()
             currentturn = P2;
         }
         system("clear");
-        dibujo2();
+        showDrawing2();
         gotoxy(30, 3);
         cout << "Player 1";
         cout << "\n";
-        tableronaval(P1, NOBOATS);
+        makeBoardNaval(P1, NOBOATS);
         cout << "\n";
         cout << "\n";
         gotoxy(30, 21);
         cout << "Player 2";
-        tableronaval(P2, NOBOATS);
+        makeBoardNaval(P2, NOBOATS);
         cout << "\n";
 
         gotoxy(90, 19);
@@ -550,31 +549,31 @@ void dispararbarcos()
         cin >> row;
         gotoxy(90, 22);
         cout << "Column(LETTER): ";
-        cin >> columna;
-        col = LettertoNumber(columna);
+        cin >> column;
+        col = LettertoNumber(column);
         invalidshoot = novalidshoot(row, col, currentturn);
 
         if (invalidshoot == false)
         {
             shootcannons(row, col, currentturn);
-            Nohayganadoraun = NoWinner(currentturn);
+            noWinnerYet = NoWinner(currentturn);
             player++;
         }
         else
         {
             gotoxy(90, 24);
             cout << "Invalid shoot\n";
-            Nohayganadoraun = NoWinner(currentturn);
+            noWinnerYet = NoWinner(currentturn);
             sleep(3);
         }
-    } while (Nohayganadoraun == true);
-    mensajeganador(currentturn);
+    } while (noWinnerYet == true);
+    showMessageWinner(currentturn);
 }
 
-void dispararbarcosPC()
+void shootBoatsPC()
 {
     bool invalidshoot;
-    bool Nohayganadoraun = false;
+    bool noWinnerYet = false;
     string currentturn;
     player = 1;
         do
@@ -588,16 +587,16 @@ void dispararbarcosPC()
                 currentturn = P2;
             }
             system("clear");
-            dibujo2();
+            showDrawing2();
             gotoxy(30, 3);
             cout << "Player 1";
             cout << "\n";
-            tableronaval(P1, NOBOATS);
+            makeBoardNaval(P1, NOBOATS);
             cout << "\n";
             cout << "\n";
             gotoxy(30, 21);
             cout << "Player 2";
-            tableronaval(P2, NOBOATS);
+            makeBoardNaval(P2, NOBOATS);
             cout << "\n";
             if (currentturn == P1)
             {
@@ -608,8 +607,8 @@ void dispararbarcosPC()
                 cin >> row;
                 gotoxy(90, 22);
                 cout << "Column(LETTER): ";
-                cin >> columna;
-                col = LettertoNumber(columna);
+                cin >> column;
+                col = LettertoNumber(column);
             }
             else if (currentturn == P2) // AI Actions
             {
@@ -620,32 +619,32 @@ void dispararbarcosPC()
             if (invalidshoot == false)
             {
                 shootcannons(row, col, currentturn);
-                Nohayganadoraun = NoWinner(currentturn);
+                noWinnerYet = NoWinner(currentturn);
                 player++;
             }
             else
             {
                 gotoxy(90, 24);
                 cout << "Invalid shoot\n";
-                Nohayganadoraun = NoWinner(currentturn);
+                noWinnerYet = NoWinner(currentturn);
                 sleep(3);
             }
-        } while (Nohayganadoraun == true);
-    mensajeganador(currentturn);
+        } while (noWinnerYet == true);
+    showMessageWinner(currentturn);
 }
 
-bool invalidplay(int row, int col, int barco, int direccion, string player)
+bool invalidplay(int row, int col, int boat, int address, string player)
 {
     if (player == P1)
     {
-        if (TiposBarcosP1[barco - 1] == 0)
+        if (TypesBoatsP1[boat - 1] == 0)
         {
             return true;
         }
     }
     else if (player == P2)
     {
-        if (TiposBarcosP2[barco - 1] == 0)
+        if (TypesBoatsP2[boat - 1] == 0)
         {
             return true;
         }
@@ -655,258 +654,258 @@ bool invalidplay(int row, int col, int barco, int direccion, string player)
         return true;
     }
 
-    else if (direccion < 1 || direccion > 4)
+    else if (address < 1 || address > 4)
     {
         return true;
     }
 
-    if (direccion == 1) // Arriba
+    if (address == 1) // Top
     {
-        int contador = 0;
+        int counter = 0;
         int row1 = row;
-        if (row < (barco - 1))
+        if (row < (boat - 1))
         {
             return true;
         }
-        while (contador < barco)
+        while (counter < boat)
         {
             if (player == P1)
             {
-                if (AreaJuegoP1[row1][col] == "O")
+                if (AreaGameP1[row1][col] == "O")
                 {
                     return true;
                 }
             }
             else if (player == P2)
             {
-                if (AreaJuegoP2[row1][col] == "O")
+                if (AreaGameP2[row1][col] == "O")
                 {
                     return true;
                 }
             }
             row1--;
-            contador++;
+            counter++;
         }
     }
-    if (direccion == 2) // Abajo
+    if (address == 2) // Down
     {
-        int contador = 0;
+        int counter = 0;
         int row1 = row;
-        if ((row + barco) > 10)
+        if ((row + boat) > 10)
         {
             return true;
         }
-        while (contador < barco)
+        while (counter < boat)
         {
             if (player == P1)
             {
-                if (AreaJuegoP1[row1][col] == "O")
+                if (AreaGameP1[row1][col] == "O")
                 {
                     return true;
                 }
             }
             else if (player == P2)
             {
-                if (AreaJuegoP2[row1][col] == "O")
+                if (AreaGameP2[row1][col] == "O")
                 {
                     return true;
                 }
             }
             row1++;
-            contador++;
+            counter++;
         }
     }
-    if (direccion == 3) // Izquierda
+    if (address == 3) // Left
     {
-        int contador = 0;
+        int counter = 0;
         int col1 = col;
-        if ((col - barco) < -1)
+        if ((col - boat) < -1)
         {
             return true;
         }
-        while (contador < barco)
+        while (counter < boat)
         {
             if (player == P1)
             {
-                if (AreaJuegoP1[row][col1] == "O")
+                if (AreaGameP1[row][col1] == "O")
                 {
                     return true;
                 }
             }
             else if (player == P2)
             {
-                if (AreaJuegoP2[row][col1] == "O")
+                if (AreaGameP2[row][col1] == "O")
                 {
                     return true;
                 }
             }
             col1--;
-            contador++;
+            counter++;
         }
     }
-    if (direccion == 4) // Derecha
+    if (address == 4) // Right
     {
-        int contador = 0;
+        int counter = 0;
         int col1 = col;
-        if ((col + barco) > 10)
+        if ((col + boat) > 10)
         {
             return true;
         }
 
-        while (contador < barco)
+        while (counter < boat)
         {
             if (player == P1)
             {
-                if (AreaJuegoP1[row][col1] == "O")
+                if (AreaGameP1[row][col1] == "O")
                 {
                     return true;
                 }
             }
             else if (player == P2)
             {
-                if (AreaJuegoP2[row][col1] == "O")
+                if (AreaGameP2[row][col1] == "O")
                 {
                     return true;
                 }
             }
             col1++;
-            contador++;
+            counter++;
         }
     }
     return false;
 }
 
-void buildships(int row, int col, int barco, int direccion, string player)
+void buildships(int row, int col, int boat, int address, string player)
 {
-    if (direccion == 1) // Arriba
+    if (address == 1) // Top
     {
-        int contador = 0;
+        int counter = 0;
         int row1 = row;
-        while (contador < barco)
+        while (counter < boat)
         {
             if (player == P1)
             {
-                AreaJuegoP1[row1][col] = {'O'};
+                AreaGameP1[row1][col] = {'O'};
             }
             else if (player == P2)
             {
-                AreaJuegoP2[row1][col] = {'O'};
+                AreaGameP2[row1][col] = {'O'};
             }
             row1--;
-            contador++;
+            counter++;
         }
     }
-    if (direccion == 2) // Abajo
+    if (address == 2) // Down
     {
-        int contador = 0;
+        int counter = 0;
         int row1 = row;
-        while (contador < barco)
+        while (counter < boat)
         {
             if (player == P1)
             {
-                AreaJuegoP1[row1][col] = {'O'};
+                AreaGameP1[row1][col] = {'O'};
             }
             else if (player == P2)
             {
-                AreaJuegoP2[row1][col] = {'O'};
+                AreaGameP2[row1][col] = {'O'};
             }
             row1++;
-            contador++;
+            counter++;
         }
     }
-    if (direccion == 3) // Izquierda
+    if (address == 3) // Left
     {
-        int contador = 0;
+        int counter = 0;
         int col1 = col;
-        while (contador < barco)
+        while (counter < boat)
         {
             if (player == P1)
             {
-                AreaJuegoP1[row][col1] = {'O'};
+                AreaGameP1[row][col1] = {'O'};
             }
             else if (player == P2)
             {
-                AreaJuegoP2[row][col1] = {'O'};
+                AreaGameP2[row][col1] = {'O'};
             }
             col1--;
-            contador++;
+            counter++;
         }
     }
-    if (direccion == 4) // Derecha
+    if (address == 4) // Right
     {
-        int contador = 0;
+        int counter = 0;
         int col1 = col;
-        while (contador < barco)
+        while (counter < boat)
         {
             if (player == P1)
             {
-                AreaJuegoP1[row][col1] = {'O'};
+                AreaGameP1[row][col1] = {'O'};
             }
             else if (player == P2)
             {
-                AreaJuegoP2[row][col1] = {'O'};
+                AreaGameP2[row][col1] = {'O'};
             }
             col1++;
-            contador++;
+            counter++;
         }
     }
 }
 
-void actualizarInventarioBarcos(int barco, string player)
+void actualizarInventarioBarcos(int boat, string player)
 {
-    if (barco == 1)
+    if (boat == 1)
     {
         if (player == P1)
         {
-            TiposBarcosP1[0]--;
+            TypesBoatsP1[0]--;
         }
         else if (player == P2)
         {
-            TiposBarcosP2[0]--;
+            TypesBoatsP2[0]--;
         }
     }
-    else if (barco == 2)
+    else if (boat == 2)
     {
         if (player == P1)
         {
-            TiposBarcosP1[1]--;
+            TypesBoatsP1[1]--;
         }
         else if (player == P2)
         {
-            TiposBarcosP2[1]--;
+            TypesBoatsP2[1]--;
         }
     }
-    else if (barco == 3)
+    else if (boat == 3)
     {
         if (player == P1)
         {
-            TiposBarcosP1[2]--;
+            TypesBoatsP1[2]--;
         }
         else if (player == P2)
         {
-            TiposBarcosP2[2]--;
+            TypesBoatsP2[2]--;
         }
     }
-    else if (barco == 4)
+    else if (boat == 4)
     {
         if (player == P1)
         {
-            TiposBarcosP1[3]--;
+            TypesBoatsP1[3]--;
         }
         else if (player == P2)
         {
-            TiposBarcosP2[3]--;
+            TypesBoatsP2[3]--;
         }
     }
-    else if (barco == 5)
+    else if (boat == 5)
     {
         if (player == P1)
         {
-            TiposBarcosP1[4]--;
+            TypesBoatsP1[4]--;
         }
         else if (player == P2)
         {
-            TiposBarcosP2[4]--;
+            TypesBoatsP2[4]--;
         }
     }
 }
@@ -915,24 +914,24 @@ void shootcannons(int row, int col, string player)
 {
     if (player == P1)
     {
-        if (AreaJuegoP2[row][col] == "O")
+        if (AreaGameP2[row][col] == "O")
         {
-            AreaJuegoP2[row][col] = {"X"};
+            AreaGameP2[row][col] = {"X"};
         }
         else
         {
-            AreaJuegoP2[row][col] = "x";
+            AreaGameP2[row][col] = "x";
         }
     }
     else if (player == P2)
     {
-        if (AreaJuegoP1[row][col] == "O")
+        if (AreaGameP1[row][col] == "O")
         {
-            AreaJuegoP1[row][col] = {"X"};
+            AreaGameP1[row][col] = {"X"};
         }
         else
         {
-            AreaJuegoP1[row][col] = "x";
+            AreaGameP1[row][col] = "x";
         }
     }
 }
@@ -945,14 +944,14 @@ bool novalidshoot(int row, int col, string turn)
     }
     if (turn == P1)
     {
-        if (AreaJuegoP2[row][col] == "X")
+        if (AreaGameP2[row][col] == "X")
         {
             return true;
         }
     }
     else if (turn == P2)
     {
-        if (AreaJuegoP1[row][col] == "X")
+        if (AreaGameP1[row][col] == "X")
         {
             return true;
         }
@@ -968,7 +967,7 @@ bool NoWinner(string player)
         {
             for (int col = 0; col < 9; col++)
             {
-                if (AreaJuegoP2[row][col] == "O")
+                if (AreaGameP2[row][col] == "O")
                 {
                     return true;
                 }
@@ -981,7 +980,7 @@ bool NoWinner(string player)
         {
             for (int col = 0; col < 9; col++)
             {
-                if (AreaJuegoP1[row][col] == "O")
+                if (AreaGameP1[row][col] == "O")
                 {
                     return true;
                 }
@@ -1037,28 +1036,6 @@ int LettertoNumber(char Letter)
     {
         return -1;
     }
-}
-
-void Printshipinventory(string player)
-{
-    cout << "You have:\n";
-    if (player == P1)
-    {
-        for (int i = 0; i < 5; i++)
-        {
-            cout << TipoBarco[i] << " [" << TiposBarcosP1[i] << "]"
-                 << "\n";
-        }
-    }
-    if (player == P2)
-    {
-        for (int i = 0; i < 5; i++)
-        {
-            cout << TipoBarco[i] << " [" << TiposBarcosP2[i] << "]"
-                 << "\n";
-        }
-    }
-    cout << "Left";
 }
 
 int AIShipPlacement(string Action)
