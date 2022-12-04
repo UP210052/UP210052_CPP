@@ -69,14 +69,15 @@ bool NoWinner(string);
 int LettertoNumber(char);
 void Printshipinventory(string);
 void dibujo2();
+int AIShipPlacement(string);
 
 
 int main()
 {
     //dibujo();
     //pruebafrontend();
-    //pruebalogica();
-    dispararbarcos();
+    pruebalogica();
+    //dispararbarcos();
     return 0;
 }
 
@@ -350,7 +351,11 @@ void pruebalogica()
     int direccion;
     string currentturn;
     bool valida;
-
+    int gamemode;
+    cout << "1. PVP\n 2. SOLO";
+    cin >> gamemode;
+    if (gamemode==1)
+    {
     do
     {
         if (player <= 8)
@@ -430,6 +435,122 @@ void pruebalogica()
         }
     } while (Nohayganadoraun == true);
     cout << "El ganador es " << currentturn << "\nFELICIDADES";
+    }
+    if (gamemode==2)
+    {
+    do
+    {
+        if (player <= 8)
+        {
+            currentturn = P1;
+        }
+        else
+        {
+            currentturn = P2;
+        }
+        if (currentturn == P1)
+        {
+        Printshipinventory(currentturn);
+        cout << "Its " << currentturn << " turn, select your move\n";
+        cout << "Shipsize:";
+        cin >> tipodebarco;
+        
+        cout << "\n";
+        cout << "Arriba - 1" << endl;
+        cout << "Abajo - 2" << endl;
+        cout << "Izquierda - 3" << endl;
+        cout << "Derecha - 4" << endl;
+        cout << "Direccion: ";
+        cin >> direccion;
+
+        cout << "\n";
+
+        cout << "Row(NUMBER):";
+        cin >> row;
+        cout << "Col(LETTER):";
+        cin >> columna;
+        col = LettertoNumber(columna);
+        invalidmove = invalidplay(row, col, tipodebarco, direccion, currentturn);
+        if (invalidmove == true)
+        {
+            cout << "Invalidmove" << endl;
+            cout << "\n";
+        }
+        else if (invalidmove == false)
+        {
+            player++;
+            buildships(row, col, tipodebarco, direccion, currentturn);
+            actualizarInventarioBarcos(tipodebarco, currentturn);
+            imprimirtablerodeprueba();
+            /*menuBarcos(turnplayer);
+            cout << "\n";
+            tableronaval();*/
+        }
+        } else if (currentturn == P2)//AI Actions
+        {
+            tipodebarco = AIShipPlacement("Shipsize");
+            row = AIShipPlacement("Row");
+            col = AIShipPlacement("Col");
+            direccion = AIShipPlacement("Direction");
+            invalidmove = invalidplay(row, col, tipodebarco, direccion, currentturn);
+        if (invalidmove == true)
+        {
+        }
+        else if (invalidmove == false)
+        {
+            player++;
+            buildships(row, col, tipodebarco, direccion, currentturn);
+            actualizarInventarioBarcos(tipodebarco, currentturn);
+            imprimirtablerodeprueba();
+            /*menuBarcos(turnplayer);
+            cout << "\n";
+            tableronaval();*/
+        }
+        }
+        
+    } while (player <= 16);
+
+    player = 1;
+    do
+    {
+        if (player % 2 == 1)
+        {
+            currentturn = P1;
+        }
+        else
+        {
+            currentturn = P2;
+        }
+        if (currentturn == P1)
+        {        
+        cout << currentturn << endl;
+        cout << "Row(NUMBER)\n";
+        cin >> row;
+        cout << "Column(LETTER)\n";
+        cin >> columna;
+        col = LettertoNumber(columna);
+        } else if (currentturn == P2)//AI Actions
+        {
+            row = AIShipPlacement("Row");
+            col = AIShipPlacement("Col");
+        }
+        invalidshoot=novalidshoot(row, col, currentturn);
+        if (invalidshoot==false)
+        {
+            shootcannons(row, col, currentturn);
+            imprimirtablerodeprueba();
+            Nohayganadoraun = NoWinner(currentturn);
+            player++;
+        }else
+        {
+            cout << "Invalid shoot\n";
+            Nohayganadoraun = NoWinner(currentturn);
+        }
+    } while (Nohayganadoraun == true);
+    cout << "El ganador es " << currentturn << "\nFELICIDADES";
+    } else{
+        cout << "Invalidgamemode";
+    }
 }
 
 void ponerbarcos(){
@@ -967,3 +1088,28 @@ void Printshipinventory(string player){
     cout << "Left";
 }
 
+int AIShipPlacement(string Action){
+    if (Action=="Shipsize")
+    {
+        int number =(rand() % 5)+1;
+        return number;
+    }
+    
+    if (Action=="Row")
+    {
+        int number =(rand() % 9);
+        return number;
+    }
+    if (Action=="Col")
+    {
+        int number =(rand() % 9);
+        return number;
+    }
+    if (Action=="Direction")
+    {
+        int number =(rand() % 4)+1;
+        return number;
+    }
+    
+    return -1;
+}
