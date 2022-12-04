@@ -64,7 +64,7 @@ void shootBoats();
 void shootBoatsPC();
 bool invalidplay(int, int, int, int, string);
 void buildships(int, int, int, int, string);
-void actualizarInventarioBarcos(int, string);
+void updateBoatsInventory(int, string);
 void shootcannons(int, int, string);
 bool novalidshoot(int, int, string);
 bool NoWinner(string);
@@ -421,7 +421,7 @@ void putBoats()
         {
             player++;
             buildships(row, col, typeofBoat, address, currentturn);
-            actualizarInventarioBarcos(typeofBoat, currentturn);
+            updateBoatsInventory(typeofBoat, currentturn);
             system("clear");
         }
     } while (player <= 16);
@@ -481,7 +481,7 @@ void putBoatsPC()
             {
                 player++;
                 buildships(row, col, typeofBoat, address, currentturn);
-                actualizarInventarioBarcos(typeofBoat, currentturn);
+                updateBoatsInventory(typeofBoat, currentturn);
                 system("clear");
             }
         }
@@ -499,7 +499,7 @@ void putBoatsPC()
             {
                 player++;
                 buildships(row, col, typeofBoat, address, currentturn);
-                actualizarInventarioBarcos(typeofBoat, currentturn);
+                updateBoatsInventory(typeofBoat, currentturn);
                 system("clear");
                 showDrawing();
                 printMenuBoats(currentturn);
@@ -851,7 +851,7 @@ void buildships(int row, int col, int boat, int address, string player)
     }
 }
 
-void actualizarInventarioBarcos(int boat, string player)
+void updateBoatsInventory(int boat, string player)
 {
     if (boat == 1)
     {
