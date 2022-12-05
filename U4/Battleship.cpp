@@ -70,6 +70,7 @@ bool novalidshoot(int, int, string);
 bool NoWinner(string);
 int LettertoNumber(char);
 int AIShipPlacement(string);
+int AIShootPlacement(string);
 
 int main()
 {
@@ -619,8 +620,8 @@ void shootBoatsPC()
             }
             else if (currentturn == P2) // AI Actions
             {
-                row = AIShipPlacement("Row");
-                col = AIShipPlacement("Col");
+                row = AIShootPlacement("Row");
+                col = AIShootPlacement("Col");
             }
             invalidshoot = novalidshoot(row, col, currentturn);
             if (invalidshoot == false)
@@ -1069,4 +1070,79 @@ int AIShipPlacement(string Action)
         return number;
     }
     return -1;
+}
+
+int AIShootPlacement(string coordinate){
+    int play;
+    for (int row = 0; row < 9; row++)
+    {
+        for (int col = 0; col < 9; col++)
+        {
+            if (coordinate == "Row")//Row Placement
+            {
+            if (AreaGameP1[row][col] == "X")
+            {
+                if (AreaGameP1[row+1][col] == "X" && row < 7)
+                {
+                    return row+2;
+                } else if (AreaGameP1[row-1][col] == "X" && row > 2)
+                {
+                    return row-2;
+                } else if (AreaGameP1[row][col+1]== "X" && col < 7)
+                {
+                    return row;
+                } else if (AreaGameP1[row][col-1]== "X" && col > 2)
+                {
+                    return row;
+                } else if (AreaGameP1[row+1][col] != "x" && row < 8)
+                {
+                    return row+1;
+                } else if (AreaGameP1[row-1][col] != "x" && row > 1)
+                {
+                    return row-1;
+                } else if (AreaGameP1[row][col+1] != "x" && col < 8)
+                {
+                    return row;
+                } else if (AreaGameP1[row][col-1] != "x" && col > 1)
+                {
+                    return row;
+                }
+            }
+            } else if (coordinate == "Col")//Column placement
+            {
+            if (AreaGameP1[row][col] == "X")
+            {
+                if (AreaGameP1[row+1][col] == "X" && row < 7)
+                {
+                    return col;
+                } else if (AreaGameP1[row-1][col] == "X" && row >2)
+                {
+                    return col;
+                } else if (AreaGameP1[row][col+1]== "X" && col < 7)
+                {
+                    return col+2;
+                } else if (AreaGameP1[row][col-1]== "X" && col > 2)
+                {
+                    return col-2;
+                } else if (AreaGameP1[row+1][col] != "x" && row < 8)
+                {
+                    return col;
+                } else if (AreaGameP1[row-1][col] != "x" && row > 1)
+                {
+                    return col;
+                } else if (AreaGameP1[row][col+1] != "x" && col < 8)
+                {
+                    return col+1;
+                } else if (AreaGameP1[row][col-1] != "x" && col > 1)
+                {
+                    return col-1;
+                }
+            }
+            }
+            
+            
+        }
+    }
+    play = (rand()%9);
+    return play;
 }
