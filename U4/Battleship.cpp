@@ -70,6 +70,7 @@ bool novalidshoot(int, int, string);
 bool NoWinner(string);
 int LettertoNumber(char);
 int AIShipPlacement(string);
+int AIShootPlacement(string);
 
 int main()
 {
@@ -81,7 +82,7 @@ int main()
 
     if (gamemode == 1)
     {
-        system("cls");
+        system("CLS");
         showDrawing();
         gotoxy(58, 10);
         cout << "\033[1;31m" << "WELCOME TO BATTLESHIP" << "\033[0m";
@@ -90,7 +91,7 @@ int main()
     }
     else if (gamemode == 2)
     {
-        system("cls");
+        system("CLS");
         showDrawing();
         gotoxy(58, 17);
         cout << "\033[1;31m" << "WELCOME TO BATTLESHIP" << "\033[0m";
@@ -99,7 +100,7 @@ int main()
     }
     else if (gamemode == 3)
     {
-        system("cls");
+        system("CLS");
         gotoxy(58, 5);
         cout << "\033[0;34m" << "THANKS FOR PLAYING" << "\033[0m";
     }
@@ -150,7 +151,7 @@ void showMessageStart()
 
 void showDrawing2()
 {
-    system("cls");
+    system("CLS");
     gotoxy(80, 2);
     cout << "                         ____   _   _           \n";
     gotoxy(80, 3);
@@ -184,7 +185,7 @@ void showDrawing2()
 
 void showDrawing()
 {
-    system("cls");
+    system("CLS");
     gotoxy(0, 2);
     cout << "\033[0;30m" << "                                                            ____   _   _           \n" << "\033[0m";
     gotoxy(0, 3);
@@ -393,7 +394,7 @@ void printMenuBoats(string turnplayer)
 
 void showMessageWinner(string player)
 {
-    system("cls");
+    system("CLS");
     showDrawing2();
     gotoxy(30, 3);
     cout << "Player 1";
@@ -427,7 +428,7 @@ void putBoats()
         {
             currentturn = P2;
         }
-        system("cls");
+        system("CLS");
         showDrawing();
         printMenuBoats(currentturn);
         gotoxy(0, 26);
@@ -460,14 +461,14 @@ void putBoats()
             cout << "\033[0;34m" << "Invalidmove" << "\033[0;30m" << endl;
             cout << "\n";
             sleep(3);
-            system("cls");
+            system("CLS");
         }
         else if (invalidmove == false)
         {
             player++;
             buildships(row, col, typeofBoat, address, currentturn);
             updateBoatsInventory(typeofBoat, currentturn);
-            system("cls");
+            system("CLS");
         }
     } while (player <= 16);
 }
@@ -491,7 +492,7 @@ void putBoatsPC()
         }
         if (currentturn == P1)
         {
-            system("cls");
+            system("CLS");
             showDrawing();
             printMenuBoats(currentturn);
             gotoxy(0, 26);
@@ -523,14 +524,14 @@ void putBoatsPC()
                 cout << "\033[0;34m" << "Invalidmove" << "\033[0;30m" << endl;
                 cout << "\n";
                 sleep(3);
-                system("cls");
+                system("CLS");
             }
             else if (invalidmove == false)
             {
                 player++;
                 buildships(row, col, typeofBoat, address, currentturn);
                 updateBoatsInventory(typeofBoat, currentturn);
-                system("cls");
+                system("CLS");
             }
         }
         else if (currentturn == P2) // AI Actions
@@ -548,7 +549,7 @@ void putBoatsPC()
                 player++;
                 buildships(row, col, typeofBoat, address, currentturn);
                 updateBoatsInventory(typeofBoat, currentturn);
-                system("cls");
+                system("CLS");
                 showDrawing();
                 printMenuBoats(currentturn);
                 gotoxy(0, 26);
@@ -578,7 +579,7 @@ void shootBoats()
             currentturn = P2;
         }
 
-        system("cls");
+        system("CLS");
         showDrawing2();
         gotoxy(30, 3);
         cout << "\033[0;32m" << "Player 1" << "\033[0;30m";
@@ -635,12 +636,12 @@ void shootBoatsPC()
             {
                 currentturn = P2;
             }
-            system("cls");
+            system("CLS");
             showDrawing2();
             gotoxy(30, 3);
             cout << "\033[0;32m" << "Player 1" << "\033[0;30m";
             cout << "\n";
-            makeBoardNaval(P1, NOBOATS);
+            makeBoardNaval(P1, ADDBOATS);
             cout << "\n";
             cout << "\n";
             gotoxy(30, 21);
@@ -661,8 +662,8 @@ void shootBoatsPC()
             }
             else if (currentturn == P2) // AI Actions
             {
-                row = AIShipPlacement("Row");
-                col = AIShipPlacement("Col");
+                row = AIShootPlacement("Row");
+                col = AIShootPlacement("Col");
             }
             invalidshoot = novalidshoot(row, col, currentturn);
             if (invalidshoot == false)
@@ -1112,3 +1113,79 @@ int AIShipPlacement(string Action)
     }
     return -1;
 }
+
+int AIShootPlacement(string coordinate){
+    int play;
+    for (int row = 0; row < 9; row++)
+    {
+        for (int col = 0; col < 9; col++)
+        {
+            if (coordinate == "Row")//Row Placement
+            {
+            if (AreaGameP1[row][col] == "X")
+            {
+                if (AreaGameP1[row+1][col] == "X" && row < 7)
+                {
+                    return row+2;
+                } else if (AreaGameP1[row-1][col] == "X" && row > 2)
+                {
+                    return row-2;
+                } else if (AreaGameP1[row][col+1]== "X" && col < 7)
+                {
+                    return row;
+                } else if (AreaGameP1[row][col-1]== "X" && col > 2)
+                {
+                    return row;
+                } else if (AreaGameP1[row+1][col] != "x" && row < 8 && AreaGameP1[row+1][col] != "X")
+                {
+                    return row+1;
+                } else if (AreaGameP1[row-1][col] != "x" && row > 1 && AreaGameP1[row+1][col] != "X")
+                {
+                    return row-1;
+                } else if (AreaGameP1[row][col+1] != "x" && col < 8 && AreaGameP1[row+1][col] != "X")
+                {
+                    return row;
+                } else if (AreaGameP1[row][col-1] != "x" && col > 1 && AreaGameP1[row+1][col] != "X")
+                {
+                    return row;
+                }
+            }
+            } else if (coordinate == "Col")//Column placement
+            {
+            if (AreaGameP1[row][col] == "X")
+            {
+                if (AreaGameP1[row+1][col] == "X" && row < 7)
+                {
+                    return col;
+                } else if (AreaGameP1[row-1][col] == "X" && row >2)
+                {
+                    return col;
+                } else if (AreaGameP1[row][col+1]== "X" && col < 7)
+                {
+                    return col+2;
+                } else if (AreaGameP1[row][col-1]== "X" && col > 2)
+                {
+                    return col-2;
+                } else if (AreaGameP1[row+1][col] != "x" && row < 8 && AreaGameP1[row+1][col] != "X")
+                {
+                    return col;
+                } else if (AreaGameP1[row-1][col] != "x" && row > 1 && AreaGameP1[row+1][col] != "X")
+                {
+                    return col;
+                } else if (AreaGameP1[row][col+1] != "x" && col < 8 && AreaGameP1[row+1][col] != "X")
+                {
+                    return col+1;
+                } else if (AreaGameP1[row][col-1] != "x" && col > 1 && AreaGameP1[row+1][col] != "X")
+                {
+                    return col-1;
+                }
+            }
+            }
+
+
+        }
+    }
+    play = (rand()%9);
+    return play;
+}
+
