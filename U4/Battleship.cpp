@@ -599,7 +599,7 @@ void shootBoatsPC()
             gotoxy(30, 3);
             cout << "\033[0;32m" << "Player 1" << "\033[0;30m";
             cout << "\n";
-            makeBoardNaval(P1, NOBOATS);
+            makeBoardNaval(P1, ADDBOATS);
             cout << "\n";
             cout << "\n";
             gotoxy(30, 21);
@@ -1073,7 +1073,8 @@ int AIShipPlacement(string Action)
 }
 
 int AIShootPlacement(string coordinate){
-    int play;
+   int play;
+   bool ocupado;
     for (int row = 0; row < 9; row++)
     {
         for (int col = 0; col < 9; col++)
@@ -1084,29 +1085,54 @@ int AIShootPlacement(string coordinate){
             {
                 if (AreaGameP1[row+1][col] == "X" && row < 7)
                 {
-                    return row+2;
+                    ocupado=novalidshoot(row+2,col,P2);
+                    if (ocupado== false){
+                        return row+2;
+                    }
                 } else if (AreaGameP1[row-1][col] == "X" && row > 2)
                 {
-                    return row-2;
+                    ocupado=novalidshoot(row-2,col,P2);
+                    if (ocupado== false){
+                        return row-2;
+                    }
                 } else if (AreaGameP1[row][col+1]== "X" && col < 7)
                 {
-                    return row;
+                    ocupado=novalidshoot(row,col+1,P2);
+                    if (ocupado== false){
+                        return row;
+                    }
                 } else if (AreaGameP1[row][col-1]== "X" && col > 2)
                 {
-                    return row;
-                } else if (AreaGameP1[row+1][col] != "x" && row < 8)
-                {
-                    return row+1;
-                } else if (AreaGameP1[row-1][col] != "x" && row > 1)
-                {
-                    return row-1;
-                } else if (AreaGameP1[row][col+1] != "x" && col < 8)
-                {
-                    return row;
-                } else if (AreaGameP1[row][col-1] != "x" && col > 1)
-                {
-                    return row;
+                    ocupado=novalidshoot(row,col-1,P2);
+                    if (ocupado== false){
+                        return row;
+                    }
                 }
+                else if (AreaGameP1[row+1][col] != "-" && row < 8 && AreaGameP1[row+1][col] != "X" )
+                {
+                    ocupado=novalidshoot(row+1,col,P2);
+                    if (ocupado== false){
+                        return row+1;
+                    }
+                } else if (AreaGameP1[row-1][col] != "x" && row > 1 && AreaGameP1[row-1][col] != "X")
+                {
+                    ocupado=novalidshoot(row-1,col,P2);
+                    if (ocupado== false){
+                        return row-1;
+                    }
+                } else if (AreaGameP1[row][col+1] != "x" && col < 8 && AreaGameP1[row][col+1] != "X")
+                {
+                    ocupado=novalidshoot(row,col+1,P2);
+                    if (ocupado== false){
+                        return row;
+                    }
+                } else if (AreaGameP1[row][col-1] != "x" && col > 1 && AreaGameP1[row][col-1] != "X")
+                {
+                    ocupado=novalidshoot(row,col-1,P2);
+                    if (ocupado== false){
+                        return row;
+                    }
+                }   
             }
             } else if (coordinate == "Col")//Column placement
             {
@@ -1114,35 +1140,61 @@ int AIShootPlacement(string coordinate){
             {
                 if (AreaGameP1[row+1][col] == "X" && row < 7)
                 {
-                    return col;
+                    ocupado=novalidshoot(row+1,col,P2);
+                    if (ocupado== false){
+                        return col;
+                    }
                 } else if (AreaGameP1[row-1][col] == "X" && row >2)
                 {
-                    return col;
+                    ocupado=novalidshoot(row-1,col,P2);
+                    if (ocupado== false){
+                        return col;
+                    }
                 } else if (AreaGameP1[row][col+1]== "X" && col < 7)
                 {
-                    return col+2;
+                    ocupado=novalidshoot(row,col+1,P2);
+                    if (ocupado== false){
+                        return col+2;
+                    }
                 } else if (AreaGameP1[row][col-1]== "X" && col > 2)
                 {
-                    return col-2;
-                } else if (AreaGameP1[row+1][col] != "x" && row < 8)
+                    ocupado=novalidshoot(row,col-1,P2);
+                    if (ocupado== false){
+                        return col-2;
+                    }
+                } 
+                else if (AreaGameP1[row+1][col] != "x" && row < 8 && AreaGameP1[row+1][col] != "X")
                 {
-                    return col;
-                } else if (AreaGameP1[row-1][col] != "x" && row > 1)
+                    ocupado=novalidshoot(row+1,col,P2);
+                    if (ocupado== false){
+                        return col;
+                    }
+                } else if (AreaGameP1[row-1][col] != "x" && row > 1 && AreaGameP1[row-1][col] != "X")
                 {
-                    return col;
-                } else if (AreaGameP1[row][col+1] != "x" && col < 8)
+                    ocupado=novalidshoot(row-1,col,P2);
+                    if (ocupado== false){
+                        return col;
+                    }
+                } else if (AreaGameP1[row][col+1] != "x" && col < 8 && AreaGameP1[row][col+1] != "X")
                 {
-                    return col+1;
-                } else if (AreaGameP1[row][col-1] != "x" && col > 1)
+                    ocupado=novalidshoot(row,col+1,P2);
+                    if (ocupado== false){
+                        return col+1;
+                    }
+                } else if (AreaGameP1[row][col-1] != "x" && col > 1 && AreaGameP1[row][col-1] != "X")
                 {
-                    return col-1;
+                    ocupado=novalidshoot(row,col-1,P2);
+                    if (ocupado== false){
+                        return col-1;
+                    }
                 }
             }
             }
-            
-            
+
+
         }
     }
     play = (rand()%9);
     return play;
 }
+
