@@ -648,6 +648,7 @@ void shootBoatsPC()
             cout << "\033[0;31m" << "Player 2" << "\033[0;30m";
             makeBoardNaval(P2, NOBOATS);
             cout << "\n";
+            invalidshoot = novalidshoot(row, col, currentturn);
             if (currentturn == P1)
             {
                 gotoxy(90, 19);
@@ -662,10 +663,12 @@ void shootBoatsPC()
             }
             else if (currentturn == P2) // AI Actions
             {
-                row = AIShootPlacement("Row");
-                col = AIShootPlacement("Col");
+                do
+                {
+                    row = AIShootPlacement("Row");
+                    col = AIShootPlacement("Col");
+                } while (invalidshoot == true);
             }
-            invalidshoot = novalidshoot(row, col, currentturn);
             if (invalidshoot == false)
             {
                 shootcannons(row, col, currentturn);
@@ -1116,6 +1119,7 @@ int AIShipPlacement(string Action)
 
 int AIShootPlacement(string coordinate){
     int play;
+    play = (rand()%9);
     for (int row = 0; row < 9; row++)
     {
         for (int col = 0; col < 9; col++)
@@ -1126,10 +1130,16 @@ int AIShootPlacement(string coordinate){
             {
                 if (AreaGameP1[row+1][col] == "X" && row < 7)
                 {
-                    return row+2;
+                    if (AreaGameP1[row+2][col] != "X")
+                    {
+                        return row+2;
+                    } else return play;
                 } else if (AreaGameP1[row-1][col] == "X" && row > 2)
                 {
-                    return row-2;
+                    if (AreaGameP1[row-2][col] != "X")
+                    {
+                        return row-2;
+                    } else return play;
                 } else if (AreaGameP1[row][col+1]== "X" && col < 7)
                 {
                     return row;
@@ -1149,6 +1159,7 @@ int AIShootPlacement(string coordinate){
                 {
                     return row;
                 }
+                return play;
             }
             } else if (coordinate == "Col")//Column placement
             {
@@ -1162,10 +1173,16 @@ int AIShootPlacement(string coordinate){
                     return col;
                 } else if (AreaGameP1[row][col+1]== "X" && col < 7)
                 {
-                    return col+2;
+                    if (AreaGameP1[row][col+2] != "X")
+                    {
+                        return col+2;
+                    } else return play;
                 } else if (AreaGameP1[row][col-1]== "X" && col > 2)
                 {
-                    return col-2;
+                    if (AreaGameP1[row][col-2] != "X")
+                    {
+                        return col-2;
+                    } else return play;
                 } else if (AreaGameP1[row+1][col] != "x" && row < 8 && AreaGameP1[row+1][col] != "X")
                 {
                     return col;
@@ -1179,13 +1196,12 @@ int AIShootPlacement(string coordinate){
                 {
                     return col-1;
                 }
+                return play;
             }
             }
-
 
         }
     }
-    play = (rand()%9);
     return play;
 }
 
