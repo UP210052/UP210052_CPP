@@ -648,7 +648,6 @@ void shootBoatsPC()
             cout << "\033[0;31m" << "Player 2" << "\033[0;30m";
             makeBoardNaval(P2, NOBOATS);
             cout << "\n";
-            invalidshoot = novalidshoot(row, col, currentturn);
             if (currentturn == P1)
             {
                 gotoxy(90, 19);
@@ -669,6 +668,7 @@ void shootBoatsPC()
                     col = AIShootPlacement("Col");
                 } while (invalidshoot == true);
             }
+            invalidshoot = novalidshoot(row, col, currentturn);
             if (invalidshoot == false)
             {
                 shootcannons(row, col, currentturn);
@@ -1120,7 +1120,7 @@ int AIShipPlacement(string Action)
 int AIShootPlacement(string coordinate){
     int play;
     play = (rand()%9);
-    for (int row = 0; row < 9; row++)
+    /*for (int row = 0; row < 9; row++)
     {
         for (int col = 0; col < 9; col++)
         {
@@ -1202,6 +1202,7 @@ int AIShootPlacement(string coordinate){
 
         }
     }
+    */
     return play;
 }
 
