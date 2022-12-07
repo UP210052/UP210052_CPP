@@ -93,6 +93,61 @@ gcc Battleship.c -o Battleship
 
 </div align="center">
 
+<h2>Things to consider</h2>
+
+- Do not enter numbers with decimal.
+- Ships are shown on the board as O
+- When you hit the boat, a red X is placed on the board.
+
+<div align="center">
+<h2>Player vs PC</h2>
+
+The first thing that appears on the screen is a menu to choose the game mode.  
+
+<img src="../imagenes/Battleship.png" align="center" height="400" width="600">    
+
+Select 1 since we are going to play multiplayer. You select the size of the ship in this move is 5, then you select the direction which is 1, select the row (with number) which is 8 and finally the row (with letters) which is a.
+
+<img src="../imagenes/Battleship1.png" align="center" height="400" width="600">  
+
+Then on the board will appear the ship in the set position.  
+
+<img src="../imagenes/Battleship2.png" align="center" height="300" width="600">  
+
+Let's continue to place the boats until only one is missing.  
+
+<img src="../imagenes/Battleship3.png" align="center" height="400" width="600">  
+
+Once the last ship has been placed, it is the second player's turn to place the ships.   
+
+<img src="../imagenes/Battleship4.png" align="center" height="300" width="600">  
+
+Let's continue to place the boats until only one is missing.  
+
+<img src="../imagenes/Battleship5.png" align="center" height="400" width="600">  
+
+When all the ships are placed we will switch to the shooting mode, in which you will have to give the row and column of your shot.  
+
+<img src="../imagenes/Battleship6.png" align="center" height="400" width="600">  
+
+Now we will make a shot in row 0 and column a.  
+
+<img src="../imagenes/Battleship7.png" align="center" height="400" width="600">  
+
+On the board is placed an x in white color which means that we missed the shot.  
+
+<img src="../imagenes/Battleship8.png" align="center" height="400" width="600">  
+
+When we hit the shot, an X in red color will be placed on the board.  
+
+<img src="../imagenes/Battleship9.png" align="center" height="400" width="600">  
+
+When there are no more ships on the enemy board, the winner message will appear.   
+
+<img src="../imagenes/Battleship10.png" align="center" height="400" width="600">  
+
+</div align="center>
+
 [Return to index](#index)
 
 <div align="center">

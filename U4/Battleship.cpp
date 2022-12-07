@@ -82,7 +82,7 @@ int main()
 
     if (gamemode == 1)
     {
-        system("CLS");
+        system("clear");
         showDrawing();
         gotoxy(58, 10);
         cout << "\033[1;31m" << "WELCOME TO BATTLESHIP" << "\033[0m";
@@ -91,7 +91,7 @@ int main()
     }
     else if (gamemode == 2)
     {
-        system("CLS");
+        system("clear");
         showDrawing();
         gotoxy(58, 17);
         cout << "\033[1;31m" << "WELCOME TO BATTLESHIP" << "\033[0m";
@@ -100,7 +100,7 @@ int main()
     }
     else if (gamemode == 3)
     {
-        system("CLS");
+        system("clear");
         gotoxy(58, 5);
         cout << "\033[0;34m" << "THANKS FOR PLAYING" << "\033[0m";
     }
@@ -134,7 +134,7 @@ void showMessageStart()
         cout << "\033[1;31m" << "WELCOME TO BATTLESHIP" << "\033[0m";
         cout.flush(); //Limpiar la cadena
         usleep(retardo);
-        system("cls");
+        system("clear");
     }
     showDrawing();
     gotoxy(58, 20);
@@ -151,7 +151,7 @@ void showMessageStart()
 
 void showDrawing2()
 {
-    system("CLS");
+    system("clear");
     gotoxy(80, 2);
     cout << "                         ____   _   _           \n";
     gotoxy(80, 3);
@@ -185,7 +185,7 @@ void showDrawing2()
 
 void showDrawing()
 {
-    system("CLS");
+    system("clear");
     gotoxy(0, 2);
     cout << "\033[0;30m" << "                                                            ____   _   _           \n" << "\033[0m";
     gotoxy(0, 3);
@@ -394,7 +394,7 @@ void printMenuBoats(string turnplayer)
 
 void showMessageWinner(string player)
 {
-    system("CLS");
+    system("clear");
     showDrawing2();
     gotoxy(30, 3);
     cout << "Player 1";
@@ -428,7 +428,7 @@ void putBoats()
         {
             currentturn = P2;
         }
-        system("CLS");
+        system("clear");
         showDrawing();
         printMenuBoats(currentturn);
         gotoxy(0, 26);
@@ -461,14 +461,14 @@ void putBoats()
             cout << "\033[0;34m" << "Invalidmove" << "\033[0;30m" << endl;
             cout << "\n";
             sleep(3);
-            system("CLS");
+            system("clear");
         }
         else if (invalidmove == false)
         {
             player++;
             buildships(row, col, typeofBoat, address, currentturn);
             updateBoatsInventory(typeofBoat, currentturn);
-            system("CLS");
+            system("clear");
         }
     } while (player <= 16);
 }
@@ -492,7 +492,7 @@ void putBoatsPC()
         }
         if (currentturn == P1)
         {
-            system("CLS");
+            system("clear");
             showDrawing();
             printMenuBoats(currentturn);
             gotoxy(0, 26);
@@ -524,14 +524,14 @@ void putBoatsPC()
                 cout << "\033[0;34m" << "Invalidmove" << "\033[0;30m" << endl;
                 cout << "\n";
                 sleep(3);
-                system("CLS");
+                system("clear");
             }
             else if (invalidmove == false)
             {
                 player++;
                 buildships(row, col, typeofBoat, address, currentturn);
                 updateBoatsInventory(typeofBoat, currentturn);
-                system("CLS");
+                system("clear");
             }
         }
         else if (currentturn == P2) // AI Actions
@@ -549,7 +549,7 @@ void putBoatsPC()
                 player++;
                 buildships(row, col, typeofBoat, address, currentturn);
                 updateBoatsInventory(typeofBoat, currentturn);
-                system("CLS");
+                system("clear");
                 showDrawing();
                 printMenuBoats(currentturn);
                 gotoxy(0, 26);
@@ -579,7 +579,7 @@ void shootBoats()
             currentturn = P2;
         }
 
-        system("CLS");
+        system("clear");
         showDrawing2();
         gotoxy(30, 3);
         cout << "\033[0;32m" << "Player 1" << "\033[0;30m";
@@ -636,7 +636,7 @@ void shootBoatsPC()
             {
                 currentturn = P2;
             }
-            system("CLS");
+            system("clear");
             showDrawing2();
             gotoxy(30, 3);
             cout << "\033[0;32m" << "Player 1" << "\033[0;30m";
