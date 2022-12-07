@@ -100,7 +100,7 @@ gcc Battleship.c -o Battleship
 - When you hit the boat, a red X is placed on the board.
 
 <div align="center">
-<h2>Player vs PC</h2>
+<h2>Player vs Player</h2>
 
 The first thing that appears on the screen is a menu to choose the game mode.  
 
