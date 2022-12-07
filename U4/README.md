@@ -87,6 +87,8 @@ gcc Battleship.c -o Battleship
 
 <img src="../imagenes/Barco.png" align="center">
 
+[Return to index](#index)
+
 <div align="center">
 
 ## __🚀&nbsp; Tests__
@@ -150,6 +152,7 @@ When there are no more ships on the enemy board, the winner message will appear.
 
 
 [Return to index](#index)
+
 
 <div align="center">
 
