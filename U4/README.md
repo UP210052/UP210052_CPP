@@ -144,9 +144,10 @@ When we hit the shot, an X in red color will be placed on the board.
 
 When there are no more ships on the enemy board, the winner message will appear.   
 
-<img src="../imagenes/Battleship10.png" align="center" height="400" width="600">  
+<img src="../imagenes/Battleship10.png" align="center" height="400" width="600">    
 
-</div align="center>
+</div align="center>   
+
 
 [Return to index](#index)
 
@@ -161,6 +162,6 @@ To remember some of our sources:
    
 - Teacher
 - Play the game
-- Videos
+- Videos  
 
 [Return to index](#index)
