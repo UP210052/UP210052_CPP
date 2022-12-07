@@ -148,10 +148,10 @@ When there are no more ships on the enemy board, the winner message will appear.
 
 <img src="../imagenes/Battleship10.png" align="center" height="400" width="600">    
 
+[Return to index](#index)
+
 </div align="center>   
 
-
-[Return to index](#index)
 
 
 <div align="center">
