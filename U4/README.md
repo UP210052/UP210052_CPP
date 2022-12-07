@@ -158,8 +158,9 @@ When there are no more ships on the enemy board, the winner message will appear.
 With this project we concluded the 3rd semester, we learned an infinite number of things that we use in the last projects, in which several games that we use daily were made. We know that this will help us in the future to do more projects of such manufacturing. In this project, the problems that were detected were that some of the team never played the naval battle or very little and we had to learn to be able to carry out the project. 
 With the help of our teacher we acquired all the necessary tools to conclude this magnificent project in a strong way.
 To remember some of our sources:
-1. Teacher
-2. Play the game
-3. Videos
+   
+- Teacher
+- Play the game
+- Videos
 
 [Return to index](#index)
