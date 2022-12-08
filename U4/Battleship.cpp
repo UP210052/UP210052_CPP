@@ -1,5 +1,6 @@
 #include <iostream>
 #include <unistd.h>
+#include <time.h>
 //#include <vistas.h>
 
 using namespace std;
@@ -1093,6 +1094,7 @@ int LettertoNumber(char Letter)
 
 int AIShipPlacement(string Action)
 {
+    srand(time(NULL));
     if (Action == "Shipsize")
     {
         int number = (rand() % 5) + 1;
@@ -1119,8 +1121,9 @@ int AIShipPlacement(string Action)
 
 int AIShootPlacement(string coordinate){
     int play;
+    srand(time(NULL));
     play = (rand()%9);
-    /*for (int row = 0; row < 9; row++)
+    for (int row = 0; row < 9; row++)
     {
         for (int col = 0; col < 9; col++)
         {
@@ -1201,8 +1204,7 @@ int AIShootPlacement(string coordinate){
             }
 
         }
-    }
-    */
+    }    
     return play;
 }
 
