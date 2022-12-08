@@ -639,13 +639,11 @@ void shootBoatsPC()
             }
             system("clear");
             showDrawing2();
-            gotoxy(30, 3);
             cout << "\033[0;32m" << "Player 1" << "\033[0;30m";
             cout << "\n";
-            makeBoardNaval(P1, ADDBOATS);
+            makeBoardNaval(P1, NOBOATS);
             cout << "\n";
             cout << "\n";
-            gotoxy(30, 21);
             cout << "\033[0;31m" << "Player 2" << "\033[0;30m";
             makeBoardNaval(P2, NOBOATS);
             cout << "\n";
